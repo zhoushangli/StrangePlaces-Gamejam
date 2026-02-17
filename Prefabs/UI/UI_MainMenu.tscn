@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cctb7slglly4y"]
+
+[ext_resource type="Script" uid="uid://de8p44ai0gio2" path="res://Scripts/UI/MainMenuUI.cs" id="1_slj2r"]
+
+[node name="UIMainMenu" type="Control" unique_id=42779288 node_paths=PackedStringArray("_startButton", "_quitButton")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_slj2r")
+_startButton = NodePath("StartBtn")
+_quitButton = NodePath("QuitBtn")
+
+[node name="StartBtn" type="Button" parent="." unique_id=873682141]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 130.0
+offset_right = 397.0
+offset_bottom = 178.0
+text = "Start Game"
+
+[node name="QuitBtn" type="Button" parent="." unique_id=660824699]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 205.0
+offset_right = 397.0
+offset_bottom = 253.0
+text = "Quit
+"

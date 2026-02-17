@@ -11,9 +11,19 @@ config_version=5
 [application]
 
 config/name="StrangePlaces"
-run/main_scene="res://Scenes/Boot/Boot.tscn"
+run/main_scene="res://Scenes/Gameplay/Scene_Boot.tscn"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Game="*uid://tqe8rh5btmri"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/stretch/mode="viewport"
 
 [dotnet]
 

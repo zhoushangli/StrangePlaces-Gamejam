@@ -1,16 +1,15 @@
-[gd_scene format=4 uid="uid://txoi7ffg732w"]
+[gd_scene format=4 uid="uid://b02pokh8kjfdd"]
 
-[ext_resource type="Script" uid="uid://d1vyv8hxjfnkd" path="res://Scripts/Gameplay/GameplayRoot.cs" id="1_game"]
-[ext_resource type="Texture2D" uid="uid://dy2k8ha1nfnt2" path="res://Assets/Textures/Tiles/RockGround.png" id="2_ormwj"]
-[ext_resource type="Texture2D" uid="uid://cfeydxea271a8" path="res://Assets/Textures/Tiles/LabWall.png" id="3_hvhro"]
-[ext_resource type="Script" uid="uid://mri02jiqo10r" path="res://Scripts/Player/PlayerAnim.cs" id="4_asko4"]
-[ext_resource type="Texture2D" uid="uid://wol0ptbthq41" path="res://Assets/Textures/Characters/Player.png" id="5_a5inm"]
+[ext_resource type="Script" path="res://Scripts/Gameplay/GameplayRoot.cs" id="1_e82vx"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/Tiles/RockGround.png" id="2_ddy5s"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/Tiles/LabWall.png" id="3_6dmcw"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/Characters/Player.png" id="4_44d05"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(2000, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hvhro"]
-texture = ExtResource("2_ormwj")
+texture = ExtResource("2_ddy5s")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -80,7 +79,7 @@ texture = ExtResource("2_ormwj")
 2:2/0/terrains_peering_bit/top_side = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_20wgp"]
-texture = ExtResource("3_hvhro")
+texture = ExtResource("3_6dmcw")
 0:0/0 = 0
 0:0/0/terrain_set = 1
 0:0/0/terrain = 0
@@ -170,15 +169,15 @@ sources/0 = SubResource("TileSetAtlasSource_hvhro")
 sources/7 = SubResource("TileSetAtlasSource_20wgp")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20iyh"]
-atlas = ExtResource("5_a5inm")
+atlas = ExtResource("4_44d05")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jxt8"]
-atlas = ExtResource("5_a5inm")
+atlas = ExtResource("4_44d05")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_atkqr"]
-atlas = ExtResource("5_a5inm")
+atlas = ExtResource("4_44d05")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vrmiq"]
@@ -212,7 +211,7 @@ animations = [{
 size = Vector2(16, 20)
 
 [node name="GameplayRoot" type="Node2D" unique_id=429637396]
-script = ExtResource("1_game")
+script = ExtResource("1_e82vx")
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1229100167]
 position = Vector2(576, 600)
@@ -231,7 +230,6 @@ tile_map_data = PackedByteArray("AAAPABMAAAACAAEAAAAPABQAAAACAAEAAAAPABUAAAACAAE
 tile_set = SubResource("TileSet_20wgp")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1179658293]
-script = ExtResource("4_asko4")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="Player" unique_id=514270838]
 texture_filter = 1

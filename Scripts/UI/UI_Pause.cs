@@ -23,11 +23,11 @@ public partial class UI_Pause : UIBase
 
     private void OnResumePressed()
     {
-        App.Instance.Get<GameStateService>().Set(GameState.Playing);
+        QueueFree();
     }
 
     private void OnBackPressed()
     {
-        App.Instance.Get<SceneService>().LoadMainMenu();
+        Game.Instance.Get<GameStateService>().ChangeGameState(GameState.MainMenu);
     }
 }

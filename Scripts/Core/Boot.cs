@@ -13,41 +13,30 @@ public partial class Boot : Node
     {
         try
         {
-            /*RegisterAndInit<ConfigService>();
-            RegisterAndInit<SaveService>();
-            RegisterAndInit<AudioService>();*/
             RegisterAndInit<EventService>();
             RegisterAndInit<UIService>();
-            RegisterAndInit<InputService>();
-            var gameState = RegisterAndInit<GameStateService>();
-            var scene = RegisterAndInit<SceneService>();
+            RegisterAndInit<SceneService>();
+            RegisterAndInit<GameStateService>();
             RegisterAndInit<PlayerService>();
-
-            gameState.Set(GameState.Boot);
-            gameState.Set(GameState.Menu);
-
-            scene.LoadMainMenu();
         }
         catch (System.Exception ex)
         {
             GD.PushError($"[Boot] Init failed: {ex}");
         }
+
+        CallDeferred(MethodName.DeferredGoMainMenu);
     }
 
-    public override void _Notification(int what)
-    {
-        if (what == NotificationWMCloseRequest)
-        {
-            App.Instance.ShutdownAll();
-            GetTree().Quit();
-        }
-    }
-    
     T RegisterAndInit<T>() where T : class, IService, new()
     {
         var service = new T();
-        App.Instance.Register<T>(service);
+        Game.Instance.Register<T>(service);
         service.Init();
         return service;
+    }
+
+    private void DeferredGoMainMenu()
+    {
+        Game.Instance.Get<GameStateService>().ChangeGameState(GameState.MainMenu);
     }
 }

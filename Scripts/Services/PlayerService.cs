@@ -9,19 +9,20 @@ namespace Protogame2D.Services;
 public class PlayerService : IService
 {
     public const string DefaultPlayerPath = "res://Scenes/Gameplay/PlayerPawn.tscn";
+    public const string SpawnPointPath = "SpawnPoint";
 
     public Node2D CurrentPlayer { get; private set; }
 
     public void Init() { }
 
-    public void Spawn(string playerScenePath = DefaultPlayerPath, string spawnTag = "Default")
+    public void Spawn()
     {
         Despawn();
 
-        var packed = GD.Load<PackedScene>(playerScenePath);
+        var packed = GD.Load<PackedScene>(DefaultPlayerPath);
         if (packed == null)
         {
-            GD.PushError($"[PlayerService] Player scene not found: {playerScenePath}");
+            GD.PushError($"[PlayerService] Player scene not found: {DefaultPlayerPath}");
             return;
         }
 
@@ -33,24 +34,15 @@ public class PlayerService : IService
             return;
         }
 
-        var spawnPoints = root.GetNodeOrNull<Node2D>("SpawnPoints");
         Vector2 pos = Vector2.Zero;
-
-        if (spawnPoints != null)
+        var marker = root.GetNodeOrNull<Marker2D>(SpawnPointPath);
+        if (marker != null)
         {
-            var marker = spawnPoints.GetNodeOrNull<Marker2D>(spawnTag);
-            if (marker != null)
-            {
-                pos = marker.GlobalPosition;
-            }
-            else
-            {
-                GD.PushWarning($"[PlayerService] Spawn tag '{spawnTag}' not found in SpawnPoints, using (0,0)");
-            }
+            pos = marker.GlobalPosition;
         }
         else
         {
-            GD.PushWarning("[PlayerService] SpawnPoints node not found, using (0,0)");
+            GD.PushWarning($"[PlayerService] Spawn point '{SpawnPointPath}' not found, using (0,0)");
         }
 
         var player = packed.Instantiate<Node2D>();

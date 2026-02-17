@@ -7,17 +7,17 @@ namespace Protogame2D.Core;
 /// <summary>
 /// 使用 AutoLoad 实现的全局服务容器，负责管理游戏中的各种服务实例。
 /// </summary>
-public partial class App : Node
+public partial class Game : Node
 {
-    private static App _instance;
+    private static Game _instance;
 
-    public static App Instance
+    public static Game Instance
     {
         get
         {
             if (_instance == null)
             {
-                GD.PushError("[App] Instance is not initialized yet.");
+                GD.PushError("[Game] Instance is not initialized yet.");
             }
 
             return _instance;
@@ -85,7 +85,7 @@ public partial class App : Node
                 }
                 catch (Exception ex)
                 {
-                    Godot.GD.PushError($"[App] Shutdown error for {t.Name}: {ex}");
+                    GD.PushError($"[Game] Shutdown error for {t.Name}: {ex}");
                 }
             }
         }

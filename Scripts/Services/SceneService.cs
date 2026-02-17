@@ -10,39 +10,22 @@ namespace Protogame2D.Services;
 /// </summary>
 public class SceneService : IService
 {
-    public const string MainMenuPath = "res://Scenes/UI/UI_MainMenu.tscn";
-    public const string GameplayPath = "res://Scenes/Gameplay/Gameplay.tscn";
+    public const string MainMenuScenePath = "res://Scenes/Gameplay/Scene_MainMenu.tscn";
+    public const string GameScenePath = "res://Scenes/Gameplay/Scene_Game.tscn";
 
     public void Init() { }
 
-    public Task LoadMainMenu()
+    public Task ChangeScene(string path)
     {
-        return LoadScene(MainMenuPath);
-    }
-
-    public Task LoadGameplay()
-    {
-        return LoadScene(GameplayPath);
-    }
-
-    public Task LoadScene(string path, bool showLoading = true)
-    {
-        if (App.Instance.TryGet<GameStateService>(out var gs))
-            gs.Set(GameState.Loading);
-
         var tree = Engine.GetMainLoop() as SceneTree;
         if (tree != null)
         {
             tree.ChangeSceneToFile(path);
+            GD.Print($"[SceneService] Changed scene to {path}");
         }
 
-        if (App.Instance.TryGet<EventService>(out var evt))
-            evt.Publish(new SceneLoaded { Path = path });
-
-        if (path == MainMenuPath && App.Instance.TryGet<GameStateService>(out var gs2))
-            gs2.Set(GameState.Menu);
-        else if (path == GameplayPath && App.Instance.TryGet<GameStateService>(out var gs3))
-            gs3.Set(GameState.Playing);
+        if (Game.Instance.TryGet<EventService>(out var evt))
+            evt.Publish(new SceneLoadedEvent { Path = path });
 
         return Task.CompletedTask;
     }
@@ -50,7 +33,7 @@ public class SceneService : IService
     public void Shutdown() { }
 }
 
-public class SceneLoaded
+public class SceneLoadedEvent
 {
     public string Path { get; set; } = "";
 }

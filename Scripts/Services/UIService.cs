@@ -11,14 +11,12 @@ namespace Protogame2D.Services;
 /// </summary>
 public class UIService : IService
 {
-    private const string UIRootPath = "res://Scenes/UI/UIRoot.tscn";
-    private const string UIPrefabBase = "res://Scenes/UI/";
+    private const string UIPrefabBase = "res://Prefabs/UI/";
+    private const string UIRootPath = UIPrefabBase + "UI_Root.tscn";
 
     private CanvasLayer _uiRoot;
-    private Control _hudLayer;
     private Control _popupLayer;
     private readonly List<UIBase> _stack = new();
-    private readonly Dictionary<Type, UIBase> _open = new();
 
     public void Init()
     {
@@ -32,25 +30,19 @@ public class UIService : IService
         _uiRoot = packed.Instantiate<CanvasLayer>();
         _uiRoot.Name = "UIRoot";
 
-        _hudLayer = _uiRoot.GetNode<Control>("HUDLayer");
         _popupLayer = _uiRoot.GetNode<Control>("PopupLayer");
 
-        var tree = Engine.GetMainLoop() as SceneTree;
-        if (tree?.Root != null)
+        Game.Instance.AddChild(_uiRoot);
+        _uiRoot.TreeExiting += () =>
         {
-            tree.Root.AddChild(_uiRoot);
-            _uiRoot.TreeExiting += () =>
-            {
-                _stack.Clear();
-                _open.Clear();
-            };
-        }
+            _stack.Clear();
+        };
     }
 
     public T Open<T>(object args = null) where T : UIBase
     {
         var t = typeof(T);
-        var path = $"{UIPrefabBase}{t.Name}.tscn";
+        var path = $"{UIPrefabBase}{GetPrefabName(typeof(T))}.tscn";
 
         var packed = GD.Load<PackedScene>(path);
         if (packed == null)
@@ -63,12 +55,16 @@ public class UIService : IService
         _popupLayer.AddChild(inst);
         inst.OnOpen(args);
 
-        if (_open.TryGetValue(t, out var existing))
+        for (var i = _stack.Count - 1; i >= 0; i--)
         {
-            _stack.Remove(existing);
+            var existing = _stack[i];
+            if (existing.GetType() != t) continue;
+
+            _stack.RemoveAt(i);
+            existing.OnClose();
             existing.QueueFree();
+            break;
         }
-        _open[t] = inst;
         _stack.Add(inst);
 
         return inst;
@@ -77,13 +73,16 @@ public class UIService : IService
     public void Close<T>() where T : UIBase
     {
         var t = typeof(T);
-        if (!_open.TryGetValue(t, out var ui))
-            return;
+        for (var i = _stack.Count - 1; i >= 0; i--)
+        {
+            var ui = _stack[i];
+            if (ui.GetType() != t) continue;
 
-        _open.Remove(t);
-        _stack.Remove(ui);
-        ui.OnClose();
-        ui.QueueFree();
+            _stack.RemoveAt(i);
+            ui.OnClose();
+            ui.QueueFree();
+            return;
+        }
     }
 
     public void CloseTop()
@@ -91,8 +90,6 @@ public class UIService : IService
         if (_stack.Count == 0) return;
 
         var ui = _stack[^1];
-        var t = ui.GetType();
-        _open.Remove(t);
         _stack.RemoveAt(_stack.Count - 1);
         ui.OnClose();
         ui.QueueFree();
@@ -100,14 +97,31 @@ public class UIService : IService
 
     public bool IsOpen<T>() where T : UIBase
     {
-        return _open.ContainsKey(typeof(T));
+        var t = typeof(T);
+        for (var i = _stack.Count - 1; i >= 0; i--)
+        {
+            if (_stack[i].GetType() == t)
+                return true;
+        }
+
+        return false;
     }
 
     public void Shutdown()
     {
         _stack.Clear();
-        _open.Clear();
         _uiRoot?.QueueFree();
         _uiRoot = null;
     }
+
+    private string GetPrefabName(Type t)
+    {
+        var name = t.Name;
+
+        if (name.EndsWith("UI"))
+            name = name[..^2];
+
+        return $"UI_{name}";
+    }
+
 }

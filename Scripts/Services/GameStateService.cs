@@ -1,61 +1,81 @@
+using Godot;
 using Protogame2D.Core;
+using Protogame2D.UI;
+using Protogame2D.Utils;
 
 namespace Protogame2D.Services;
 
 public enum GameState
 {
-    Boot,
-    Menu,
-    Loading,
-    Playing,
-    Paused
+    MainMenu,
+    Play
 }
 
-/// <summary>
-/// 游戏状态服务。切换 Paused 时自动处理 Input 和 Pause UI。
-/// </summary>
 public class GameStateService : IService
 {
-    public GameState Current { get; private set; } = GameState.Boot;
+    private readonly SimpleStateMachine<GameState> _fsm = new();
+
+    public GameState Current => _fsm.CurrentState;
 
     public void Init()
     {
-        // 初始状态由 Boot 设置
+        _fsm.AddState(
+            GameState.MainMenu, 
+            onEnter: () =>
+            {
+                EnterScene(SceneService.MainMenuScenePath);
+
+                var uiService = Game.Instance.Get<UIService>();
+                uiService.Open<MainMenuUI>();
+            });
+        
+        _fsm.AddState(
+            GameState.Play, 
+            onEnter: () =>
+            {
+                EnterScene(SceneService.GameScenePath);
+            }
+        );
+        
     }
 
-    public void Set(GameState next)
+    public bool ChangeGameState(GameState next)
     {
-        if (Current == next) return;
+        var prev = _fsm.HasState ? _fsm.CurrentState : (GameState?)null;
+        var changed = _fsm.ChangeState(next);
+        if (!changed)
+            return false;
 
-        var prev = Current;
-        Current = next;
-
-        if (App.Instance.TryGet<EventService>(out var evt))
+        if (prev.HasValue && Game.Instance.TryGet<EventService>(out var evt))
         {
-            evt.Publish(new GameStateChanged { Previous = prev, Current = next });
+            evt.Publish(new GameStateChangedEvent
+            {
+                From = prev.Value,
+                To = next
+            });
         }
 
-        if (next == GameState.Paused)
-        {
-            if (App.Instance.TryGet<InputService>(out var input))
-                input.Enabled = false;
-            if (App.Instance.TryGet<UIService>(out var ui))
-                ui.Open<UI.UI_Pause>();
-        }
-        else if (next == GameState.Playing)
-        {
-            if (App.Instance.TryGet<InputService>(out var input))
-                input.Enabled = true;
-            if (App.Instance.TryGet<UIService>(out var ui))
-                ui.Close<UI.UI_Pause>();
-        }
+        return true;
     }
 
-    public void Shutdown() { }
+    public void Shutdown()
+    {
+    }
+
+    private static void EnterScene(string path)
+    {
+        if (!Game.Instance.TryGet<SceneService>(out var scene))
+        {
+            GD.PushError("[GameStateService] SceneService is not available.");
+            return;
+        }
+
+        scene.ChangeScene(path);
+    }
 }
 
-public class GameStateChanged
+public class GameStateChangedEvent
 {
-    public GameState Previous { get; set; }
-    public GameState Current { get; set; }
+    public GameState From { get; set; }
+    public GameState To { get; set; }
 }
