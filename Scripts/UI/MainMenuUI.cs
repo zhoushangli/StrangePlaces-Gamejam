@@ -18,6 +18,11 @@ public partial class MainMenuUI : UIBase
         _quitButton.Pressed += OnQuitPressed;
     }
 
+    public override void OnClose()
+    {
+        
+    }
+
     private void OnStartPressed()
     {
         Game.Instance.Get<GameStateService>().ChangeGameState(GameState.Play);

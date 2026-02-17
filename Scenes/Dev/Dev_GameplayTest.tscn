@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dcfycocqmp5f3"]
+
+[node name="DevGameplayTest" type="Node2D" unique_id=1760453749]
+
+[node name="World" type="Node2D" parent="." unique_id=2025905104]
+
+[node name="Background" type="Node2D" parent="World" unique_id=1855442255]
+
+[node name="TM_Background" type="TileMapLayer" parent="World/Background" unique_id=1765678843]
+
+[node name="Ground" type="Node2D" parent="World" unique_id=114289484]
+
+[node name="TM_Floor" type="TileMapLayer" parent="World/Ground" unique_id=935299264]
+
+[node name="TM_Solid" type="TileMapLayer" parent="World/Ground" unique_id=340910580]
+
+[node name="Props" type="Node2D" parent="World" unique_id=1550166558]
