@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://f5gwyi7sjyiq" path="res://Assets/Art/PlacableItems.png" id="4_afe3q"]
 [ext_resource type="Texture2D" uid="uid://bpm8ct2pmvaey" path="res://Assets/Art/Abyss.png" id="5_utuuf"]
 [ext_resource type="PackedScene" uid="uid://bkqcnsp5j5lg0" path="res://Prefabs/Items/Items_RockA.tscn" id="6_h3c0y"]
+[ext_resource type="Texture2D" uid="uid://bp71ib1pqqptm" path="res://Assets/Art/Altar.png" id="7_h3c0y"]
+[ext_resource type="Texture2D" uid="uid://ds0bn5fvnqbv4" path="res://Assets/Art/Particles/QuantomPairticle.png" id="8_afack"]
+[ext_resource type="Texture2D" uid="uid://d3wbhq8natx13" path="res://Assets/Art/Particles/AbyssPairticle.png" id="9_jvjvf"]
+[ext_resource type="Texture2D" uid="uid://chhq3sxcpro4" path="res://Assets/Art/Particles/SnowParticle.png" id="10_wg3qh"]
+[ext_resource type="Texture2D" uid="uid://bpy554abw7cb2" path="res://Assets/Art/Decorations/DustA.png" id="11_72xdo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_afack"]
 texture = ExtResource("1_lxnrt")
@@ -595,6 +600,141 @@ region = Rect2(32, 16, 16, 16)
 atlas = ExtResource("4_afe3q")
 region = Rect2(48, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3bvi"]
+atlas = ExtResource("8_afack")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ykscn"]
+lifetime_randomness = 0.11
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape = 3
+emission_box_extents = Vector3(9.03, 9.715, 1)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+inherit_velocity_ratio = 0.144
+spread = 180.0
+initial_velocity_min = 2.5
+initial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = -2.2351742e-06
+damping_min = 1.0
+damping_max = 4.25
+turbulence_enabled = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3qifw"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 35.1
+initial_velocity_max = 7.5
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -17.500002
+radial_accel_max = -3.0000021
+damping_min = 5.5000005
+damping_max = 5.5000005
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mtnje"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 45.31
+initial_velocity_max = 7.5
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -17.500002
+radial_accel_max = -3.0000021
+damping_min = 5.5000005
+damping_max = 5.5000005
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g6myj"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 9.23
+initial_velocity_max = 7.5
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -17.500002
+radial_accel_max = -3.0000021
+damping_min = 5.5000005
+damping_max = 5.5000005
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i274k"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(113.695, 1, 1)
+direction = Vector3(0.005, 0.3, 0)
+spread = 7.66
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hx070"]
+atlas = ExtResource("11_72xdo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtdq0"]
+atlas = ExtResource("11_72xdo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2ruq"]
+atlas = ExtResource("11_72xdo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnola"]
+atlas = ExtResource("11_72xdo")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2btv"]
+atlas = ExtResource("11_72xdo")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcq78"]
+atlas = ExtResource("11_72xdo")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbu2i"]
+atlas = ExtResource("11_72xdo")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_av6rd"]
+atlas = ExtResource("11_72xdo")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3f43d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx070")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtdq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2ruq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnola")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2btv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcq78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbu2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_av6rd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="DevGameplayTest" type="Node2D" unique_id=1760453749]
 
 [node name="World" type="Node2D" parent="." unique_id=2025905104]
@@ -691,3 +831,62 @@ texture = SubResource("AtlasTexture_6wlg8")
 texture_filter = 1
 position = Vector2(124, 70)
 texture = SubResource("AtlasTexture_vw0em")
+
+[node name="Altar" type="Sprite2D" parent="World/ItemsOnGround" unique_id=1116884982]
+texture_filter = 1
+position = Vector2(86, 91)
+texture = ExtResource("7_h3c0y")
+hframes = 2
+
+[node name="QuantomParticle" type="GPUParticles2D" parent="World/ItemsOnGround/Altar" unique_id=109435688]
+texture_filter = 1
+position = Vector2(0, -3)
+texture = SubResource("AtlasTexture_r3bvi")
+process_material = SubResource("ParticleProcessMaterial_ykscn")
+
+[node name="Particles" type="Node2D" parent="World" unique_id=446500895]
+
+[node name="QuantomParticle" type="GPUParticles2D" parent="World/Particles" unique_id=1021129450]
+texture_filter = 1
+position = Vector2(86, 88)
+texture = SubResource("AtlasTexture_r3bvi")
+process_material = SubResource("ParticleProcessMaterial_ykscn")
+
+[node name="AbyssParticle" type="GPUParticles2D" parent="World/Particles" unique_id=1814696046]
+texture_filter = 1
+position = Vector2(193, 48)
+amount = 17
+texture = ExtResource("9_jvjvf")
+process_material = SubResource("ParticleProcessMaterial_3qifw")
+
+[node name="AbyssParticle2" type="GPUParticles2D" parent="World/Particles" unique_id=1506483645]
+texture_filter = 1
+position = Vector2(287, 80)
+amount = 17
+texture = ExtResource("9_jvjvf")
+process_material = SubResource("ParticleProcessMaterial_mtnje")
+
+[node name="AbyssParticle3" type="GPUParticles2D" parent="World/Particles" unique_id=1977514288]
+texture_filter = 1
+position = Vector2(169, 135)
+amount = 17
+texture = ExtResource("9_jvjvf")
+process_material = SubResource("ParticleProcessMaterial_g6myj")
+
+[node name="SnowParticle" type="GPUParticles2D" parent="World/Particles" unique_id=483405558]
+texture_filter = 1
+position = Vector2(184, 2)
+amount = 100
+texture = ExtResource("10_wg3qh")
+lifetime = 101.37
+preprocess = 10.0
+process_material = SubResource("ParticleProcessMaterial_i274k")
+
+[node name="Decorations" type="Node2D" parent="World" unique_id=607778944]
+position = Vector2(-3, 3)
+
+[node name="DustA" type="AnimatedSprite2D" parent="World/Decorations" unique_id=925023571]
+texture_filter = 1
+position = Vector2(183, 103)
+sprite_frames = SubResource("SpriteFrames_3f43d")
+frame_progress = 0.6826056

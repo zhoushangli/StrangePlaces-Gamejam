@@ -1,26 +1,40 @@
 [gd_scene format=3 uid="uid://cctb7slglly4y"]
 
 [ext_resource type="Script" uid="uid://de8p44ai0gio2" path="res://Scripts/UI/MainMenuUI.cs" id="1_slj2r"]
-[ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://Assets/UIColumns.png" id="2_wiopq"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l0c30"]
-atlas = ExtResource("2_wiopq")
-region = Rect2(0, 0, 48, 48)
+[ext_resource type="Texture2D" uid="uid://bsl2hb8yfpkgo" path="res://Assets/Art/TittleBG.png" id="2_dbp2l"]
+[ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://Assets/Art/UIColumns.png" id="2_wiopq"]
+[ext_resource type="Texture2D" uid="uid://bqrohkpdvgx5o" path="res://Assets/Art/Tittle.png" id="4_qm34t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbp2l"]
 atlas = ExtResource("2_wiopq")
 region = Rect2(0, 48, 48, 16)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qm34t"]
+font_color = Color(0.003921569, 0.85490197, 0.99215686, 1)
 
-[node name="UIMainMenu" type="Control" unique_id=42779288 node_paths=PackedStringArray("_startButton", "_quitButton")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv2y8"]
+atlas = ExtResource("4_qm34t")
+
+[sub_resource type="LabelSettings" id="LabelSettings_m4thw"]
+font_color = Color(0.003921569, 0.85490197, 0.99215686, 1)
+
+[node name="UIMainMenu" type="Control" unique_id=42779288 node_paths=PackedStringArray("_startButton", "_quitButton", "_pressStartButton", "_StartPlate")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 384.0
 script = ExtResource("1_slj2r")
-_startButton = NodePath("StartBtn")
-_quitButton = NodePath("QuitBtn")
+_startButton = NodePath("NinePatchRect/VBoxContainer/Start")
+_quitButton = NodePath("NinePatchRect/VBoxContainer/Quit")
+_pressStartButton = NodePath("PressStart")
+_StartPlate = NodePath("NinePatchRect")
+sparkSpeed = 1.0
+
+[node name="TittleBg" type="Sprite2D" parent="." unique_id=8684055]
+texture_filter = 1
+position = Vector2(320.8333, 193.5)
+scale = Vector2(4.0104165, 4.0104165)
+texture = ExtResource("2_dbp2l")
 
 [node name="StartBtn" type="Button" parent="." unique_id=873682141]
 visible = false
@@ -55,7 +69,6 @@ offset_right = 113.5
 offset_bottom = 78.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_l0c30")
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
@@ -64,6 +77,7 @@ axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect" unique_id=692010569]
+custom_minimum_size = Vector2(0, 5)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -71,16 +85,18 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -83.0
-offset_top = -58.0
+offset_top = 31.0
 offset_right = 83.0
-offset_bottom = 58.0
+offset_bottom = 179.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 2
 alignment = 1
 
 [node name="Start" type="TextureButton" parent="NinePatchRect/VBoxContainer" unique_id=1671083800]
 texture_filter = 1
 layout_mode = 2
+size_flags_vertical = 3
 texture_hover = SubResource("AtlasTexture_dbp2l")
 stretch_mode = 1
 
@@ -99,5 +115,101 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "START"
 label_settings = SubResource("LabelSettings_qm34t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="NinePatchRect/VBoxContainer" unique_id=1500189964]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+texture_hover = SubResource("AtlasTexture_dbp2l")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/Quit" unique_id=1179201283]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -8.0
+offset_right = 40.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QUIT"
+label_settings = SubResource("LabelSettings_qm34t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Levels" type="TextureButton" parent="NinePatchRect/VBoxContainer" unique_id=1670224335]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+texture_hover = SubResource("AtlasTexture_dbp2l")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/Levels" unique_id=1232297194]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -8.0
+offset_right = 40.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Levels"
+label_settings = SubResource("LabelSettings_qm34t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tittle" type="TextureButton" parent="." unique_id=406587520]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -279.75
+offset_top = 60.0
+offset_right = 279.75
+offset_bottom = 138.0
+grow_horizontal = 2
+texture_normal = SubResource("AtlasTexture_wv2y8")
+stretch_mode = 0
+
+[node name="PressStart" type="TextureButton" parent="." unique_id=441652673]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.5
+offset_top = 73.0
+offset_right = 115.5
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PressStart" unique_id=320702932]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -8.0
+offset_right = 88.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press Start"
+label_settings = SubResource("LabelSettings_m4thw")
 horizontal_alignment = 1
 vertical_alignment = 1
