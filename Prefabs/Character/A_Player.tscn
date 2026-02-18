@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://3v5jgj2ngpqg"]
+
+[ext_resource type="Script" uid="uid://bemx6fy7ugfuv" path="res://Scripts/Gameplay/PlayerController.cs" id="1_70xw6"]
+[ext_resource type="SpriteFrames" uid="uid://cdsnmbk3ti4le" path="res://Data/Art/PlaceHolder/Player.res" id="2_bwbkj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq78b"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D" unique_id=1477876172]
+collision_mask = 4
+platform_floor_layers = 4294967291
+platform_wall_layers = 4
+script = ExtResource("1_70xw6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1097927369]
+shape = SubResource("RectangleShape2D_nq78b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1523949353]
+sprite_frames = ExtResource("2_bwbkj")

@@ -67,7 +67,7 @@ public partial class PlayerController : CharacterBody2D
         Vector2 from = GlobalPosition + dir * 0.1f;
         Vector2 to = GlobalPosition + dir * GridSize;
         var query = PhysicsRayQueryParameters2D.Create(from, to);
-        query.CollideWithAreas = true;
+        query.CollideWithAreas = false;
         query.CollideWithBodies = true;
         query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
 

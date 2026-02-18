@@ -1,35 +1,3 @@
-﻿[gd_scene load_steps=4 format=3 uid="uid://c1vgm4as16ve3"]
+[gd_scene format=3 uid="uid://cscih7lhurj1v"]
 
-[ext_resource type="Script" path="res://Scripts/Gameplay/Quantum/QuantumManager.cs" id="1_mgr"]
-[ext_resource type="Script" path="res://Scripts/Gameplay/Quantum/QuantumObserver.cs" id="2_obs"]
-[ext_resource type="Script" path="res://Scripts/Gameplay/Quantum/QuantumItem.cs" id="3_item"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_obs"]
-radius = 96.0
-
-[node name="SceneGame" type="Node2D" unique_id=1761049295]
-
-[node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(96, 96)
-
-[node name="QuantumManager" type="Node" parent="."]
-script = ExtResource("1_mgr")
-
-[node name="Observer" type="Area2D" parent="." groups=["quantum_observer"]]
-position = Vector2(96, 96)
-script = ExtResource("2_obs")
-ObserveRadius = 96.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Observer"]
-shape = SubResource("CircleShape2D_obs")
-
-[node name="AnchorA" type="Marker2D" parent="." groups=["quantum_anchor"]]
-position = Vector2(220, 96)
-
-[node name="AnchorB" type="Marker2D" parent="." groups=["quantum_anchor"]]
-position = Vector2(220, 180)
-
-[node name="QuantumItem" type="Node2D" parent="." groups=["quantum_item"]]
-position = Vector2(160, 120)
-script = ExtResource("3_item")
-AnchorPaths = Array[NodePath]([NodePath("../AnchorA"), NodePath("../AnchorB")])
+[node name="Node2D" type="Node2D" unique_id=514378756]

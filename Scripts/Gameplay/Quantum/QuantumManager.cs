@@ -3,31 +3,70 @@ using Godot;
 
 public partial class QuantumManager : Node
 {
+    private static QuantumManager _instance;
+    public static QuantumManager Instance => _instance;
+
     private readonly List<QuantumObserver> _observers = new();
     private readonly List<QuantumItem> _items = new();
 
+    public override void _EnterTree()
+    {
+        if (_instance != null && _instance != this)
+        {
+            GD.PushError("[QuantumManager] Multiple instances detected.");
+            QueueFree();
+            return;
+        }
+
+        _instance = this;
+    }
+
+    public override void _ExitTree()
+    {
+        if (_instance == this)
+            _instance = null;
+    }
+
     public override void _Ready()
     {
-        RefreshNodes();
+    }
+
+    public void RegisterObserver(QuantumObserver observer)
+    {
+        if (!GodotObject.IsInstanceValid(observer))
+            return;
+
+        if (!_observers.Contains(observer))
+            _observers.Add(observer);
+    }
+
+    public void UnregisterObserver(QuantumObserver observer)
+    {
+        _observers.Remove(observer);
+    }
+
+    public void RegisterItem(QuantumItem item)
+    {
+        if (!GodotObject.IsInstanceValid(item))
+            return;
+
+        if (!_items.Contains(item))
+            _items.Add(item);
+    }
+
+    public void UnregisterItem(QuantumItem item)
+    {
+        _items.Remove(item);
     }
 
     public override void _Process(double delta)
     {
-        if (_items.Count == 0)
-            RefreshNodes();
-
         foreach (var item in _items)
         {
-            if (!GodotObject.IsInstanceValid(item))
-                continue;
-
             var observedNow = false;
 
             foreach (var observer in _observers)
             {
-                if (!GodotObject.IsInstanceValid(observer))
-                    continue;
-
                 if (observer.CanObserve(item))
                 {
                     observedNow = true;
@@ -36,24 +75,6 @@ public partial class QuantumManager : Node
             }
 
             item.SetObserved(observedNow);
-        }
-    }
-
-    private void RefreshNodes()
-    {
-        _observers.Clear();
-        _items.Clear();
-
-        foreach (var n in GetTree().GetNodesInGroup("quantum_observer"))
-        {
-            if (n is QuantumObserver observer)
-                _observers.Add(observer);
-        }
-
-        foreach (var n in GetTree().GetNodesInGroup("quantum_item"))
-        {
-            if (n is QuantumItem item)
-                _items.Add(item);
         }
     }
 }

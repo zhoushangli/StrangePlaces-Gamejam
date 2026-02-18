@@ -2,40 +2,44 @@
 
 public partial class QuantumObserver : Area2D
 {
-    [Export] public float ObserveRadius = 96f;
+    [Export] private PointLight2D _light;
 
     public bool IsObserving { get; private set; }
 
     public override void _Ready()
     {
-        if (!IsInGroup("quantum_observer"))
-            AddToGroup("quantum_observer");
+        if (QuantumManager.Instance != null)
+        {
+            QuantumManager.Instance.RegisterObserver(this);
+        }
+        else
+        {
+            GD.PushWarning($"[QuantumObserver] QuantumManager not ready when '{Name}' entered tree.");
+        }
 
-        EnsureRangeShape();
+        IsObserving = false;
+        _light.Visible = IsObserving;
+    }
+
+    public override void _ExitTree()
+    {
+        QuantumManager.Instance?.UnregisterObserver(this);
     }
 
     public override void _Process(double delta)
     {
-        IsObserving = Input.IsActionPressed("observe");
+        if (Input.IsActionJustPressed("test"))
+        {
+            IsObserving = !IsObserving;
+            _light.Visible = IsObserving;
+        }
     }
 
     public bool CanObserve(QuantumItem item)
     {
         if (!IsObserving || item == null)
             return false;
-
-        return GlobalPosition.DistanceTo(item.GlobalPosition) <= ObserveRadius;
-    }
-
-    private void EnsureRangeShape()
-    {
-        var shapeNode = GetNodeOrNull<CollisionShape2D>("CollisionShape2D");
-        if (shapeNode == null)
-            return;
-
-        if (shapeNode.Shape is CircleShape2D circle)
-        {
-            circle.Radius = ObserveRadius;
-        }
+        
+        return OverlapsBody(item);
     }
 }

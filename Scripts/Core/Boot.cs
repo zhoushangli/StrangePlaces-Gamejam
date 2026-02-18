@@ -5,7 +5,7 @@ using Protogame2D.Services;
 namespace Protogame2D;
 
 /// <summary>
-/// å¯åŠ¨å™¨ï¼Œè´Ÿè´£åˆå§‹åŒ–æ‰€æœ‰æœåŠ¡å¹¶åŠ è½½ä¸»èœå•åœºæ™¯ã€‚
+/// 全局启动器
 /// </summary>
 public partial class Boot : Node
 {
