@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://dkssvennn8hys"]
 
-[ext_resource type="TileSet" uid="uid://ddse6ycafnye1" path="res://Art/Tiles/TS_Floor.tres" id="1_afe3q"]
+[ext_resource type="TileSet" uid="uid://ddse6ycafnye1" path="res://GameAssets/Tiles/TS_Floor.tres" id="1_afe3q"]
 [ext_resource type="Script" uid="uid://cjb7pybyviwbu" path="res://Scripts/Gameplay/Quantum/QuantumItem.cs" id="2_se4nq"]
-[ext_resource type="TileSet" uid="uid://bm25owt6xtcf" path="res://Art/Tiles/TS_Block.tres" id="2_utuuf"]
+[ext_resource type="TileSet" uid="uid://bm25owt6xtcf" path="res://GameAssets/Tiles/TS_Block.tres" id="2_utuuf"]
 [ext_resource type="Script" uid="uid://c03t5le0gens4" path="res://Scripts/Gameplay/Quantum/QuantumObserver.cs" id="4_afe3q"]
-[ext_resource type="Texture2D" uid="uid://bwgot8i3j51r3" path="res://Art/Items.tres" id="4_utuuf"]
-[ext_resource type="Texture2D" uid="uid://dxl0khv2n27x0" path="res://Art/PlaceHolder/EnvironmentLight.png" id="5_utuuf"]
+[ext_resource type="Texture2D" uid="uid://bwgot8i3j51r3" path="res://GameAssets/Items.tres" id="4_utuuf"]
+[ext_resource type="Texture2D" uid="uid://dxl0khv2n27x0" path="res://GameAssets/PlaceHolder/EnvironmentLight.png" id="5_utuuf"]
 [ext_resource type="PackedScene" uid="uid://3v5jgj2ngpqg" path="res://Prefabs/Character/A_Player.tscn" id="6_se4nq"]
 [ext_resource type="Script" uid="uid://bnn8xn3vfk6dc" path="res://Scripts/Gameplay/Quantum/QuantumManager.cs" id="7_se4nq"]
 [ext_resource type="Script" uid="uid://b035x4wjrpjuo" path="res://Scripts/Gameplay/Test.cs" id="8_blv8m"]
@@ -48,9 +48,11 @@ shape = SubResource("RectangleShape2D_utuuf")
 
 [node name="Sprite2D" type="Sprite2D" parent="Props/QuantumItem" unique_id=1605234901]
 texture_filter = 1
+position = Vector2(0, -4)
 texture = ExtResource("4_utuuf")
 
 [node name="QuantumObserver" type="Area2D" parent="Props" unique_id=1367349838 node_paths=PackedStringArray("_light")]
+visible = false
 position = Vector2(296, 120)
 collision_layer = 0
 collision_mask = 15

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://1l5x8hcfx3s3"]
+
+[ext_resource type="Script" uid="uid://capi73uikyash" path="res://Scripts/Services/UIService.cs" id="1_ym5h5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ym5h5"]
+
+[node name="PostProcessService" type="CanvasLayer" unique_id=1642101394]
+layer = 10
+script = ExtResource("1_ym5h5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=493156983]
+material = SubResource("ShaderMaterial_ym5h5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

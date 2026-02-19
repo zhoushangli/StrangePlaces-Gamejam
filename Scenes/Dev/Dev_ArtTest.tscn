@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dcfycocqmp5f3"]
 
-[ext_resource type="TileSet" uid="uid://ddse6ycafnye1" path="res://Art/Tiles/TS_Floor.tres" id="1_e4wki"]
-[ext_resource type="TileSet" uid="uid://bm25owt6xtcf" path="res://Art/Tiles/TS_Block.tres" id="2_5i2ne"]
+[ext_resource type="TileSet" uid="uid://ddse6ycafnye1" path="res://GameAssets/Tiles/TS_Floor.tres" id="1_e4wki"]
+[ext_resource type="TileSet" uid="uid://bm25owt6xtcf" path="res://GameAssets/Tiles/TS_Block.tres" id="2_5i2ne"]
 [ext_resource type="Texture2D" uid="uid://f5gwyi7sjyiq" path="res://Assets/Art/PlacableItems.png" id="4_nqnc6"]
 [ext_resource type="PackedScene" uid="uid://bkqcnsp5j5lg0" path="res://Prefabs/Items/Items_RockA.tscn" id="6_2ru73"]
 [ext_resource type="Texture2D" uid="uid://bp71ib1pqqptm" path="res://Assets/Art/Altar.png" id="7_g4xtp"]

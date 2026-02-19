@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cx24xvljfx83k"
+path="res://.godot/imported/EnvironmentLight.aseprite-6e3c944e6f0c6610e96f3e718f6f40b6.res"
+
+[deps]
+
+source_file="res://SourceArt/Art/PlaceHolder/EnvironmentLight.aseprite"
+dest_files=["res://.godot/imported/EnvironmentLight.aseprite-6e3c944e6f0c6610e96f3e718f6f40b6.res"]
+
+[params]
+
