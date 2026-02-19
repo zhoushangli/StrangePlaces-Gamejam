@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dxl0khv2n27x0" path="res://Data/Art/PlaceHolder/EnvironmentLight.png" id="5_utuuf"]
 [ext_resource type="PackedScene" uid="uid://3v5jgj2ngpqg" path="res://Prefabs/Character/A_Player.tscn" id="6_se4nq"]
 [ext_resource type="Script" uid="uid://bnn8xn3vfk6dc" path="res://Scripts/Gameplay/Quantum/QuantumManager.cs" id="7_se4nq"]
+[ext_resource type="Script" uid="uid://b035x4wjrpjuo" path="res://Scripts/Gameplay/Test.cs" id="8_blv8m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fvdmv"]
 texture = ExtResource("1_iwbgd")
@@ -96,3 +97,6 @@ collision_mask = 5
 
 [node name="QuantumManager" type="Node2D" parent="." unique_id=273323280]
 script = ExtResource("7_se4nq")
+
+[node name="Test" type="Node2D" parent="." unique_id=1469289365]
+script = ExtResource("8_blv8m")

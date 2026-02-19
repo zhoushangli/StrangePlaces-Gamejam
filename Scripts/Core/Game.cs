@@ -32,6 +32,12 @@ public partial class Game : Node
         _instance = this;
     }
 
+    public override void _ExitTree()
+    {
+        ShutdownAll();
+        _instance = null;
+    }
+
     public void Register<T>(T instance) where T : class
     {
         if (instance == null)

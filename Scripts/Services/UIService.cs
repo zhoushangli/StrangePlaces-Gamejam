@@ -9,31 +9,20 @@ namespace Protogame2D.Services;
 /// <summary>
 /// UI 服务。Prefab 路径: res://Scenes/UI/{ClassName}.tscn
 /// </summary>
-public class UIService : IService
+public partial class UIService : CanvasLayer, IService
 {
     private const string UIPrefabBase = "res://Prefabs/UI/";
-    private const string UIRootPath = UIPrefabBase + "UI_Root.tscn";
 
-    private CanvasLayer _uiRoot;
     private Control _popupLayer;
     private readonly List<UIBase> _stack = new();
 
     public void Init()
     {
-        var packed = GD.Load<PackedScene>(UIRootPath);
-        if (packed == null)
-        {
-            GD.PushError("[UIService] UIRoot.tscn not found");
-            return;
-        }
+        Name = "UIRoot";
 
-        _uiRoot = packed.Instantiate<CanvasLayer>();
-        _uiRoot.Name = "UIRoot";
+        _popupLayer = GetNode<Control>("PopupLayer");
 
-        _popupLayer = _uiRoot.GetNode<Control>("PopupLayer");
-
-        Game.Instance.AddChild(_uiRoot);
-        _uiRoot.TreeExiting += () =>
+        TreeExiting += () =>
         {
             _stack.Clear();
         };
@@ -110,8 +99,6 @@ public class UIService : IService
     public void Shutdown()
     {
         _stack.Clear();
-        _uiRoot?.QueueFree();
-        _uiRoot = null;
     }
 
     private string GetPrefabName(Type t)

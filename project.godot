@@ -17,6 +17,10 @@ run/main_scene="res://Scenes/Gameplay/Scene_Boot.tscn"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://rpgxtnggi3yx"
+
 [autoload]
 
 Game="*uid://tqe8rh5btmri"

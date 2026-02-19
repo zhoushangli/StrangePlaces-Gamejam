@@ -16,10 +16,12 @@ public partial class Boot : Node
     {
         try
         {
-            RegisterAndInit<EventService>();
-            RegisterAndInit<UIService>();
-            RegisterAndInit<SceneService>();
-            RegisterAndInit<GameStateService>();
+            RegisterNew<EventService>();
+            RegisterNew<SceneService>();
+            RegisterNew<GameStateService>();
+
+            RegisterFromScene<AudioService>("res://Prefabs/Services/S_AudioService.tscn");
+            RegisterFromScene<UIService>("res://Prefabs/Services/S_UIService.tscn");
         }
         catch (System.Exception ex)
         {
@@ -29,12 +31,28 @@ public partial class Boot : Node
         CallDeferred(nameof(DeferredStartupRoute));
     }
 
-    T RegisterAndInit<T>() where T : class, IService, new()
+    T RegisterNew<T>() where T : class, IService, new()
     {
         var service = new T();
         Game.Instance.Register<T>(service);
         service.Init();
         return service;
+    }
+
+    T RegisterFromScene<T>(string path) where T : Node, IService
+    {
+        var packed = GD.Load<PackedScene>(path);
+        if (packed == null)
+        {
+            GD.PushError($"[Boot] Service scene not found: {path}");
+            return null;
+        }
+
+        var inst = packed.Instantiate<T>();
+        Game.Instance.Register<T>(inst);
+        Game.Instance.AddChild(inst);
+        inst.Init();
+        return inst;
     }
 
     private void DeferredStartupRoute()

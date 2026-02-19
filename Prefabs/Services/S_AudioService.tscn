@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://0yw0wmprag1j"]
+
+[ext_resource type="Script" uid="uid://bndm5wx1swhqs" path="res://Scripts/Services/AudioService.cs" id="1_aoyxl"]
+
+[node name="AudioService" type="Node2D" unique_id=1724612182 node_paths=PackedStringArray("_bgmPlayer", "_sfxContainer")]
+script = ExtResource("1_aoyxl")
+_bgmPlayer = NodePath("BGMPlayer")
+_sfxContainer = NodePath("SFXContainer")
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="." unique_id=1785135079]
+bus = &"Music"
+
+[node name="SFXContainer" type="Node2D" parent="." unique_id=1368146378]
