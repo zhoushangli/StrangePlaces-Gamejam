@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dblk24g13wf6t"]
 
 [ext_resource type="Script" uid="uid://cjb7pybyviwbu" path="res://Scripts/Gameplay/Quantum/QuantumItem.cs" id="1_fjpyp"]
-[ext_resource type="Texture2D" uid="uid://curu7jrk8mpi3" path="res://Data/Art/PlaceHolder/QuantumFragment.png" id="2_pctmn"]
+[ext_resource type="Texture2D" uid="uid://curu7jrk8mpi3" path="res://Art/PlaceHolder/QuantumFragment.png" id="2_pctmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utuuf"]
 size = Vector2(16, 16)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt5aqdg8y274h"
-path="res://.godot/imported/Player.png-69b7de299a74b74059212a8f90da580e.ctex"
+uid="uid://curu7jrk8mpi3"
+path="res://.godot/imported/QuantumFragment.png-1f076e9ee5f29c4e59f5231d8af4f567.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Data/Art/PlaceHolder/Player.png"
-dest_files=["res://.godot/imported/Player.png-69b7de299a74b74059212a8f90da580e.ctex"]
+source_file="res://Art/PlaceHolder/QuantumFragment.png"
+dest_files=["res://.godot/imported/QuantumFragment.png-1f076e9ee5f29c4e59f5231d8af4f567.ctex"]
 
 [params]
 

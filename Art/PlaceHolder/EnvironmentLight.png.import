@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co5ooawhclfol"
-path="res://.godot/imported/Environment.png-8a5275f42d79149b2a613c79314c4a3b.ctex"
+uid="uid://dxl0khv2n27x0"
+path="res://.godot/imported/EnvironmentLight.png-ae3d85c11fad0fb038c1eb9c10de51fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Data/Art/PlaceHolder/Environment.png"
-dest_files=["res://.godot/imported/Environment.png-8a5275f42d79149b2a613c79314c4a3b.ctex"]
+source_file="res://Art/PlaceHolder/EnvironmentLight.png"
+dest_files=["res://.godot/imported/EnvironmentLight.png-ae3d85c11fad0fb038c1eb9c10de51fc.ctex"]
 
 [params]
 

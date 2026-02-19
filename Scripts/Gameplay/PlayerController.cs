@@ -2,8 +2,12 @@ using Godot;
 
 public partial class PlayerController : CharacterBody2D
 {
+    [ExportGroup("Configuration")]
     [Export] public int GridSize = 16;
     [Export] public float MoveSpeed = 120f;
+
+    [ExportGroup("References")]
+    [Export] private AnimatedSprite2D _anim;
 
     private bool _isMoving;
     private Vector2 _targetPosition;
@@ -12,6 +16,7 @@ public partial class PlayerController : CharacterBody2D
     {
         GlobalPosition = SnapToGrid(GlobalPosition);
         _targetPosition = GlobalPosition;
+        _anim.Play("idle");
     }
 
     
@@ -24,14 +29,30 @@ public partial class PlayerController : CharacterBody2D
 
             if (GlobalPosition.DistanceTo(_targetPosition) <= 0.01f)
             {
-                GlobalPosition = _targetPosition;
-                _isMoving = false;
+                if (Input.IsActionPressed("move_up") || Input.IsActionPressed("move_down") ||
+                    Input.IsActionPressed("move_left") || Input.IsActionPressed("move_right"))
+                {
+                    Vector2 d = ReadInputDirection();
+                    FlipSprite(d);
+                    if (d != Vector2.Zero)
+                    {
+                        TryStartMove(d);
+                        return;
+                    }
+                }
+                else
+                {
+                    GlobalPosition = _targetPosition;
+                    _isMoving = false;
+                    _anim.Play("idle");
+                }
             }
 
             return;
         }
 
         Vector2 dir = ReadInputDirection();
+        FlipSprite(dir);
         if (dir != Vector2.Zero)
         {
             TryStartMove(dir);
@@ -41,15 +62,34 @@ public partial class PlayerController : CharacterBody2D
     private Vector2 ReadInputDirection()
     {
         if (Input.IsActionPressed("move_up"))
+        {
             return Vector2.Up;
+        }    
         if (Input.IsActionPressed("move_down"))
+        {
             return Vector2.Down;
+        }
         if (Input.IsActionPressed("move_left"))
+        {
             return Vector2.Left;
+        }
         if (Input.IsActionPressed("move_right"))
+        {
             return Vector2.Right;
-
+        }
         return Vector2.Zero;
+    }
+
+    private void FlipSprite(Vector2 dir)
+    {
+        if (dir == Vector2.Left)
+        {
+            _anim.FlipH = true;
+        }
+        else if (dir == Vector2.Right)
+        {
+            _anim.FlipH = false;
+        }
     }
 
     private void TryStartMove(Vector2 dir)
@@ -59,6 +99,7 @@ public partial class PlayerController : CharacterBody2D
 
         _targetPosition = SnapToGrid(GlobalPosition + dir * GridSize);
         _isMoving = true;
+        _anim.Play("walk");
     }
 
     private bool IsBlocked(Vector2 dir)
