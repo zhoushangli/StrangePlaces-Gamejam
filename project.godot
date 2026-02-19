@@ -93,4 +93,4 @@ renderer/rendering_method.mobile="gl_compatibility"
 [strange_places]
 
 dev_mode=true
-dev_start_scene="res://Scenes/Dev/Dev_GameplayTest.tscn"
+dev_start_scene="res://Scenes/Dev/Dev_MenuTest.tscn"

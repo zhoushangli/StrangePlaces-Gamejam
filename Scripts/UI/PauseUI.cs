@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Godot;
 using Protogame2D.Core;
 using Protogame2D.Services;
@@ -15,7 +16,8 @@ public partial class PauseUI : UIBase
     private TextureButton _backButton;
     [Export]
     private TextureButton _quitButton;
-
+    [Export]
+    private AudioStream _focusSound;
     public override void _Ready()
     {
         // _resumeButton = GetNode<Button>("CenterContainer/VBoxContainer/ResumeButton");
@@ -25,7 +27,24 @@ public partial class PauseUI : UIBase
         // _backButton.Pressed += OnBackPressed;
         // _quitButton.Pressed += OnQuitPressed;
     }
-    
+    public override void OnOpen(object args)
+    {
+        //我把该函数功能理解为_Ready函数。_xxxButton在inspector中赋值
+
+        _resumeButton.Pressed += OnResumePressed;
+        _backButton.Pressed += OnBackPressed;
+        _quitButton.Pressed += OnQuitPressed;
+
+        _resumeButton.MouseEntered += OnHovered;
+        _backButton.MouseEntered += OnHovered;
+        _quitButton.Pressed += OnHovered;
+    }
+
+    void OnHovered()
+    {
+        Game.Instance.Get<AudioService>().PlaySfx(_focusSound);
+    }
+
     private void OnResumePressed()
     {
         // QueueFree();
@@ -42,14 +61,7 @@ public partial class PauseUI : UIBase
         GetTree().Quit();
     }
 
-    public override void OnOpen(object args)
-    {
-        //我把该函数功能理解为_Ready函数。_xxxButton在inspector中赋值
-
-        _resumeButton.Pressed += OnResumePressed;
-        _backButton.Pressed += OnBackPressed;
-        _quitButton.Pressed += OnQuitPressed;
-    }
+    
 
     public override void OnClose()
     {

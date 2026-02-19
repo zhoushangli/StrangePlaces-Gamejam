@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://clawea8c87ef7"]
+
+[ext_resource type="Texture2D" uid="uid://bp71ib1pqqptm" path="res://Assets/Art/Altar.png" id="1_im1du"]
+[ext_resource type="Texture2D" uid="uid://ds0bn5fvnqbv4" path="res://Assets/Art/Particles/QuantomPairticle.png" id="2_2pob2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3bvi"]
+atlas = ExtResource("2_2pob2")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ykscn"]
+lifetime_randomness = 0.11
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape = 3
+emission_box_extents = Vector3(9.03, 9.715, 1)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+inherit_velocity_ratio = 0.144
+spread = 180.0
+initial_velocity_min = 2.5
+initial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = -2.2351742e-06
+damping_min = 1.0
+damping_max = 4.25
+turbulence_enabled = true
+
+[node name="Altar" type="Sprite2D" unique_id=1398987610]
+texture_filter = 1
+texture = ExtResource("1_im1du")
+hframes = 2
+
+[node name="QuantomParticle" type="GPUParticles2D" parent="." unique_id=1095223117]
+texture_filter = 1
+position = Vector2(0, -3)
+texture = SubResource("AtlasTexture_r3bvi")
+process_material = SubResource("ParticleProcessMaterial_ykscn")

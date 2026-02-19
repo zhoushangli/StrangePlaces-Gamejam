@@ -12,8 +12,11 @@ public partial class MainMenuUI : UIBase
     [Export] private TextureButton _startButton;
     [Export] private TextureButton _quitButton;
     [Export] private TextureButton _pressStartButton;
-    [Export] private NinePatchRect _StartPlate;
+    [Export] private TextureButton _levelButton;
+    [Export] private NinePatchRect _startPlate;
     [Export] float sparkSpeed;
+    [Export] private AudioStream _hoverSound; 
+    [Export] private AudioStream _confirmSound; 
     float increasing;
     public override void OnOpen(object args)
     {
@@ -22,12 +25,34 @@ public partial class MainMenuUI : UIBase
         _startButton.Pressed += OnStartPressed;
         _quitButton.Pressed += OnQuitPressed;
         _pressStartButton.Pressed += OnPressStartPressed;
-        _StartPlate.Visible = false;
+        _levelButton.Pressed += OnLevelsPressed;
+
+        _startButton.Pressed += OnConfirmed;
+        _quitButton.Pressed += OnConfirmed;
+        _pressStartButton.Pressed += OnConfirmed;
+        _levelButton.Pressed += OnConfirmed;
+
+        _startButton.MouseEntered += OnHovered;
+        _quitButton.MouseEntered += OnHovered;
+        _levelButton.MouseEntered += OnHovered;
+
+
+
+        _startPlate.Visible = false;
     }
     public override void _Process(double delta)
     {
         base._Process(delta);
         Spark(delta);
+        
+    }
+    void OnHovered()
+    {
+        Game.Instance.Get<AudioService>().PlaySfx(_hoverSound);
+    }
+    void OnConfirmed()
+    {
+        Game.Instance.Get<AudioService>().PlaySfx(_confirmSound);
     }
     void Spark(double delta)
     {
@@ -60,9 +85,13 @@ public partial class MainMenuUI : UIBase
     {
         GetTree().Quit();
     }
+    private void OnLevelsPressed()
+    {
+        
+    }
     private void OnPressStartPressed()
     {
         _pressStartButton.Visible = false;
-        _StartPlate.Visible=true;
+        _startPlate.Visible=true;
     }
 }

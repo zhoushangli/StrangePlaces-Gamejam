@@ -301,6 +301,18 @@ position = Vector2(0, -3)
 texture = SubResource("AtlasTexture_r3bvi")
 process_material = SubResource("ParticleProcessMaterial_ykscn")
 
+[node name="Altar2" type="Sprite2D" parent="World/ItemsOnGround" unique_id=1294788744]
+texture_filter = 1
+position = Vector2(86, 91)
+texture = ExtResource("7_g4xtp")
+hframes = 2
+
+[node name="QuantomParticle" type="GPUParticles2D" parent="World/ItemsOnGround/Altar2" unique_id=1600281254]
+texture_filter = 1
+position = Vector2(0, -3)
+texture = SubResource("AtlasTexture_r3bvi")
+process_material = SubResource("ParticleProcessMaterial_ykscn")
+
 [node name="Particles" type="Node2D" parent="World" unique_id=446500895]
 
 [node name="QuantomParticle" type="GPUParticles2D" parent="World/Particles" unique_id=1021129450]

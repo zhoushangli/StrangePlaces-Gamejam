@@ -7,5 +7,6 @@ public partial class Test : Node
     {
         var sfx = GD.Load<AudioStream>("res://Assets/Audio/Test.wav");
         Game.Instance.Get<AudioService>().PlaySfx(sfx);
+        //Game.Instance.Get<AudioService>().PlayBgm(sfx);
     }
 }

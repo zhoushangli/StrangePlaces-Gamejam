@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://de8p44ai0gio2" path="res://Scripts/UI/MainMenuUI.cs" id="1_slj2r"]
 [ext_resource type="Texture2D" uid="uid://bsl2hb8yfpkgo" path="res://Assets/Art/TittleBG.png" id="2_dbp2l"]
+[ext_resource type="AudioStream" uid="uid://cdjxp38q3a8bf" path="res://Assets/Sounds/FocusOnUI.wav" id="2_qm34t"]
 [ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://Assets/Art/UIColumns.png" id="2_wiopq"]
+[ext_resource type="AudioStream" uid="uid://dscs5qql0f4wh" path="res://Assets/Sounds/ConfirmUI.wav" id="3_wv2y8"]
 [ext_resource type="Texture2D" uid="uid://bqrohkpdvgx5o" path="res://Assets/Art/Tittle.png" id="4_qm34t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbp2l"]
@@ -18,7 +20,7 @@ atlas = ExtResource("4_qm34t")
 [sub_resource type="LabelSettings" id="LabelSettings_m4thw"]
 font_color = Color(0.003921569, 0.85490197, 0.99215686, 1)
 
-[node name="UIMainMenu" type="Control" unique_id=42779288 node_paths=PackedStringArray("_startButton", "_quitButton", "_pressStartButton", "_StartPlate")]
+[node name="UIMainMenu" type="Control" unique_id=42779288 node_paths=PackedStringArray("_startButton", "_quitButton", "_pressStartButton", "_levelButton", "_startPlate")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
@@ -27,8 +29,11 @@ script = ExtResource("1_slj2r")
 _startButton = NodePath("NinePatchRect/VBoxContainer/Start")
 _quitButton = NodePath("NinePatchRect/VBoxContainer/Quit")
 _pressStartButton = NodePath("PressStart")
-_StartPlate = NodePath("NinePatchRect")
+_levelButton = NodePath("NinePatchRect/VBoxContainer/Levels")
+_startPlate = NodePath("NinePatchRect")
 sparkSpeed = 1.0
+_hoverSound = ExtResource("2_qm34t")
+_confirmSound = ExtResource("3_wv2y8")
 
 [node name="TittleBg" type="Sprite2D" parent="." unique_id=8684055]
 texture_filter = 1

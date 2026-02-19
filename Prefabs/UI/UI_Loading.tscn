@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cdk4v6qgl4jc4"]
+
+[ext_resource type="Script" uid="uid://dme86aht2i5w5" path="res://Scripts/UI/LoadingUI.cs" id="1_0vq00"]
+[ext_resource type="Texture2D" uid="uid://dh4okhhagt068" path="res://Assets/Art/LoadingBar.png" id="1_edgpl"]
+[ext_resource type="Texture2D" uid="uid://bsl2hb8yfpkgo" path="res://Assets/Art/TittleBG.png" id="2_qwbw8"]
+[ext_resource type="Texture2D" uid="uid://pbnjevnc3l72" path="res://Assets/Art/LoadingBar2.png" id="2_v6iav"]
+[ext_resource type="PackedScene" uid="uid://clawea8c87ef7" path="res://Prefabs/Items/altar.tscn" id="3_0vq00"]
+
+[node name="UiLoading" type="Control" unique_id=275695227 node_paths=PackedStringArray("_bar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0vq00")
+_bar = NodePath("TextureProgressBar")
+_fillingSpeed = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=75354309]
+texture_filter = 1
+position = Vector2(310, 202)
+scale = Vector2(4.1979165, 4.1979165)
+texture = ExtResource("2_qwbw8")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=2033419498]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.5
+offset_top = 37.0
+offset_right = 169.5
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 64.0
+nine_patch_stretch = true
+texture_over = ExtResource("1_edgpl")
+texture_progress = ExtResource("2_v6iav")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=177096211]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -98.0
+offset_right = 20.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Altar" parent="VBoxContainer" unique_id=1398987610 instance=ExtResource("3_0vq00")]
+position = Vector2(17, 61)
+scale = Vector2(4.34375, 4.34375)
