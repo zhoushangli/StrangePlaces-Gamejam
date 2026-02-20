@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://1l5x8hcfx3s3"]
+
+[ext_resource type="Script" uid="uid://c544x654arh5g" path="res://Scripts/Services/PostProcessService.cs" id="1_7e0r2"]
+[ext_resource type="Shader" uid="uid://bldfth3rs5u2w" path="res://GameAssets/Shaders/S_CRT.gdshader" id="2_dp64u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ym5h5"]
+shader = ExtResource("2_dp64u")
+shader_parameter/bloom_threshold = 0.400000019
+shader_parameter/bloom_soft_knee = 0.2850000135375
+shader_parameter/bloom_intensity = 1.0
+shader_parameter/bloom_radius_px = 3.0000001425
+shader_parameter/curvature = 0.010000000475
+shader_parameter/scanline_strength = 0.10000000475
+shader_parameter/vignette_strength = 0.2610000123975
+shader_parameter/chroma_offset_px = 1.0000000475
+shader_parameter/noise_strength = 0.010000000475
+
+[node name="PostProcessService" type="CanvasLayer" unique_id=1642101394 node_paths=PackedStringArray("_colorRect")]
+layer = 10
+script = ExtResource("1_7e0r2")
+_colorRect = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=493156983]
+material = SubResource("ShaderMaterial_ym5h5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

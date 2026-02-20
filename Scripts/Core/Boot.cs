@@ -20,8 +20,9 @@ public partial class Boot : Node
             RegisterNew<SceneService>();
             RegisterNew<GameStateService>();
 
-            RegisterFromScene<AudioService>("res://Prefabs/Services/S_AudioService.tscn");
-            RegisterFromScene<UIService>("res://Prefabs/Services/S_UIService.tscn");
+            RegisterFromScene<AudioService>("res://Prefabs/Services/Svc_AudioService.tscn");
+            RegisterFromScene<UIService>("res://Prefabs/Services/Svc_UIService.tscn");
+            RegisterFromScene<PostProcessService>("res://Prefabs/Services/Svc_PostProcessService.tscn");
         }
         catch (System.Exception ex)
         {

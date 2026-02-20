@@ -2,13 +2,13 @@
 
 [ext_resource type="TileSet" uid="uid://ddse6ycafnye1" path="res://GameAssets/Tiles/TS_Floor.tres" id="1_e4wki"]
 [ext_resource type="TileSet" uid="uid://bm25owt6xtcf" path="res://GameAssets/Tiles/TS_Block.tres" id="2_5i2ne"]
-[ext_resource type="Texture2D" uid="uid://f5gwyi7sjyiq" path="res://Assets/Art/PlacableItems.png" id="4_nqnc6"]
+[ext_resource type="Texture2D" uid="uid://f5gwyi7sjyiq" path="res://SourceArt/Art/PlacableItems.png" id="4_nqnc6"]
 [ext_resource type="PackedScene" uid="uid://bkqcnsp5j5lg0" path="res://Prefabs/Items/Items_RockA.tscn" id="6_2ru73"]
-[ext_resource type="Texture2D" uid="uid://bp71ib1pqqptm" path="res://Assets/Art/Altar.png" id="7_g4xtp"]
-[ext_resource type="Texture2D" uid="uid://ds0bn5fvnqbv4" path="res://Assets/Art/Particles/QuantomPairticle.png" id="8_jwer7"]
-[ext_resource type="Texture2D" uid="uid://d3wbhq8natx13" path="res://Assets/Art/Particles/AbyssPairticle.png" id="9_ye3ip"]
-[ext_resource type="Texture2D" uid="uid://chhq3sxcpro4" path="res://Assets/Art/Particles/SnowParticle.png" id="10_irn40"]
-[ext_resource type="Texture2D" uid="uid://bpy554abw7cb2" path="res://Assets/Art/Decorations/DustA.png" id="11_mcqvx"]
+[ext_resource type="Texture2D" uid="uid://bp71ib1pqqptm" path="res://SourceArt/Art/Altar.png" id="7_g4xtp"]
+[ext_resource type="Texture2D" uid="uid://ds0bn5fvnqbv4" path="res://SourceArt/Art/Particles/QuantomPairticle.png" id="8_jwer7"]
+[ext_resource type="Texture2D" uid="uid://d3wbhq8natx13" path="res://SourceArt/Art/Particles/AbyssPairticle.png" id="9_ye3ip"]
+[ext_resource type="Texture2D" uid="uid://chhq3sxcpro4" path="res://SourceArt/Art/Particles/SnowParticle.png" id="10_irn40"]
+[ext_resource type="Texture2D" uid="uid://bpy554abw7cb2" path="res://SourceArt/Art/Decorations/DustA.png" id="11_mcqvx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g6myj"]
 atlas = ExtResource("4_nqnc6")
