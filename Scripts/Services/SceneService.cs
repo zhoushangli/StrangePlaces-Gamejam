@@ -17,19 +17,18 @@ public partial class SceneService : Node, IService
     public async Task<Node> ChangeScene(string path)
     {
         var tree = Engine.GetMainLoop() as SceneTree;
-        if (tree != null)
-        {
-            tree.ChangeSceneToFile(path);
-            GD.Print($"[SceneService] Changed scene to {path}");
+        
+        tree.ChangeSceneToFile(path);
 
-            // 等一帧
-            await ToSignal(tree, SceneTree.SignalName.ProcessFrame);
-        }
+        GD.Print($"[SceneService] Changed scene to {path}");
+
+        // 等一帧
+        await ToSignal(tree, SceneTree.SignalName.SceneChanged);
 
         if (Game.Instance.TryGet<EventService>(out var evt))
             evt.Publish(new SceneLoadedEvent { Path = path });
-            
-        return tree?.CurrentScene;
+
+        return tree.CurrentScene;
     }
 
     public void Shutdown() { }

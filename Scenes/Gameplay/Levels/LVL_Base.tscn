@@ -30,6 +30,7 @@ texture_filter = 1
 tile_set = ExtResource("2_fic6j")
 
 [node name="TM_Solid" type="TileMapLayer" parent="Ground" unique_id=1075529673]
+z_index = 50
 texture_filter = 1
 
 [node name="Items" type="Node2D" parent="." unique_id=111838279]

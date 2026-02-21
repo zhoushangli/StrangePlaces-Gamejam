@@ -7,12 +7,12 @@ public partial class LevelService : Node, IService
 {
     public void Init()
     {
-        
+
     }
 
     public void Shutdown()
     {
-        
+
     }
 
     public async Task LoadLevel(PackedScene devScene)
@@ -23,7 +23,7 @@ public partial class LevelService : Node, IService
         var spawnPoint = GetTree().GetFirstNodeInGroup("PlayerSpawnPoint") as Node2D;
         if (spawnPoint != null)
         {
-            var packedPlayerScene = GD.Load<PackedScene>("res://Prefabs/Character/A_Player.tscn"); 
+            var packedPlayerScene = GD.Load<PackedScene>("res://Prefabs/Character/A_Player.tscn");
             var playerInstance = packedPlayerScene.Instantiate<Node2D>();
             playerInstance.GlobalPosition = spawnPoint.GlobalPosition;
             rootNode.AddChild(playerInstance);

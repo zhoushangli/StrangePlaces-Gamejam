@@ -1,0 +1,14 @@
+[gd_resource type="TileSet" format=3 uid="uid://d0qrfd5m1b1ug"]
+
+[ext_resource type="Texture2D" uid="uid://co5ooawhclfol" path="res://GameAssets/PlaceHolder/Environment.png" id="1_77aaj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1gy0f"]
+texture = ExtResource("1_77aaj")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 7
+sources/0 = SubResource("TileSetAtlasSource_1gy0f")
