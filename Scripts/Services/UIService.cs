@@ -30,7 +30,6 @@ public partial class UIService : CanvasLayer, IService
 
     public T Open<T>(object args = null) where T : UIBase
     {
-        var t = typeof(T);
         var path = $"{UIPrefabBase}{GetPrefabName(typeof(T))}.tscn";
 
         var packed = GD.Load<PackedScene>(path);
@@ -42,11 +41,56 @@ public partial class UIService : CanvasLayer, IService
 
         var inst = packed.Instantiate<T>();
         _popupLayer.AddChild(inst);
-        inst.OnOpen(args);
 
+        OpenInstance(inst, args);
+        return inst;
+    }
+
+    public Node Open(PackedScene scene, object args = null)
+    {
+        if (scene == null)
+        {
+            GD.PushError("[UIService] Open called with null PackedScene.");
+            return null;
+        }
+
+        var instance = scene.Instantiate();
+        if (instance == null)
+        {
+            GD.PushError("[UIService] Failed to instantiate UI scene.");
+            return null;
+        }
+
+        _popupLayer.AddChild(instance);
+
+        if (instance is UIBase ui)
+        {
+            OpenInstance(ui, args);
+        }
+        else
+        {
+            GD.PushWarning(
+                $"[UIService] Open(PackedScene) instantiated '{instance.GetType().Name}', not UIBase. Not stacked."
+            );
+        }
+
+        return instance;
+    }
+
+    private void OpenInstance(UIBase inst, object args)
+    {
+        var t = inst.GetType();
+
+        // 清理无效引用 + 同类型去重
         for (var i = _stack.Count - 1; i >= 0; i--)
         {
             var existing = _stack[i];
+            if (existing == null || !IsInstanceValid(existing))
+            {
+                _stack.RemoveAt(i);
+                continue;
+            }
+
             if (existing.GetType() != t) continue;
 
             _stack.RemoveAt(i);
@@ -54,9 +98,9 @@ public partial class UIService : CanvasLayer, IService
             existing.QueueFree();
             break;
         }
-        _stack.Add(inst);
 
-        return inst;
+        inst.OnOpen(args);
+        _stack.Add(inst);
     }
 
     public void Close<T>() where T : UIBase

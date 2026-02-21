@@ -24,8 +24,8 @@ public partial class Game : Node
         }
     }
 
-    private readonly Dictionary<Type, object> _instances = new();
-    private readonly List<Type>               _initOrder = new();
+    private readonly Dictionary<Type, IService> _instances = new();
+    private readonly List<Type> _initOrder = new();
 
     public override void _EnterTree()
     {
@@ -38,7 +38,7 @@ public partial class Game : Node
         _instance = null;
     }
 
-    public void Register<T>(T instance) where T : class
+    public void Register<T>(T instance) where T : IService
     {
         if (instance == null)
         {
@@ -55,7 +55,7 @@ public partial class Game : Node
         _initOrder.Add(t);
     }
 
-    public T Get<T>() where T : class
+    public T Get<T>() where T : IService
     {
         if (TryGet<T>(out var service))
         {
@@ -65,16 +65,16 @@ public partial class Game : Node
         throw new InvalidOperationException($"Service {typeof(T).Name} is not registered.");
     }
 
-    public bool TryGet<T>(out T service) where T : class
+    public bool TryGet<T>(out T service) where T : IService
     {
         var t = typeof(T);
-        if (_instances.TryGetValue(t, out var obj) && obj != null)
+        if (_instances.TryGetValue(t, out var svc) && svc != null)
         {
-            service = (T)obj;
+            service = (T)svc;
             return true;
         }
 
-        service = null;
+        service = default;
         return false;
     }
 
@@ -98,5 +98,45 @@ public partial class Game : Node
 
         _instances.Clear();
         _initOrder.Clear();
+    }
+
+    public T RegisterNew<T>() where T : class, IService, new()
+    {
+        var service = new T();
+        Register<T>(service);
+        service.Init();
+        return service;
+    }
+
+    public T RegisterFromScene<T>(string path) where T : Node, IService
+    {
+        var packed = GD.Load<PackedScene>(path);
+        if (packed == null)
+        {
+            GD.PushError($"[Game] Service scene not found: {path}");
+            return null;
+        }
+
+        var instantiatedObject = packed.Instantiate<T>();
+        Register<T>(instantiatedObject);
+        AddChild(instantiatedObject);
+        instantiatedObject.Init();
+        return instantiatedObject;
+    }
+
+    public void Unregister<T>() where T : IService
+    {
+        var t = typeof(T);
+        if (_instances.TryGetValue(t, out var svc))
+        {
+            svc.Shutdown();
+            if (svc is Node node)
+            {
+                node.QueueFree();
+            }
+        }
+
+        _instances.Remove(t);
+        _initOrder.Remove(t);
     }
 }

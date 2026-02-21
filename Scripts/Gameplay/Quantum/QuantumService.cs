@@ -1,36 +1,20 @@
-﻿using System.Collections.Generic;
-using Godot;
+﻿using Godot;
+using Protogame2D.Core;
+using System.Collections.Generic;
 
-public partial class QuantumManager : Node
+public partial class QuantumService : Node, IService
 {
-    private static QuantumManager _instance;
-    public static QuantumManager Instance => _instance;
-
     private readonly List<QuantumObserver> _observers = new();
     private readonly List<QuantumItem> _items = new();
 
-    
-    public override void _EnterTree()
+    public void Init()
     {
-        if (_instance != null && _instance != this)
-        {
-            GD.PushError("[QuantumManager] Multiple instances detected.");
-            QueueFree();
-            return;
-        }
-
-        _instance = this;
-
     }
 
-    public override void _ExitTree()
+    public void Shutdown()
     {
-        if (_instance == this)
-            _instance = null;
-    }
-
-    public override void _Ready()
-    {
+        _observers.Clear();
+        _items.Clear();
     }
 
     public void RegisterObserver(QuantumObserver observer)

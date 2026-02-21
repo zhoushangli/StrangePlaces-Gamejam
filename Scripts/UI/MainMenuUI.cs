@@ -78,7 +78,7 @@ public partial class MainMenuUI : UIBase
     private void OnStartPressed()
     {
         Game.Instance.Get<UIService>().CloseTop();
-        Game.Instance.Get<GameStateService>().ChangeGameState(GameState.Play);
+        Game.Instance.Get<GameStateService>().ChangeGameState(GameState.Game);
     }
 
     private void OnQuitPressed()

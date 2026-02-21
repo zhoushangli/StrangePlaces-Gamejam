@@ -1,26 +1,21 @@
 [gd_scene format=3 uid="uid://dblk24g13wf6t"]
 
 [ext_resource type="Script" uid="uid://cjb7pybyviwbu" path="res://Scripts/Gameplay/Quantum/QuantumItem.cs" id="1_fjpyp"]
-[ext_resource type="Texture2D" uid="uid://curu7jrk8mpi3" path="res://GameAssets/PlaceHolder/QuantumFragment.png" id="2_pctmn"]
+[ext_resource type="Texture2D" uid="uid://bwgot8i3j51r3" path="res://GameAssets/Items.tres" id="2_pctmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utuuf"]
 size = Vector2(16, 16)
 
-[node name="QuantumItem" type="StaticBody2D" unique_id=1480966644 node_paths=PackedStringArray("_anchors")]
+[node name="QuantumItem" type="StaticBody2D" unique_id=383001199 node_paths=PackedStringArray("_anchors")]
+collision_layer = 2
+collision_mask = 15
 script = ExtResource("1_fjpyp")
-_anchors = [NodePath("Anchors/1"), NodePath("Anchors/2")]
+_anchors = [null, null]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2003539928]
-position = Vector2(328, 184)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1776763923]
 shape = SubResource("RectangleShape2D_utuuf")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1605234901]
-position = Vector2(328, 184)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=735452136]
+texture_filter = 1
+position = Vector2(0, -4)
 texture = ExtResource("2_pctmn")
-
-[node name="Anchors" type="Node2D" parent="." unique_id=1720257768]
-
-[node name="1" type="Node2D" parent="Anchors" unique_id=272444915]
-position = Vector2(-1, 0)
-
-[node name="2" type="Node2D" parent="Anchors" unique_id=1639231695]

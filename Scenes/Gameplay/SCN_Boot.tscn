@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b5x7boot001"]
+
+[ext_resource type="Script" uid="uid://ccnis6up036ev" path="res://Scripts/Core/Boot.cs" id="1_boot"]
+[ext_resource type="PackedScene" uid="uid://cctb7slglly4y" path="res://Prefabs/UI/UI_MainMenu.tscn" id="2_ckskn"]
+
+[node name="Boot" type="Node" unique_id=1978485387]
+script = ExtResource("1_boot")
+_devScene = ExtResource("2_ckskn")

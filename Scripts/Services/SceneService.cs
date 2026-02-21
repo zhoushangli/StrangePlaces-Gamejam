@@ -10,8 +10,8 @@ namespace Protogame2D.Services;
 /// </summary>
 public class SceneService : IService
 {
-    public const string MainMenuScenePath = "res://Scenes/Gameplay/Scene_MainMenu.tscn";
-    public const string GameScenePath = "res://Scenes/Gameplay/Scene_Game.tscn";
+    public const string MainMenuScenePath = "res://Scenes/Gameplay/SCN_MainMenu.tscn";
+    public const string GameScenePath = "res://Scenes/Gameplay/SCN_Game.tscn";
 
     public void Init() { }
 

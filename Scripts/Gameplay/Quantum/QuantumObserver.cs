@@ -1,4 +1,5 @@
 ﻿using Godot;
+using Protogame2D.Core;
 
 public partial class QuantumObserver : Area2D
 {
@@ -8,9 +9,9 @@ public partial class QuantumObserver : Area2D
 
     public override void _Ready()
     {
-        if (QuantumManager.Instance != null)
+        if (Game.Instance.TryGet<QuantumService>(out var quantumService))
         {
-            QuantumManager.Instance.RegisterObserver(this);
+            quantumService.RegisterObserver(this);
         }
         else
         {
@@ -23,7 +24,10 @@ public partial class QuantumObserver : Area2D
 
     public override void _ExitTree()
     {
-        QuantumManager.Instance?.UnregisterObserver(this);
+        if (Game.Instance.TryGet<QuantumService>(out var quantumService))
+        {
+            quantumService.UnregisterObserver(this);
+        }
     }
 
     public override void _Process(double delta)

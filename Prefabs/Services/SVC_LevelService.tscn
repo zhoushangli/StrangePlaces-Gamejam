@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bfqm3mmgfjr4v"]
+
+[ext_resource type="Script" uid="uid://j1v02dm6n2sb" path="res://Scripts/Services/LevelService.cs" id="1_5mh3e"]
+
+[node name="SvcLevelService" type="Node" unique_id=17119171]
+script = ExtResource("1_5mh3e")

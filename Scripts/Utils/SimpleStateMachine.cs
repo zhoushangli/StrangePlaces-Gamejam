@@ -14,8 +14,19 @@ public class SimpleStateMachine<TState>
 
     private readonly Dictionary<TState, StateHooks> _states = new();
 
-    public bool HasState { get; private set; }
     public TState CurrentState { get; private set; }
+
+    public void Init(TState initialState)
+    {
+        if (!_states.ContainsKey(initialState))
+        {
+            GD.PushError($"[SimpleStateMachine] Initial state not configured: {initialState}");
+            return;
+        }
+
+        CurrentState = initialState;
+        _states[initialState].OnEnter?.Invoke();
+    }
 
     public void AddState(TState state, Action onEnter = null, Action onExit = null)
     {
@@ -32,14 +43,6 @@ public class SimpleStateMachine<TState>
         {
             GD.PushError($"[SimpleStateMachine] State not configured: {nextState}");
             return false;
-        }
-
-        if (!HasState)
-        {
-            CurrentState = nextState;
-            HasState = true;
-            next.OnEnter?.Invoke();
-            return true;
         }
 
         if (EqualityComparer<TState>.Default.Equals(CurrentState, nextState))

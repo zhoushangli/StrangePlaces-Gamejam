@@ -3,16 +3,16 @@
 [ext_resource type="Script" uid="uid://c03t5le0gens4" path="res://Scripts/Gameplay/Quantum/QuantumObserver.cs" id="1_xn1tq"]
 [ext_resource type="Texture2D" uid="uid://dxl0khv2n27x0" path="res://GameAssets/PlaceHolder/EnvironmentLight.png" id="2_b6ol0"]
 
-[node name="QuantumObserver" type="Area2D" unique_id=1367349838 node_paths=PackedStringArray("_light")]
+[node name="QuantumObserver" type="Area2D" unique_id=1997136385 node_paths=PackedStringArray("_light")]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 15
 script = ExtResource("1_xn1tq")
 _light = NodePath("PointLight2D")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1908270199]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1910709507]
 polygon = PackedVector2Array(16, -80, 120, -80, 72, 80, -40, 80)
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1738537685]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1165975124]
 texture_filter = 1
 position = Vector2(40, 0)
 texture = ExtResource("2_b6ol0")

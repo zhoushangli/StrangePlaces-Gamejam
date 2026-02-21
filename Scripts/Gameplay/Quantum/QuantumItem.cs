@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Godot;
+using Protogame2D.Core;
 
 public partial class QuantumItem : StaticBody2D
 {
@@ -12,19 +13,22 @@ public partial class QuantumItem : StaticBody2D
 
     public override void _Ready()
     {
-        if (QuantumManager.Instance != null)
+        if (Game.Instance.TryGet<QuantumService>(out var quantumService))
         {
-            QuantumManager.Instance.RegisterItem(this);
+            quantumService.RegisterItem(this);
         }
         else
         {
-            GD.PushWarning($"[QuantumItem] QuantumManager not ready when '{Name}' entered tree.");
+            GD.PushWarning($"[QuantumItem] QuantumService not ready when '{Name}' entered tree.");
         }
     }
 
     public override void _ExitTree()
     {
-        QuantumManager.Instance?.UnregisterItem(this);
+        if (Game.Instance.TryGet<QuantumService>(out var quantumService))
+        {
+            quantumService.UnregisterItem(this);
+        }
     }
 
     public void SetObserved(bool observed)

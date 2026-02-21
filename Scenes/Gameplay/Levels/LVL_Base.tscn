@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://gpddo5x8ekle"]
+
+[ext_resource type="TileSet" uid="uid://ddse6ycafnye1" path="res://GameAssets/Tiles/TS_Floor.tres" id="1_604bx"]
+[ext_resource type="TileSet" uid="uid://bm25owt6xtcf" path="res://GameAssets/Tiles/TS_Platform.tres" id="2_fic6j"]
+[ext_resource type="TileSet" uid="uid://dk0i24akk7u28" path="res://GameAssets/Tiles/TS_Decoration.tres" id="2_gp204"]
+
+[node name="LVL_Base" type="Node2D" unique_id=1507039194]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=460667370]
+position = Vector2(320, 192)
+
+[node name="Background" type="Node2D" parent="." unique_id=1960978257]
+
+[node name="TM_Background" type="TileMapLayer" parent="Background" unique_id=1547429437]
+
+[node name="Ground" type="Node2D" parent="." unique_id=49399324]
+
+[node name="TM_Floor" type="TileMapLayer" parent="Ground" unique_id=1977871464]
+texture_filter = 1
+tile_set = ExtResource("1_604bx")
+
+[node name="TM_Decoration" type="TileMapLayer" parent="Ground" unique_id=1147296109]
+z_index = 5
+texture_filter = 1
+tile_set = ExtResource("2_gp204")
+
+[node name="TM_Platform" type="TileMapLayer" parent="Ground" unique_id=1429914510]
+z_index = 10
+texture_filter = 1
+tile_set = ExtResource("2_fic6j")
+
+[node name="TM_Solid" type="TileMapLayer" parent="Ground" unique_id=1075529673]
+texture_filter = 1
+
+[node name="Items" type="Node2D" parent="." unique_id=111838279]
+
+[node name="PlayerSpawnPoint" type="Marker2D" parent="." unique_id=1171513996 groups=["PlayerSpawnPoint"]]
