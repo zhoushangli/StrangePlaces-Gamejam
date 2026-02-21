@@ -1,8 +1,53 @@
 [gd_scene format=3 uid="uid://gpddo5x8ekle"]
 
 [ext_resource type="TileSet" uid="uid://ddse6ycafnye1" path="res://GameAssets/Tiles/TS_Floor.tres" id="1_604bx"]
+[ext_resource type="Texture2D" uid="uid://6q883k8py2co" path="res://SourceArt/Art/Star.png" id="1_kk0gg"]
 [ext_resource type="TileSet" uid="uid://bm25owt6xtcf" path="res://GameAssets/Tiles/TS_Platform.tres" id="2_fic6j"]
 [ext_resource type="TileSet" uid="uid://dk0i24akk7u28" path="res://GameAssets/Tiles/TS_Decoration.tres" id="2_gp204"]
+[ext_resource type="Texture2D" uid="uid://wigl2811x36s" path="res://GameAssets/UI/GameBackground.png" id="2_kk0gg"]
+[ext_resource type="Texture2D" uid="uid://du5dktucaony6" path="res://GameAssets/UI/Background.png" id="3_604bx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fic6j"]
+atlas = ExtResource("1_kk0gg")
+region = Rect2(32, 0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_gch3v"]
+_data = [Vector2(0, 0), 0.0, 0.94924515, 0, 1, Vector2(0.516129, 0.48993295), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.0125281, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_nqnc6"]
+curve = SubResource("Curve_gch3v")
+
+[sub_resource type="Curve" id="Curve_meras"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.10793424), 0.0, 0.0, 0, 0, Vector2(0.50584793, 0.12651896), 0.0, 0.0, 0, 0, Vector2(1, 0.13581133), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2ru73"]
+curve = SubResource("Curve_meras")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xmu3u"]
+lifetime_randomness = 0.12
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -350.21, 0)
+emission_shape_scale = Vector3(378.035, 79.595, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -255.59999
+angle_max = -234.0
+orbit_velocity_min = 0.010000096
+orbit_velocity_max = 0.020000096
+orbit_velocity_curve = SubResource("CurveTexture_2ru73")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.9
+alpha_curve = SubResource("CurveTexture_nqnc6")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+anim_speed_max = 1.0
+anim_offset_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hl6bf"]
 
 [node name="LVL_Base" type="Node2D" unique_id=1507039194]
 
@@ -11,9 +56,29 @@ position = Vector2(320, 192)
 
 [node name="Background" type="Node2D" parent="." unique_id=1960978257]
 
-[node name="TM_Background" type="TileMapLayer" parent="Background" unique_id=1547429437]
+[node name="OneStar" type="GPUParticles2D" parent="Background" unique_id=720067502]
+z_index = 1
+texture_filter = 1
+position = Vector2(328, 400)
+amount = 70
+texture = SubResource("AtlasTexture_fic6j")
+lifetime = 5.26
+process_material = SubResource("ParticleProcessMaterial_xmu3u")
+
+[node name="Planet" type="Sprite2D" parent="Background" unique_id=189679423]
+modulate = Color(0.5664695, 0.4979564, 0.5564088, 1)
+z_index = 2
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_hl6bf")
+position = Vector2(320, 192)
+texture = ExtResource("2_kk0gg")
+
+[node name="Sky" type="Sprite2D" parent="Background" unique_id=28082716]
+position = Vector2(320, 192)
+texture = ExtResource("3_604bx")
 
 [node name="Ground" type="Node2D" parent="." unique_id=49399324]
+z_index = 5
 
 [node name="TM_Floor" type="TileMapLayer" parent="Ground" unique_id=1977871464]
 texture_filter = 1

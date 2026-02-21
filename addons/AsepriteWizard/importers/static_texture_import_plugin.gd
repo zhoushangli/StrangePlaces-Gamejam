@@ -45,6 +45,11 @@ func _get_import_options(_path, _i):
 	]
 
 func _import(source_file, save_path, options, platform_variants, gen_files):
+	var bake_result = _handle_bake_fallback(source_file, save_path)
+
+	if bake_result != CONTINUE_STATUS_CODE:
+		return bake_result
+	
 	var absolute_source_file = ProjectSettings.globalize_path(source_file)
 	var source_path = source_file.get_base_dir()
 
@@ -65,10 +70,10 @@ func _import(source_file, save_path, options, platform_variants, gen_files):
 	var result = _generate_texture(absolute_source_file, aseprite_opts)
 
 	if not result.is_ok:
-		printerr("ERROR - Could not import aseprite file: %s" % result_codes.get_error_message(result.code))
+		logger.error("Could not import aseprite file: %s" % result_codes.get_error_message(result.code), source_file)
 		return FAILED
 
 	var sprite_sheet = result.content.sprite_sheet
 	var data = result.content.data
 
-	return _save_resource(sprite_sheet, save_path, result.content.data_file, data.meta.size)
+	return _save_resource(source_file, sprite_sheet, save_path, result.content.data_file, data.meta.size)
