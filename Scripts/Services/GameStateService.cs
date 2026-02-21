@@ -86,7 +86,7 @@ public class GameStateService : IService
             return;
         }
 
-        scene.ChangeScene(path);
+        _ = scene.ChangeScene(path);
     }
 }
 

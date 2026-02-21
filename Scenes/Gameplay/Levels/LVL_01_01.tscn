@@ -24,4 +24,4 @@ z_index = 100
 position = Vector2(200, 264)
 
 [node name="QuantumItem" parent="." index="5" unique_id=383001199 instance=ExtResource("4_x5ux2")]
-position = Vector2(312, 280)
+position = Vector2(312, 296)

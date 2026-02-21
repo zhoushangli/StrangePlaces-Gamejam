@@ -9,6 +9,7 @@ public class SimpleStateMachine<TState>
     private sealed class StateHooks
     {
         public Action OnEnter;
+        public Action<float> OnUpdate;
         public Action OnExit;
     }
 
@@ -28,11 +29,20 @@ public class SimpleStateMachine<TState>
         _states[initialState].OnEnter?.Invoke();
     }
 
-    public void AddState(TState state, Action onEnter = null, Action onExit = null)
+    public void Update(float delta)
+    {
+        if (_states.TryGetValue(CurrentState, out var hooks))
+        {
+            hooks.OnUpdate?.Invoke(delta);
+        }
+    }
+
+    public void AddState(TState state, Action onEnter = null, Action onExit = null, Action<float> onUpdate = null)
     {
         _states[state] = new StateHooks
         {
             OnEnter = onEnter,
+            OnUpdate = onUpdate,
             OnExit = onExit
         };
     }

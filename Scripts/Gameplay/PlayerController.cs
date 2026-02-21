@@ -1,7 +1,14 @@
 using Godot;
+using Protogame2D.Utils;
 
 public partial class PlayerController : CharacterBody2D
 {
+    private enum PlayerState
+    {
+        Idle,
+        Moving
+    }
+
     [ExportGroup("Configuration")]
     [Export] public int GridSize = 16;
     [Export] public float MoveSpeed = 120f;
@@ -9,53 +16,62 @@ public partial class PlayerController : CharacterBody2D
     [ExportGroup("References")]
     [Export] private AnimatedSprite2D _anim;
 
-    private bool _isMoving;
+    private readonly SimpleStateMachine<PlayerState> _fsm = new();
     private Vector2 _targetPosition;
 
     public override void _Ready()
     {
         GlobalPosition = SnapToGrid(GlobalPosition);
         _targetPosition = GlobalPosition;
-        _anim.Play("idle");
+
+        _fsm.AddState(
+            PlayerState.Idle,
+            onEnter: () =>
+            {
+                _anim.Play("idle");
+            },
+            onUpdate: _ =>
+            {
+                Vector2 dir = ReadInputDirection();
+                FlipSprite(dir);
+
+                if (dir != Vector2.Zero && TryStartMove(dir) && !IsBlocked(dir))
+                {
+                    _fsm.ChangeState(PlayerState.Moving);
+                }
+            });
+
+        _fsm.AddState(
+            PlayerState.Moving,
+            onEnter: () =>
+            {
+                _anim.Play("walk");
+            },
+            onUpdate: delta =>
+            {
+                float step = MoveSpeed * delta;
+                GlobalPosition = GlobalPosition.MoveToward(_targetPosition, step);
+
+                if (GlobalPosition.DistanceTo(_targetPosition) > 0.01f)
+                    return;
+
+                GlobalPosition = _targetPosition;
+
+                Vector2 dir = ReadInputDirection();
+                FlipSprite(dir);
+
+                if (dir == Vector2.Zero || !TryStartMove(dir) || IsBlocked(dir))
+                {
+                    _fsm.ChangeState(PlayerState.Idle);
+                }
+            });
+
+        _fsm.Init(PlayerState.Idle);
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        if (_isMoving)
-        {
-            float step = MoveSpeed * (float)delta;
-            GlobalPosition = GlobalPosition.MoveToward(_targetPosition, step);
-
-            if (GlobalPosition.DistanceTo(_targetPosition) <= 0.01f)
-            {
-                if (Input.IsActionPressed("move_up") || Input.IsActionPressed("move_down") ||
-                    Input.IsActionPressed("move_left") || Input.IsActionPressed("move_right"))
-                {
-                    Vector2 d = ReadInputDirection();
-                    FlipSprite(d);
-                    if (d != Vector2.Zero)
-                    {
-                        TryStartMove(d);
-                        return;
-                    }
-                }
-                else
-                {
-                    GlobalPosition = _targetPosition;
-                    _isMoving = false;
-                    _anim.Play("idle");
-                }
-            }
-
-            return;
-        }
-
-        Vector2 dir = ReadInputDirection();
-        FlipSprite(dir);
-        if (dir != Vector2.Zero)
-        {
-            TryStartMove(dir);
-        }
+        _fsm.Update((float)delta);
     }
 
     private Vector2 ReadInputDirection()
@@ -63,7 +79,7 @@ public partial class PlayerController : CharacterBody2D
         if (Input.IsActionPressed("move_up"))
         {
             return Vector2.Up;
-        }    
+        }
         if (Input.IsActionPressed("move_down"))
         {
             return Vector2.Down;
@@ -91,20 +107,19 @@ public partial class PlayerController : CharacterBody2D
         }
     }
 
-    private void TryStartMove(Vector2 dir)
+    private bool TryStartMove(Vector2 dir)
     {
         if (IsBlocked(dir))
-            return;
+            return false;
 
         _targetPosition = SnapToGrid(GlobalPosition + dir * GridSize);
-        _isMoving = true;
-        _anim.Play("walk");
+        return true;
     }
 
     private bool IsBlocked(Vector2 dir)
     {
         var spaceState = GetWorld2D().DirectSpaceState;
-        
+
         Vector2 from = GlobalPosition + dir * 0.1f;
         Vector2 to = GlobalPosition + dir * GridSize;
         var query = PhysicsRayQueryParameters2D.Create(from, to);
