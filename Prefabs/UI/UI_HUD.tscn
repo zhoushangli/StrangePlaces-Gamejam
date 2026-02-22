@@ -1,9 +1,74 @@
 [gd_scene format=3 uid="uid://bswuajqoj1gk0"]
 
-[node name="UiHud" type="Control" unique_id=782544590]
+[ext_resource type="Script" uid="uid://cvvohfevixwlb" path="res://Scripts/UI/HUDUI.cs" id="1_autwb"]
+[ext_resource type="Texture2D" uid="uid://bqjxbv85st8j0" path="res://SourceArt/Art/RestartButton.png" id="2_72h75"]
+[ext_resource type="FontFile" uid="uid://gbjcxp6a00xx" path="res://GameAssets/Fonts/PressStart2P.ttf" id="3_72h75"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4rrc"]
+atlas = ExtResource("2_72h75")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htivw"]
+atlas = ExtResource("2_72h75")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l135s"]
+atlas = ExtResource("2_72h75")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m0lj5"]
+font = ExtResource("3_72h75")
+font_size = 12
+font_color = Color(0.5232241, 0.7734431, 1, 1)
+
+[node name="UiHud" type="Control" unique_id=782544590 node_paths=PackedStringArray("_progressCircle", "_restartButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_autwb")
+_progressCircle = NodePath("TextureProgressBar")
+_restartButton = NodePath("Restart")
+restartTime = 3.0
+resetSpeed = 50.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1541998847]
+texture_filter = 1
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 41.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+value = 12.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_p4rrc")
+
+[node name="Restart" type="TextureButton" parent="." unique_id=1691142910]
+texture_filter = 1
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture_normal = SubResource("AtlasTexture_htivw")
+texture_pressed = SubResource("AtlasTexture_l135s")
+stretch_mode = 0
+
+[node name="R" type="Label" parent="Restart" unique_id=1798026413]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "R"
+label_settings = SubResource("LabelSettings_m0lj5")
+horizontal_alignment = 1
+vertical_alignment = 1

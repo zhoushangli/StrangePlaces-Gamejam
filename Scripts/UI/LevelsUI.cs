@@ -184,6 +184,8 @@ public partial class LevelsUI : UIBase
 		Game.Instance.Get<UIService>().CloseTop();
         Game.Instance.Get<GameStateService>().ChangeGameState(GameState.Game);
         _=Game.Instance.Get<LevelService>().LoadLevel(levelButton.GetMeta("LevelPath").AsString());
+		//加载reset按钮
+		Game.Instance.Get<UIService>().Open<HUDUI>();
 	}
 	void OnButtonPressedDown()
 	{

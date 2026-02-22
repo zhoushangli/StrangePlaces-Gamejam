@@ -89,6 +89,7 @@ public partial class MainMenuUI : UIBase
             Game.Instance.Get<AudioService>().PlayBgm(_gameBgm);
             Game.Instance.Get<GameStateService>().ChangeGameState(GameState.Game);
             _=Game.Instance.Get<LevelService>().LoadLevel(_firstLevelPath);
+            Game.Instance.Get<UIService>().Open<HUDUI>();
             
 
         }
