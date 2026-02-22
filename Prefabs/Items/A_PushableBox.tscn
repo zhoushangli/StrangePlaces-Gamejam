@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cryjartp217m2"]
+
+[ext_resource type="Script" uid="uid://c5mgxhwtrmo5v" path="res://Scripts/Gameplay/PushableBoxController.cs" id="1_gs4qp"]
+[ext_resource type="Texture2D" uid="uid://cyq8qy5fxvlck" path="res://SourceArt/Art/PushableBox.png" id="2_8jypm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmum6"]
+size = Vector2(14, 14)
+
+[node name="PushableBox" type="StaticBody2D" unique_id=475921959]
+z_index = 20
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_gs4qp")
+PushMoveSpeed = 60.0
+
+[node name="PushableBox" type="Sprite2D" parent="." unique_id=2068265091]
+texture_filter = 1
+position = Vector2(2, -9)
+texture = ExtResource("2_8jypm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1121192195]
+shape = SubResource("RectangleShape2D_gmum6")

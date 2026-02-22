@@ -1,6 +1,7 @@
 ﻿// QuantumItem.cs
 using Godot;
 using Protogame2D.Core;
+using Protogame2D.Utils;
 
 public partial class QuantumItem : StaticBody2D
 {
@@ -20,7 +21,8 @@ public partial class QuantumItem : StaticBody2D
             GD.PushWarning($"[QuantumItem] QuantumService not ready when '{Name}' entered tree.");
         }
 
-        GlobalPosition = _anchors != null && _anchors.Length > 0 ? _anchors[0].GlobalPosition : GlobalPosition;
+        GlobalPosition = GridUtil.SnapToGrid(
+            _anchors != null && _anchors.Length > 0 ? _anchors[0].GlobalPosition : GlobalPosition);
     }
 
     public override void _ExitTree()
@@ -49,6 +51,6 @@ public partial class QuantumItem : StaticBody2D
             return;
 
         _anchorIndex = (_anchorIndex + 1) % _anchors.Length;
-        GlobalPosition = _anchors[_anchorIndex].GlobalPosition;
+        GlobalPosition = GridUtil.SnapToGrid(_anchors[_anchorIndex].GlobalPosition);
     }
 }

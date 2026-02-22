@@ -23,6 +23,7 @@ _anim = NodePath("AnimatedSprite2D")
 shape = SubResource("RectangleShape2D_nq78b")
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1922326438]
+modulate = Color(1, 1, 1, 0.53333336)
 texture_filter = 1
 position = Vector2(0, -10)
 texture = ExtResource("2_manhs")

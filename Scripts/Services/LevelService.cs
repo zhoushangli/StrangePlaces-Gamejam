@@ -11,6 +11,18 @@ public partial class LevelService : Node, IService
 
     public void Shutdown() { }
 
+    public async Task LoadLevel(string path)
+    {
+        var packedScene = GD.Load<PackedScene>(path);
+        if (packedScene == null)
+        {
+            GD.PushError($"[LevelService] Failed to load level scene at path: {path}");
+            return;
+        }
+
+        await LoadLevel(packedScene);
+    }
+
     public async Task LoadLevel(PackedScene devScene)
     {
         var path = devScene.ResourcePath;

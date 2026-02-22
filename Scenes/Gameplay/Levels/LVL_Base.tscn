@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://dk0i24akk7u28" path="res://GameAssets/Tiles/TS_Decoration.tres" id="2_gp204"]
 [ext_resource type="Texture2D" uid="uid://wigl2811x36s" path="res://GameAssets/UI/GameBackground.png" id="2_kk0gg"]
 [ext_resource type="Texture2D" uid="uid://du5dktucaony6" path="res://GameAssets/UI/Background.png" id="3_604bx"]
+[ext_resource type="Texture2D" uid="uid://ellowhoulelk" path="res://SourceArt/Art/BrokenSpaceShip.png" id="7_uipp4"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kk0gg"]
 particles_animation = true
@@ -52,6 +53,9 @@ anim_speed_max = 1.0
 anim_offset_max = 1.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hl6bf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uipp4"]
+size = Vector2(56, 32)
 
 [node name="LVL_Base" type="Node2D" unique_id=1507039194]
 
@@ -101,4 +105,20 @@ tile_set = ExtResource("2_fic6j")
 
 [node name="Items" type="Node2D" parent="." unique_id=111838279]
 
+[node name="StartDecoration" type="StaticBody2D" parent="Items" unique_id=2016148031]
+z_index = 50
+collision_layer = 2
+collision_mask = 0
+
+[node name="StartDecoration" type="Sprite2D" parent="Items/StartDecoration" unique_id=1087534635]
+texture_filter = 1
+texture = ExtResource("7_uipp4")
+region_enabled = true
+region_rect = Rect2(0, 32, 64, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/StartDecoration" unique_id=822560904]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_uipp4")
+
 [node name="PlayerSpawnPoint" type="Marker2D" parent="." unique_id=1171513996 groups=["PlayerSpawnPoint"]]
+z_index = 100
