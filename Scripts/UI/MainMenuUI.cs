@@ -45,6 +45,24 @@ public partial class MainMenuUI : UIBase
 
         _startPlate.Visible = false;
     }
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        // 键盘
+        if (@event is InputEventKey keyEvent && keyEvent.Pressed)
+        {
+            OnPressStartPressed();
+        }
+        // 手柄
+        else if (@event is InputEventJoypadButton joyEvent && joyEvent.Pressed)
+        {
+            OnPressStartPressed();
+        }
+        // 鼠标
+        else if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
+        {
+            OnPressStartPressed();
+        }
+    }
     public override void _Process(double delta)
     {
         base._Process(delta);
@@ -107,6 +125,7 @@ public partial class MainMenuUI : UIBase
     }
     private void OnPressStartPressed()
     {
+        Game.Instance.Get<AudioService>().PlaySfx(_confirmSound);
         _pressStartButton.Visible = false;
         _startPlate.Visible=true;
     }
