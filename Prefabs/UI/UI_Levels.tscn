@@ -91,7 +91,7 @@ _back = NodePath("Back")
 _hoverSound = ExtResource("3_m6eo5")
 _pressSound = ExtResource("4_v4pbg")
 _gameBgm = ExtResource("5_7cum8")
-finishedCnt = 2
+finishedCnt = 5
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=854664691]
 layout_mode = 1
@@ -366,6 +366,166 @@ rotation = 3.1415927
 texture = SubResource("AtlasTexture_7uusg")
 
 [node name="WireUp" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton3" unique_id=2046987295]
+z_index = -1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.5
+offset_top = -22.5
+offset_right = 59.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+texture = SubResource("AtlasTexture_r8jwr")
+
+[node name="LevelButton4" type="TextureRect" parent="ScrollContainer/GridContainer" unique_id=133754203]
+z_index = 1
+texture_filter = 1
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ebodd")
+metadata/LevelPath = "res://Scenes/Gameplay/Levels/LVL_01_04.tscn"
+
+[node name="WireRight" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton4" unique_id=1332867702]
+z_index = -1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 48.5
+offset_top = -18.5
+offset_right = 88.5
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+texture = SubResource("AtlasTexture_7ihf6")
+
+[node name="WireLeft" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton4" unique_id=1649169304]
+z_index = -1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = -18.5
+offset_right = 17.5
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+texture = SubResource("AtlasTexture_7cum8")
+
+[node name="WireDown" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton4" unique_id=59471587]
+z_index = -1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.5
+offset_top = 62.5
+offset_right = 59.5
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+texture = SubResource("AtlasTexture_7uusg")
+
+[node name="WireUp" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton4" unique_id=775372734]
+z_index = -1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.5
+offset_top = -22.5
+offset_right = 59.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+texture = SubResource("AtlasTexture_r8jwr")
+
+[node name="LevelButton5" type="TextureRect" parent="ScrollContainer/GridContainer" unique_id=1298687830]
+z_index = 1
+texture_filter = 1
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ebodd")
+metadata/LevelPath = "res://Scenes/Gameplay/Levels/LVL_01_05.tscn"
+
+[node name="WireRight" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton5" unique_id=756832352]
+z_index = -1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 48.5
+offset_top = -18.5
+offset_right = 88.5
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+texture = SubResource("AtlasTexture_7ihf6")
+
+[node name="WireLeft" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton5" unique_id=1904830679]
+z_index = -1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = -18.5
+offset_right = 17.5
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+texture = SubResource("AtlasTexture_7cum8")
+
+[node name="WireDown" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton5" unique_id=140531872]
+z_index = -1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.5
+offset_top = 62.5
+offset_right = 59.5
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+texture = SubResource("AtlasTexture_7uusg")
+
+[node name="WireUp" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton5" unique_id=1289961996]
 z_index = -1
 texture_filter = 1
 layout_mode = 1
