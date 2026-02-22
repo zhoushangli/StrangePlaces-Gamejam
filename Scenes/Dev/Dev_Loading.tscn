@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bcggrsvm5og6r"]
 
 [ext_resource type="Texture2D" uid="uid://bsl2hb8yfpkgo" path="res://SourceArt/Art/TittleBG.png" id="1_bc7hk"]
-[ext_resource type="Script" uid="uid://dme86aht2i5w5" path="res://Scripts/UI/LoadingUI.cs" id="2_1fb8v"]
+[ext_resource type="Script" uid="uid://dme86aht2i5w5" path="res://Scripts/UI/LoadingUI.gd" id="2_1fb8v"]
 [ext_resource type="Texture2D" uid="uid://dh4okhhagt068" path="res://SourceArt/Art/LoadingBar.png" id="3_duvf8"]
 [ext_resource type="Texture2D" uid="uid://pbnjevnc3l72" path="res://SourceArt/Art/LoadingBar2.png" id="4_s2nfi"]
 [ext_resource type="PackedScene" uid="uid://clawea8c87ef7" path="res://Prefabs/Items/A_Altar.tscn" id="5_pcgx7"]
@@ -76,3 +76,4 @@ script = ExtResource("2_1fb8v")
 [node name="Altar" parent="VBoxContainer" unique_id=1398987610 instance=ExtResource("5_pcgx7")]
 position = Vector2(17, 61)
 scale = Vector2(4.34375, 4.34375)
+

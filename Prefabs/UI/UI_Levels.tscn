@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bonf6smhcu8ua"]
 
-[ext_resource type="Script" uid="uid://3yo5sg81murf" path="res://Scripts/UI/LevelsUI.cs" id="1_hpvkl"]
+[ext_resource type="Script" uid="uid://3yo5sg81murf" path="res://Scripts/UI/LevelsUI.gd" id="1_hpvkl"]
 [ext_resource type="Texture2D" uid="uid://cembpbvagw8u0" path="res://SourceArt/Art/LevelButton.png" id="2_2cd8h"]
 [ext_resource type="AudioStream" uid="uid://cdjxp38q3a8bf" path="res://GameAssets/Sounds/FocusOnUI.wav" id="3_m6eo5"]
 [ext_resource type="AudioStream" uid="uid://dscs5qql0f4wh" path="res://GameAssets/Sounds/ConfirmUI.wav" id="4_v4pbg"]
 [ext_resource type="AudioStream" uid="uid://dvq5ml12m06a" path="res://GameAssets/Audio/Game_BGM.mp3" id="5_7cum8"]
-[ext_resource type="Script" uid="uid://cxjqsegf56f4v" path="res://Scripts/Utils/SnakeContainer.cs" id="5_v4pbg"]
+[ext_resource type="Script" uid="uid://cxjqsegf56f4v" path="res://Scripts/Utils/SnakeContainer.gd" id="5_v4pbg"]
 [ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://SourceArt/Art/UIColumns.png" id="6_ebodd"]
 [ext_resource type="Texture2D" uid="uid://pbnjevnc3l72" path="res://SourceArt/Art/LoadingBar2.png" id="7_7ihf6"]
 [ext_resource type="Texture2D" uid="uid://dm528srquwr31" path="res://SourceArt/Art/whiteTittleLine.png" id="8_7ihf6"]
@@ -776,3 +776,4 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
 texture = SubResource("AtlasTexture_7ihf6")
+

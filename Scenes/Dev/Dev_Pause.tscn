@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ch0boov3k2hbg"]
 
-[ext_resource type="Script" uid="uid://bh8f8tuywtp3r" path="res://Scripts/UI/PauseUI.cs" id="1_f4bxa"]
+[ext_resource type="Script" uid="uid://bh8f8tuywtp3r" path="res://Scripts/UI/PauseUI.gd" id="1_f4bxa"]
 [ext_resource type="AudioStream" uid="uid://cdjxp38q3a8bf" path="res://GameAssets/Sounds/FocusOnUI.wav" id="2_b15dj"]
 [ext_resource type="AudioStream" uid="uid://dscs5qql0f4wh" path="res://GameAssets/Sounds/ConfirmUI.wav" id="3_b15dj"]
 [ext_resource type="Texture2D" uid="uid://bsl2hb8yfpkgo" path="res://SourceArt/Art/TittleBG.png" id="3_bcuor"]
@@ -235,3 +235,4 @@ text = "Pasued"
 label_settings = SubResource("LabelSettings_jkqcs")
 horizontal_alignment = 1
 vertical_alignment = 1
+

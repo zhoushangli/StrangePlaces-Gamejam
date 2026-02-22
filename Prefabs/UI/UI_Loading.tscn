@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdk4v6qgl4jc4"]
 
-[ext_resource type="Script" uid="uid://dme86aht2i5w5" path="res://Scripts/UI/LoadingUI.cs" id="1_0vq00"]
+[ext_resource type="Script" uid="uid://dme86aht2i5w5" path="res://Scripts/UI/LoadingUI.gd" id="1_0vq00"]
 [ext_resource type="Texture2D" uid="uid://dh4okhhagt068" path="res://SourceArt/Art/LoadingBar.png" id="1_edgpl"]
 [ext_resource type="Texture2D" uid="uid://bsl2hb8yfpkgo" path="res://SourceArt/Art/TittleBG.png" id="2_qwbw8"]
 [ext_resource type="Texture2D" uid="uid://pbnjevnc3l72" path="res://SourceArt/Art/LoadingBar2.png" id="2_v6iav"]
@@ -109,3 +109,4 @@ scale = Vector2(4.34375, 4.34375)
 amount = 90
 texture = SubResource("AtlasTexture_jibds")
 process_material = SubResource("ParticleProcessMaterial_agn7g")
+

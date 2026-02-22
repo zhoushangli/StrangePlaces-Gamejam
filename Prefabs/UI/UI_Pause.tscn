@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3p4uipause01"]
 
-[ext_resource type="Script" uid="uid://bh8f8tuywtp3r" path="res://Scripts/UI/PauseUI.cs" id="1_pause"]
+[ext_resource type="Script" uid="uid://bh8f8tuywtp3r" path="res://Scripts/UI/PauseUI.gd" id="1_pause"]
 [ext_resource type="Theme" uid="uid://bqg6dkxee12o7" path="res://ThemeAndStyleBox/ThemeTest1.tres" id="1_vmyw8"]
 [ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://SourceArt/Art/UIColumns.png" id="2_4vu4q"]
 [ext_resource type="AudioStream" uid="uid://cdjxp38q3a8bf" path="res://GameAssets/Sounds/FocusOnUI.wav" id="3_khdlj"]
@@ -229,3 +229,4 @@ text = "Pasued"
 label_settings = SubResource("LabelSettings_wpm46")
 horizontal_alignment = 1
 vertical_alignment = 1
+

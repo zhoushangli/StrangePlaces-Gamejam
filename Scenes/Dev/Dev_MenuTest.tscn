@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://7nkew6rq1wfj"]
 
-[ext_resource type="Script" uid="uid://dwg2a0tkrl5yu" path="res://Scripts/UI/WangZhihangTest.cs" id="1_2qcjd"]
+[ext_resource type="Script" uid="uid://dwg2a0tkrl5yu" path="res://Scripts/UI/WangZhihangTest.gd" id="1_2qcjd"]
 
 [node name="DevMenuTest" type="Node2D" unique_id=729530399]
 script = ExtResource("1_2qcjd")
+

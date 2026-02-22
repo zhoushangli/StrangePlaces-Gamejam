@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://b5x7boot001"]
 
-[ext_resource type="Script" uid="uid://ccnis6up036ev" path="res://Scripts/Core/Boot.cs" id="1_boot"]
+[ext_resource type="Script" uid="uid://ccnis6up036ev" path="res://Scripts/Core/Boot.gd" id="1_boot"]
 [ext_resource type="PackedScene" uid="uid://qkhelyf1i81l" path="res://Scenes/Gameplay/Levels/LVL_01_05.tscn" id="2_ckskn"]
 
 [node name="Boot" type="Node" unique_id=1978485387]
 script = ExtResource("1_boot")
 _devMode = 0
 _devScene = ExtResource("2_ckskn")
+

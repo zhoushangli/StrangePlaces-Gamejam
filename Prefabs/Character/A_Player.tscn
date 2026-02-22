@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://3v5jgj2ngpqg"]
 
-[ext_resource type="Script" uid="uid://bemx6fy7ugfuv" path="res://Scripts/Gameplay/PlayerController.cs" id="1_70xw6"]
+[ext_resource type="Script" uid="uid://bemx6fy7ugfuv" path="res://Scripts/Gameplay/PlayerController.gd" id="1_70xw6"]
 [ext_resource type="SpriteFrames" uid="uid://br8myp4xkg4su" path="res://GameAssets/Player.res" id="2_bwbkj"]
 [ext_resource type="Texture2D" uid="uid://djv34fd2h57ob" path="res://SourceArt/Art/PlayerShaddow.png" id="2_manhs"]
 [ext_resource type="AudioStream" uid="uid://r0g52b1fb00p" path="res://SourceArt/Sounds/WalkA.wav" id="2_tqtxg"]
@@ -36,3 +36,4 @@ texture_filter = 1
 position = Vector2(0, -12)
 sprite_frames = ExtResource("2_bwbkj")
 animation = &"idle"
+

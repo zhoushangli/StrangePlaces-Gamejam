@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6iwinjotxbnp"]
 
-[ext_resource type="Script" uid="uid://i0igxknl4l2" path="res://Scripts/Gameplay/Quantum/QuantumService.cs" id="1_t21or"]
+[ext_resource type="Script" uid="uid://i0igxknl4l2" path="res://Scripts/Gameplay/Quantum/QuantumService.gd" id="1_t21or"]
 
 [node name="SvcQuantumService" type="Node" unique_id=86177796]
 script = ExtResource("1_t21or")
+

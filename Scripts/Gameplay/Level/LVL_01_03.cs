@@ -1,7 +1,0 @@
-using Godot;
-using Protogame2D.Core;
-
-public partial class LVL_01_03 : LVL_Base
-{
-
-}

@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://dqpgmnh6kb0nw"]
 
 [ext_resource type="PackedScene" uid="uid://gpddo5x8ekle" path="res://Scenes/Gameplay/Levels/LVL_Base.tscn" id="1_nam2e"]
-[ext_resource type="Script" uid="uid://dm7nex4n01uhk" path="res://Scripts/Gameplay/Level/LVL_01_02.cs" id="2_ydivj"]
-[ext_resource type="Script" uid="uid://c03t5le0gens4" path="res://Scripts/Gameplay/Quantum/QuantumObserver.cs" id="3_1lukm"]
+[ext_resource type="Script" uid="uid://dm7nex4n01uhk" path="res://Scripts/Gameplay/Level/LVL_01_02.gd" id="2_ydivj"]
+[ext_resource type="Script" uid="uid://c03t5le0gens4" path="res://Scripts/Gameplay/Quantum/QuantumObserver.gd" id="3_1lukm"]
 [ext_resource type="Texture2D" uid="uid://dxl0khv2n27x0" path="res://GameAssets/PlaceHolder/EnvironmentLight.png" id="4_82har"]
 [ext_resource type="PackedScene" uid="uid://dblk24g13wf6t" path="res://Prefabs/Items/A_QuantumItem.tscn" id="5_a1534"]
 
@@ -65,3 +65,4 @@ position = Vector2(112, 160)
 
 [node name="Portal" parent="Items" parent_id_path=PackedInt32Array(111838279) index="6" unique_id=1877675497]
 position = Vector2(480, 272)
+

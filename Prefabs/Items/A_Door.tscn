@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dke4jehd6ih2n"]
 
-[ext_resource type="Script" uid="uid://cla7lfty2xvu8" path="res://Scripts/Gameplay/DoorController.cs" id="1_ll2c1"]
+[ext_resource type="Script" uid="uid://cla7lfty2xvu8" path="res://Scripts/Gameplay/DoorController.gd" id="1_ll2c1"]
 [ext_resource type="SpriteFrames" uid="uid://cx2d4w3kjem7g" path="res://GameAssets/Door.res" id="1_nrfmi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ll2c1"]
@@ -22,3 +22,4 @@ animation = &"deactive"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=109969457]
 shape = SubResource("RectangleShape2D_ll2c1")
+

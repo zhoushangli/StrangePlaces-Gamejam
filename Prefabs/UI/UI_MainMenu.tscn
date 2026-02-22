@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cctb7slglly4y"]
 
-[ext_resource type="Script" uid="uid://de8p44ai0gio2" path="res://Scripts/UI/MainMenuUI.cs" id="1_slj2r"]
+[ext_resource type="Script" uid="uid://de8p44ai0gio2" path="res://Scripts/UI/MainMenuUI.gd" id="1_slj2r"]
 [ext_resource type="AudioStream" uid="uid://cdjxp38q3a8bf" path="res://GameAssets/Sounds/FocusOnUI.wav" id="2_qm34t"]
 [ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://SourceArt/Art/UIColumns.png" id="2_wiopq"]
 [ext_resource type="AudioStream" uid="uid://dscs5qql0f4wh" path="res://GameAssets/Sounds/ConfirmUI.wav" id="3_wv2y8"]
@@ -262,3 +262,4 @@ text = "Press Start"
 label_settings = SubResource("LabelSettings_m4thw")
 horizontal_alignment = 1
 vertical_alignment = 1
+

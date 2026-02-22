@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://c8u0uiroot01"]
+[gd_scene format=3 uid="uid://dl7u23h6eaago"]
 
-[ext_resource type="Script" uid="uid://capi73uikyash" path="res://Scripts/Services/UIService.cs" id="1_n4iyp"]
+[ext_resource type="Script" uid="uid://capi73uikyash" path="res://Scripts/Services/UIService.gd" id="1_n4iyp"]
 
 [node name="UIService" type="CanvasLayer" unique_id=1642101394]
 script = ExtResource("1_n4iyp")
@@ -20,3 +20,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+

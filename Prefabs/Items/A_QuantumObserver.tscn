@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://7bwlrrrdkm0y"]
 
-[ext_resource type="Script" uid="uid://c03t5le0gens4" path="res://Scripts/Gameplay/Quantum/QuantumObserver.cs" id="1_xn1tq"]
+[ext_resource type="Script" uid="uid://c03t5le0gens4" path="res://Scripts/Gameplay/Quantum/QuantumObserver.gd" id="1_xn1tq"]
 [ext_resource type="Texture2D" uid="uid://dxl0khv2n27x0" path="res://GameAssets/PlaceHolder/EnvironmentLight.png" id="2_b6ol0"]
 
 [node name="QuantumObserver" type="Area2D" unique_id=1997136385 node_paths=PackedStringArray("_light")]
@@ -17,3 +17,4 @@ polygon = PackedVector2Array(16, -80, 120, -80, 72, 80, -40, 80)
 texture_filter = 1
 position = Vector2(40, 0)
 texture = ExtResource("2_b6ol0")
+

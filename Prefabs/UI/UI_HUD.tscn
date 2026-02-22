@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bswuajqoj1gk0"]
 
-[ext_resource type="Script" uid="uid://cvvohfevixwlb" path="res://Scripts/UI/HUDUI.cs" id="1_autwb"]
+[ext_resource type="Script" uid="uid://cvvohfevixwlb" path="res://Scripts/UI/HUDUI.gd" id="1_autwb"]
 [ext_resource type="Texture2D" uid="uid://bqjxbv85st8j0" path="res://SourceArt/Art/RestartButton.png" id="2_72h75"]
 [ext_resource type="FontFile" uid="uid://gbjcxp6a00xx" path="res://GameAssets/Fonts/PressStart2P.ttf" id="3_72h75"]
 
@@ -72,3 +72,4 @@ text = "R"
 label_settings = SubResource("LabelSettings_m0lj5")
 horizontal_alignment = 1
 vertical_alignment = 1
+

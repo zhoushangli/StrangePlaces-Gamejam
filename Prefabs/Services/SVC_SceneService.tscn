@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://f6k63fob4ehn"]
 
-[ext_resource type="Script" uid="uid://52qmhyi7yj2j" path="res://Scripts/Services/SceneService.cs" id="1_vrk2q"]
+[ext_resource type="Script" uid="uid://52qmhyi7yj2j" path="res://Scripts/Services/SceneService.gd" id="1_vrk2q"]
 
 [node name="SvcSceneService" type="Node" unique_id=1736908300]
 script = ExtResource("1_vrk2q")
+

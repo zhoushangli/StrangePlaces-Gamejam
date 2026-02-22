@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://dk0i24akk7u28" path="res://GameAssets/Tiles/TS_Decoration.tres" id="2_o2sg3"]
 [ext_resource type="TileSet" uid="uid://bm25owt6xtcf" path="res://GameAssets/Tiles/TS_Platform.tres" id="3_t2yta"]
 [ext_resource type="Texture2D" uid="uid://chhq3sxcpro4" path="res://SourceArt/Art/Particles/SnowParticle.png" id="6_5v381"]
-[ext_resource type="Script" uid="uid://cvvohfevixwlb" path="res://Scripts/UI/HUDUI.cs" id="6_likr5"]
+[ext_resource type="Script" uid="uid://cvvohfevixwlb" path="res://Scripts/UI/HUDUI.gd" id="6_likr5"]
 [ext_resource type="Texture2D" uid="uid://bqjxbv85st8j0" path="res://SourceArt/Art/RestartButton.png" id="6_wtogs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ws102"]
@@ -168,3 +168,4 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture_normal = SubResource("AtlasTexture_5v381")
 texture_pressed = SubResource("AtlasTexture_lbxyb")
+

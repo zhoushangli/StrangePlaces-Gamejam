@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dblk24g13wf6t"]
 
-[ext_resource type="Script" uid="uid://cjb7pybyviwbu" path="res://Scripts/Gameplay/Quantum/QuantumItem.cs" id="1_fjpyp"]
+[ext_resource type="Script" uid="uid://cjb7pybyviwbu" path="res://Scripts/Gameplay/Quantum/QuantumItem.gd" id="1_fjpyp"]
 [ext_resource type="AudioStream" uid="uid://difntplom4qfx" path="res://GameAssets/Sounds/QuantumMove.wav" id="2_c6qkn"]
 [ext_resource type="Texture2D" uid="uid://b101mains5bwr" path="res://GameAssets/PlaceHolder/QuantumItem.png" id="2_fjpyp"]
 [ext_resource type="Texture2D" uid="uid://bo7raqd4a35me" path="res://GameAssets/Debris.png" id="3_pctmn"]
@@ -102,3 +102,4 @@ texture = ExtResource("5_bjstu")
 lifetime = 0.6
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_ry6ox")
+

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://beds88wxsu2pn"]
 
-[ext_resource type="Script" uid="uid://cwnm6womblbk" path="res://Scripts/Gameplay/PortalController.cs" id="1_rvt2w"]
+[ext_resource type="Script" uid="uid://cwnm6womblbk" path="res://Scripts/Gameplay/PortalController.gd" id="1_rvt2w"]
 [ext_resource type="SpriteFrames" uid="uid://c338g6lwpmpfm" path="res://GameAssets/Portal.res" id="1_xsr2p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvt2w"]
@@ -20,3 +20,4 @@ frame_progress = 0.061499264
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1742744790]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_rvt2w")
+

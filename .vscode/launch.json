@@ -2,10 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Godot 4.6 Mono",
+            "name": "Launch Godot 4.6",
             "type": "coreclr",
             "request": "launch",
-            "program": "C:\\Work\\Godot\\Godot_v4.6-stable_mono_win64\\Godot_v4.6-stable_mono_win64\\Godot_v4.6-stable_mono_win64.exe",
+            "program": "C:\\Work\\Godot\\Godot_v4.6.1-stable_win64.exe\\Godot.exe",
             "args": [
                 "--path",
                 "${workspaceFolder}",
@@ -19,7 +19,7 @@
             "name": "Attach to Running Godot",
             "type": "coreclr",
             "request": "attach",
-            "processName": "Godot_v4.6-stable_mono_win64"
+            "processName": "Godot"
         }
     ]
 }
