@@ -1,7 +1,8 @@
 [gd_resource type="AtlasTexture" format=3 uid="uid://c2gnma4kcvrh0"]
 
-[ext_resource type="Texture2D" uid="uid://c4jmxpj4tcly3" path="res://SourceArt/Art/Door.png" id="1_bxsm6"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5cq0f"]
+load_path = "res://.godot/imported/Door.png-721301023d24b43b81220e334fce4f68.ctex"
 
 [resource]
-atlas = ExtResource("1_bxsm6")
+atlas = SubResource("CompressedTexture2D_5cq0f")
 region = Rect2(0, 32, 16, 32)

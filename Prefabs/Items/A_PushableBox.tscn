@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmum6"]
 size = Vector2(14, 14)
 
-[node name="PushableBox" type="StaticBody2D" unique_id=475921959]
+[node name="PushableBox" type="AnimatableBody2D" unique_id=1119444340]
 z_index = 20
 collision_layer = 64
 collision_mask = 0
