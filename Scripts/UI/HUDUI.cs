@@ -1,4 +1,6 @@
 using Godot;
+using Protogame2D.Core;
+using Protogame2D.Services;
 using Protogame2D.UI;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -19,6 +21,7 @@ public partial class HUDUI : UIBase
 	public override void OnOpen(object args)
     {
 		pressing = false;
+		
 		_restartButton.ButtonDown += OnRestartPressed;
 		_restartButton.ButtonUp += OnRestartReleased;
     }
@@ -26,6 +29,14 @@ public partial class HUDUI : UIBase
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (Input.IsActionJustPressed("restart"))
+		{
+			pressing = true;
+		}
+		if (Input.IsActionJustReleased("restart"))
+		{
+			pressing = false;
+		}
 		// deltaTime = delta;
 		// _progressCircle.Value -= delta * resetSpeed;
 		// _progressCircle.Value = Math.Max(_progressCircle.Value, 0);
@@ -40,7 +51,12 @@ public partial class HUDUI : UIBase
 			_progressCircle.Value += delta * 100.0f/restartTime;
 			if(_progressCircle.Value >= 99)
 			{
-				GetTree().ReloadCurrentScene();
+				GD.Print("Restarting.");
+				_progressCircle.Value = 0;
+				string currentScene = GetTree().CurrentScene.SceneFilePath;
+				GetTree().UnloadCurrentScene();
+				
+				_ = Game.Instance.Get<LevelService>().LoadLevel(currentScene);
 			}
 		}
 		else

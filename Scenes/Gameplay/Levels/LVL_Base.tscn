@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://gpddo5x8ekle"]
 
 [ext_resource type="TileSet" uid="uid://ddse6ycafnye1" path="res://GameAssets/Tiles/TS_Floor.tres" id="1_604bx"]
+[ext_resource type="Script" uid="uid://bgus20ibhngne" path="res://Scripts/Gameplay/Level/LVL_Base.cs" id="1_fic6j"]
 [ext_resource type="Texture2D" uid="uid://6q883k8py2co" path="res://SourceArt/Art/Star.png" id="1_kk0gg"]
 [ext_resource type="TileSet" uid="uid://bm25owt6xtcf" path="res://GameAssets/Tiles/TS_Platform.tres" id="2_fic6j"]
 [ext_resource type="TileSet" uid="uid://dk0i24akk7u28" path="res://GameAssets/Tiles/TS_Decoration.tres" id="2_gp204"]
@@ -58,6 +59,7 @@ anim_offset_max = 1.0
 size = Vector2(56, 32)
 
 [node name="LVL_Base" type="Node2D" unique_id=1507039194]
+script = ExtResource("1_fic6j")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=460667370]
 position = Vector2(320, 192)
