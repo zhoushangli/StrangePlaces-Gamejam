@@ -1,7 +1,7 @@
 using Godot;
 using Protogame2D.Core;
 
-public partial class LVL_01_02 : Node2D
+public partial class LVL_01_02 : LVL_Base
 {
     [Export] private QuantumObserver _observer;
     [Export] private float _observerToggleInterval = 2f;

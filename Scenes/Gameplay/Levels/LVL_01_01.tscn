@@ -62,9 +62,5 @@ position = Vector2(344, 216)
 [node name="Anchor_2" type="Node2D" parent="Items/Anchors" index="1" unique_id=259926997]
 position = Vector2(344, 264)
 
-[node name="StartDecoration" parent="Items" index="3" unique_id=1087534635]
+[node name="StartDecoration" parent="Items" index="3" unique_id=2016148031]
 position = Vector2(80, 208)
-
-[node name="PlayerSpawnPoint" parent="." index="4" unique_id=1171513996]
-z_index = 100
-position = Vector2(120, 216)
