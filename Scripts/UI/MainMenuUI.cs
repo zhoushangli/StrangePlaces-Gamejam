@@ -17,10 +17,14 @@ public partial class MainMenuUI : UIBase
     [Export] float sparkSpeed;
     [Export] private AudioStream _hoverSound; 
     [Export] private AudioStream _confirmSound; 
+    [Export] private AudioStream _bgm;
+    [Export] private PackedScene _firstLevel;
+    bool startPressed;
     float increasing;
     public override void OnOpen(object args)
     {
-
+        startPressed = false;
+        Game.Instance.Get<AudioService>().PlayBgm(_bgm);
         increasing = 1.0f;
         _startButton.Pressed += OnStartPressed;
         _quitButton.Pressed += OnQuitPressed;
@@ -77,8 +81,15 @@ public partial class MainMenuUI : UIBase
 
     private void OnStartPressed()
     {
-        Game.Instance.Get<UIService>().CloseTop();
-        Game.Instance.Get<GameStateService>().ChangeGameState(GameState.Game);
+        if (!startPressed)
+        {
+            startPressed = true;
+            
+            Game.Instance.Get<GameStateService>().ChangeGameState(GameState.Game);
+            _= Game.Instance.Get<LevelService>().LoadLevel(_firstLevel);
+
+        }
+        
     }
 
     private void OnQuitPressed()
@@ -87,7 +98,8 @@ public partial class MainMenuUI : UIBase
     }
     private void OnLevelsPressed()
     {
-        
+        Game.Instance.Get<UIService>().CloseTop();
+        Game.Instance.Get<UIService>().Open<LevelsUI>();
     }
     private void OnPressStartPressed()
     {
