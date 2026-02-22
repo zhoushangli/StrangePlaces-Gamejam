@@ -32,7 +32,7 @@ script = ExtResource("1_autwb")
 _progressCircle = NodePath("TextureProgressBar")
 _restartButton = NodePath("Restart")
 restartTime = 3.0
-resetSpeed = 50.0
+resetSpeed = 60.0
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1541998847]
 texture_filter = 1
