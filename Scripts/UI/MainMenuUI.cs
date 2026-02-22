@@ -18,6 +18,7 @@ public partial class MainMenuUI : UIBase
     [Export] private AudioStream _hoverSound; 
     [Export] private AudioStream _confirmSound; 
     [Export] private AudioStream _bgm;
+    [Export] private AudioStream _gameBgm;
     [Export] private string _firstLevelPath;
     bool startPressed;
     float increasing;
@@ -85,6 +86,7 @@ public partial class MainMenuUI : UIBase
         {
             startPressed = true;
             Game.Instance.Get<UIService>().CloseTop();
+            Game.Instance.Get<AudioService>().PlayBgm(_gameBgm);
             Game.Instance.Get<GameStateService>().ChangeGameState(GameState.Game);
             _=Game.Instance.Get<LevelService>().LoadLevel(_firstLevelPath);
             

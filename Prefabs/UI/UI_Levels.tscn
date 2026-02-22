@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cembpbvagw8u0" path="res://SourceArt/Art/LevelButton.png" id="2_2cd8h"]
 [ext_resource type="AudioStream" uid="uid://cdjxp38q3a8bf" path="res://SourceArt/Sounds/FocusOnUI.wav" id="3_m6eo5"]
 [ext_resource type="AudioStream" uid="uid://dscs5qql0f4wh" path="res://SourceArt/Sounds/ConfirmUI.wav" id="4_v4pbg"]
+[ext_resource type="AudioStream" uid="uid://dvq5ml12m06a" path="res://SourceArt/Audio/Game_BGM.mp3" id="5_7cum8"]
 [ext_resource type="Script" uid="uid://cxjqsegf56f4v" path="res://Scripts/Utils/SnakeContainer.cs" id="5_v4pbg"]
 [ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://SourceArt/Art/UIColumns.png" id="6_ebodd"]
 [ext_resource type="Texture2D" uid="uid://pbnjevnc3l72" path="res://SourceArt/Art/LoadingBar2.png" id="7_7ihf6"]
@@ -89,6 +90,7 @@ _start = NodePath("Start")
 _back = NodePath("Back")
 _hoverSound = ExtResource("3_m6eo5")
 _pressSound = ExtResource("4_v4pbg")
+_gameBgm = ExtResource("5_7cum8")
 finishedCnt = 2
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=854664691]

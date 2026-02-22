@@ -17,6 +17,7 @@ public partial class LevelsUI : UIBase
 	[Export] private TextureButton _back;
 	[Export] private AudioStream _hoverSound;
 	[Export] private AudioStream _pressSound;
+	[Export] private AudioStream _gameBgm;
 	
 	[Export] private int finishedCnt;
 	private Dictionary<TextureRect, bool> levelUnlocked;
@@ -179,6 +180,7 @@ public partial class LevelsUI : UIBase
 	{//针对Level Buttons的函数
 
 		Game.Instance.Get<AudioService>().PlaySfx(_pressSound);
+		Game.Instance.Get<AudioService>().PlayBgm(_gameBgm);
 		Game.Instance.Get<UIService>().CloseTop();
         Game.Instance.Get<GameStateService>().ChangeGameState(GameState.Game);
         _=Game.Instance.Get<LevelService>().LoadLevel(levelButton.GetMeta("LevelPath").AsString());

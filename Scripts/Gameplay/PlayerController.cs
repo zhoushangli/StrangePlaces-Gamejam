@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Godot;
+using Protogame2D.Core;
 using Protogame2D.Utils;
 
 public partial class PlayerController : CharacterBody2D
@@ -17,12 +19,16 @@ public partial class PlayerController : CharacterBody2D
 
     [ExportGroup("References")]
     [Export] private AnimatedSprite2D _anim;
+    [Export] private Godot.Collections.Array<AudioStream> _stepSounds;
 
     private readonly SimpleStateMachine<PlayerState> _fsm = new();
     private Vector2 _targetPosition;
 
     public override void _Ready()
     {
+        _anim.FrameChanged += StepSound;
+
+
         GlobalPosition = GridUtil.SnapToGrid(GlobalPosition, GridSize);
         _targetPosition = GlobalPosition;
 
@@ -75,7 +81,23 @@ public partial class PlayerController : CharacterBody2D
     {
         _fsm.Update((float)delta);
     }
+    private void StepSound()//每次Frame Change都会调用该函数。如果此时Frame是步伐帧，则播放声音
+    {
+        
+        if (_anim.Animation == "walk")
+        {
+            if (_anim.Frame == 3)
+            {
+                Game.Instance.Get<AudioService>().PlaySfx(_stepSounds[0]);
+            }
+            else if (_anim.Frame == 7)
+            {
+                Game.Instance.Get<AudioService>().PlaySfx(_stepSounds[1]);
+            }
+        }
 
+
+    }
     private Vector2 ReadInputDirection()
     {
         if (Input.IsActionPressed("move_up"))

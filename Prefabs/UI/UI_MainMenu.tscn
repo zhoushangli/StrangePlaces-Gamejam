@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://6q883k8py2co" path="res://SourceArt/Art/Star.png" id="4_m4thw"]
 [ext_resource type="Texture2D" uid="uid://bqrohkpdvgx5o" path="res://SourceArt/Art/Tittle.png" id="4_qm34t"]
 [ext_resource type="Texture2D" uid="uid://i043qcyvbkd3" path="res://SourceArt/Art/TitleBackground.png" id="5_0rni8"]
+[ext_resource type="AudioStream" uid="uid://dvq5ml12m06a" path="res://SourceArt/Audio/Game_BGM.mp3" id="5_1747g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1747g"]
 atlas = ExtResource("4_m4thw")
@@ -59,6 +60,7 @@ sparkSpeed = 1.0
 _hoverSound = ExtResource("2_qm34t")
 _confirmSound = ExtResource("3_wv2y8")
 _bgm = ExtResource("4_0rni8")
+_gameBgm = ExtResource("5_1747g")
 _firstLevelPath = "res://Scenes/Gameplay/Levels/LVL_01_01.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=412180163]
