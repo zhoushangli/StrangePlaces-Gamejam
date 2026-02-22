@@ -56,7 +56,7 @@ public partial class Boot : Node
                     return;
                 case DevMode.Game:
                     Game.Instance.Get<GameStateService>().ChangeGameState(GameState.Game);
-                    await Game.Instance.Get<LevelService>().LoadLevel(_devScene.ResourcePath);
+                    await Game.Instance.Get<LevelService>().LoadLevel(_devScene);
                     return;
             }
         }
