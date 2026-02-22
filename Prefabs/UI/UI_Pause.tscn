@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bh8f8tuywtp3r" path="res://Scripts/UI/PauseUI.cs" id="1_pause"]
 [ext_resource type="Theme" uid="uid://bqg6dkxee12o7" path="res://ThemeAndStyleBox/ThemeTest1.tres" id="1_vmyw8"]
 [ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://SourceArt/Art/UIColumns.png" id="2_4vu4q"]
-[ext_resource type="Texture2D" uid="uid://bsl2hb8yfpkgo" path="res://SourceArt/Art/TittleBG.png" id="3_gbd60"]
 [ext_resource type="AudioStream" uid="uid://cdjxp38q3a8bf" path="res://GameAssets/Sounds/FocusOnUI.wav" id="3_khdlj"]
 [ext_resource type="AudioStream" uid="uid://dscs5qql0f4wh" path="res://GameAssets/Sounds/ConfirmUI.wav" id="4_btt0n"]
 [ext_resource type="FontFile" uid="uid://gbjcxp6a00xx" path="res://GameAssets/Fonts/PressStart2P.ttf" id="5_lvcxc"]
@@ -58,12 +57,6 @@ _exitButton = NodePath("NinePatchRect/VBoxContainer/ExitButton")
 _focusSound = ExtResource("3_khdlj")
 _confirmSound = ExtResource("4_btt0n")
 
-[node name="TittleBg" type="Sprite2D" parent="." unique_id=1313174331]
-texture_filter = 1
-position = Vector2(320.8333, 193.5)
-scale = Vector2(4.0104165, 4.0104165)
-texture = ExtResource("3_gbd60")
-
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1941019808]
 layout_mode = 1
 anchors_preset = 15
@@ -75,7 +68,7 @@ offset_right = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.026809303, 0.07882311, 0.17972419, 1)
+color = Color(0.02745098, 0.078431375, 0.18039216, 0.7176471)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1647472317]
 visible = false

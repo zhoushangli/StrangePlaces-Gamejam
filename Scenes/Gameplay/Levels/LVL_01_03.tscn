@@ -21,3 +21,6 @@ position = Vector2(344, 264)
 
 [node name="StartDecoration" parent="Items" parent_id_path=PackedInt32Array(111838279) index="1" unique_id=2016148031]
 position = Vector2(176, 208)
+
+[node name="Portal" parent="Items" parent_id_path=PackedInt32Array(111838279) index="2" unique_id=1877675497]
+position = Vector2(432, 168)

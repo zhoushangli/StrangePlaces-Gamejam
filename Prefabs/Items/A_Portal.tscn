@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://beds88wxsu2pn"]
+
+[ext_resource type="Script" uid="uid://cwnm6womblbk" path="res://Scripts/Gameplay/PortalController.cs" id="1_rvt2w"]
+[ext_resource type="SpriteFrames" uid="uid://c338g6lwpmpfm" path="res://GameAssets/Portal.res" id="1_xsr2p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvt2w"]
+size = Vector2(16, 16)
+
+[node name="Portal" type="Area2D" unique_id=1877675497 node_paths=PackedStringArray("_anim")]
+collision_mask = 4
+script = ExtResource("1_rvt2w")
+_anim = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1382099911]
+texture_filter = 1
+sprite_frames = ExtResource("1_xsr2p")
+animation = &"idle"
+frame_progress = 0.061499264
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1742744790]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_rvt2w")

@@ -55,7 +55,7 @@ public partial class ButtonController : Area2D
         _hasState = true;
         _isActive = active;
 
-        _anim?.Play(active ? "active" : "idle");
+        _anim?.Play(active ? "active" : "deactive");
         _door?.SetActive(active);
     }
 }

@@ -7,9 +7,18 @@ namespace Protogame2D.Services;
 
 public partial class LevelService : Node, IService
 {
+    private Node _currentLevelRoot;
+
     public void Init() { }
 
-    public void Shutdown() { }
+    public void Shutdown()
+    {
+        if (_currentLevelRoot != null)
+        {
+            _currentLevelRoot.QueueFree();
+            _currentLevelRoot = null;
+        }
+    }
 
     public async Task LoadLevel(string path)
     {
@@ -27,7 +36,7 @@ public partial class LevelService : Node, IService
     {
         var path = devScene.ResourcePath;
 
-        var rootNode = await Game.Instance.Get<SceneService>().ChangeScene(path);
+        _currentLevelRoot = await Game.Instance.Get<SceneService>().ChangeScene(path);
 
         var spawnPoint = GetTree().GetFirstNodeInGroup("PlayerSpawnPoint") as Node2D;
         if (spawnPoint != null)
@@ -35,7 +44,7 @@ public partial class LevelService : Node, IService
             var packedPlayerScene = GD.Load<PackedScene>("res://Prefabs/Character/A_Player.tscn");
             var playerInstance = packedPlayerScene.Instantiate<Node2D>();
             playerInstance.GlobalPosition = spawnPoint.GlobalPosition;
-            rootNode.AddChild(playerInstance);
+            _currentLevelRoot.AddChild(playerInstance);
         }
         else
         {
@@ -47,7 +56,7 @@ public partial class LevelService : Node, IService
             evt.Publish(new LevelReadyEvent
             {
                 Path = path,
-                RootNode = rootNode
+                RootNode = _currentLevelRoot
             });
             GD.Print($"[LevelService] LevelReady published: {path}");
         }

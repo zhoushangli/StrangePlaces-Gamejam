@@ -75,7 +75,6 @@ public partial class LevelsUI : UIBase
 			var oneLevel = levelsArray[i];
 			int currentCollumn = i % columns;
 			int currentRow = i/columns;
-			GD.Print($"关卡编号：{i}，位于行数：{currentRow},位于列数:{currentCollumn}");
 			if (levelFinished[oneLevel])
 			{
 				

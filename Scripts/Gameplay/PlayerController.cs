@@ -23,6 +23,9 @@ public partial class PlayerController : CharacterBody2D
 
     private readonly SimpleStateMachine<PlayerState> _fsm = new();
     private Vector2 _targetPosition;
+    private bool _isPassingLevel;
+
+    public AnimatedSprite2D Anim => _anim;
 
     public override void _Ready()
     {
@@ -79,11 +82,26 @@ public partial class PlayerController : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (_isPassingLevel)
+            return;
+
         _fsm.Update((float)delta);
     }
+
+    public void EnterLevelPassState()
+    {
+        if (_isPassingLevel)
+            return;
+
+        _isPassingLevel = true;
+        Velocity = Vector2.Zero;
+        _targetPosition = GlobalPosition;
+        _anim?.Play("pass_level");
+    }
+
     private void StepSound()//每次Frame Change都会调用该函数。如果此时Frame是步伐帧，则播放声音
     {
-        
+
         if (_anim.Animation == "walk")
         {
             if (_anim.Frame == 3)

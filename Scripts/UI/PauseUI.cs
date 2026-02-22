@@ -57,7 +57,7 @@ public partial class PauseUI : UIBase
     {
         Game.Instance.Get<AudioService>().PlaySfx(_confirmSound);
         Game.Instance.Get<UIService>().CloseTop();
-        Game.Instance.Get<UIService>().Open<MainMenuUI>();
+        Game.Instance.Get<GameStateService>().ChangeGameState(GameState.MainMenu);
     }
     private void OnQuitPressed()
     {

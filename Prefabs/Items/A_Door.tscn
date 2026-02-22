@@ -18,7 +18,7 @@ _collisionShape = NodePath("CollisionShape2D")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=759091499]
 position = Vector2(0, -8)
 sprite_frames = ExtResource("1_nrfmi")
-animation = &"idle"
+animation = &"deactive"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=109969457]
 shape = SubResource("RectangleShape2D_ll2c1")

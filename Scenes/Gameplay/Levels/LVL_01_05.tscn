@@ -50,3 +50,6 @@ _door = NodePath("../Door")
 
 [node name="Door" parent="Items" parent_id_path=PackedInt32Array(111838279) index="6" unique_id=1683156598 instance=ExtResource("6_7fkim")]
 position = Vector2(472, 216)
+
+[node name="Portal" parent="Items" parent_id_path=PackedInt32Array(111838279) index="7" unique_id=1877675497]
+position = Vector2(520, 208)

@@ -22,7 +22,7 @@ public partial class DoorController : StaticBody2D
         _hasState = true;
         _isActive = active;
 
-        _anim?.Play(active ? "active" : "idle");
+        _anim?.Play(active ? "active" : "deactive");
         if (_collisionShape != null)
         {
             _collisionShape.CallDeferred("set_disabled", active);
