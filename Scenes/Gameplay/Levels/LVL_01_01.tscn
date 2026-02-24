@@ -32,9 +32,18 @@ tile_map_data = PackedByteArray("AAANABAAAgABAAMAAAAOABAAAgABAAMAAAAPABAAAgADAAM
 [node name="Items" parent="." index="3" unique_id=111838279]
 z_index = 20
 
-[node name="QuantumItem" parent="Items" index="0" unique_id=383001199 node_paths=PackedStringArray("_anchors") instance=ExtResource("4_x5ux2")]
+[node name="QuantumItem" parent="Items" index="0" unique_id=383001199 node_paths=PackedStringArray("_anchor_root") instance=ExtResource("4_x5ux2")]
 position = Vector2(376, 216)
-_anchors = [NodePath("../Anchors/Anchor_1"), NodePath("../Anchors/Anchor_2")]
+_anchor_root = NodePath("Anchors")
+
+[node name="Anchors" type="Node2D" parent="Items/QuantumItem" index="4" unique_id=704599846]
+position = Vector2(-376, -216)
+
+[node name="Anchor_1" type="Node2D" parent="Items/QuantumItem/Anchors" index="0" unique_id=1452750612]
+position = Vector2(376, 216)
+
+[node name="Anchor_2" type="Node2D" parent="Items/QuantumItem/Anchors" index="1" unique_id=259926997]
+position = Vector2(344, 264)
 
 [node name="QuantumObserver" type="Area2D" parent="Items" index="1" unique_id=1997136385 node_paths=PackedStringArray("_light")]
 position = Vector2(288, 160)
@@ -54,19 +63,8 @@ position = Vector2(40, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("5_eydbl")
 
-[node name="Anchors" type="Node2D" parent="Items" index="2" unique_id=704599846]
-
-[node name="Anchor_1" type="Node2D" parent="Items/Anchors" index="0" unique_id=1452750612]
-position = Vector2(376, 216)
-
-[node name="Anchor_2" type="Node2D" parent="Items/Anchors" index="1" unique_id=259926997]
-position = Vector2(344, 264)
-
-[node name="StartDecoration" parent="Items" index="3" unique_id=2016148031]
+[node name="StartDecoration" parent="Items" index="2" unique_id=2016148031]
 position = Vector2(80, 208)
 
-[node name="StartDecoration" parent="Items/StartDecoration" index="0" unique_id=1087534635]
-region_enabled = false
-
-[node name="Portal" parent="Items" index="4" unique_id=1877675497]
+[node name="Portal" parent="Items" index="3" unique_id=1877675497]
 position = Vector2(520, 208)

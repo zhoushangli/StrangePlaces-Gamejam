@@ -54,6 +54,9 @@ func _enter_game() -> void:
 	var audio_service: AudioService = Game.Instance.get_service(Game.SERVICE_AUDIO)
 	audio_service.play_bgm("res://GameAssets/Audio/Game_BGM.mp3")
 
+	var ui_service: UIService = Game.Instance.get_service(Game.SERVICE_UI)
+	ui_service.open_ui("HUDUI")
+
 func _exit_game() -> void:
 	Game.Instance.unregister_service(Game.SERVICE_QUANTUM)
 	Game.Instance.unregister_service(Game.SERVICE_LEVEL)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dke4jehd6ih2n"]
 
 [ext_resource type="Script" uid="uid://cla7lfty2xvu8" path="res://Scripts/Gameplay/DoorController.gd" id="1_ll2c1"]
-[ext_resource type="SpriteFrames" uid="uid://cx2d4w3kjem7g" path="res://GameAssets/Door.res" id="1_nrfmi"]
+[ext_resource type="SpriteFrames" uid="uid://bkfogmatwp2d7" path="res://GameAssets/Environment/Door.res" id="2_ll2c1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ll2c1"]
 size = Vector2(16, 16)
@@ -17,9 +17,27 @@ _collisionShape = NodePath("CollisionShape2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=759091499]
 position = Vector2(0, -8)
-sprite_frames = ExtResource("1_nrfmi")
-animation = &"deactive"
+sprite_frames = ExtResource("2_ll2c1")
+animation = &"door"
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"output_section": true,
+"pending_changes": {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "",
+"source_uid": -1
+},
+"slice_section": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=109969457]
 shape = SubResource("RectangleShape2D_ll2c1")
-

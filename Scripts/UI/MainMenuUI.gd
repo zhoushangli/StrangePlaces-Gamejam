@@ -85,8 +85,6 @@ func _on_start_pressed() -> void:
 
 	var level: LevelService = Game.Instance.try_get_service(Game.SERVICE_LEVEL)
 	level.load_level.call_deferred(_firstLevelPath)
-	
-	ui.open_ui("HUDUI")
 
 func _on_quit_pressed() -> void:
 	return

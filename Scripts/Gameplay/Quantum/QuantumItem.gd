@@ -1,22 +1,25 @@
 extends StaticBody2D
 class_name QuantumItem
 
-@export var _anchors: Array[Node2D] = []
+@export var _anchor_root: Node2D
 @export var _moveSfx: AudioStream
 @export var _moveParticles: Array[GPUParticles2D] = []
 
 var is_observed := false
+var _anchors_position: Array[Vector2] = []
 var _anchor_index := 0
 
 func _ready() -> void:
+	_refresh_anchors_position()
+
 	var quantum_service: QuantumService = Game.Instance.try_get_service(Game.SERVICE_QUANTUM)
 	if quantum_service != null:
-		quantum_service.register_item(self)
+		quantum_service.register_item(self )
 	else:
 		push_warning("[QuantumItem] QuantumService not ready when '%s' entered tree." % name)
 
-	if not _anchors.is_empty() and _anchors[0] != null:
-		global_position = GridUtil.snap_to_grid(_anchors[0].global_position)
+	if not _anchors_position.is_empty():
+		global_position = _anchors_position[0]
 	else:
 		global_position = GridUtil.snap_to_grid(global_position)
 
@@ -26,10 +29,25 @@ func _ready() -> void:
 		move_particles.global_position = global_position
 	call_deferred("_attach_moveParticles_to_scene_deferred")
 
+func _refresh_anchors_position() -> void:
+	_anchors_position.clear()
+	var snapped_position := GridUtil.snap_to_grid(global_position)
+	var has_current_anchor := false
+	if _anchor_root != null:
+		for anchor in _anchor_root.get_children():
+			if not (anchor is Node2D):
+				continue
+			var anchor_position := GridUtil.snap_to_grid(anchor.global_position)
+			_anchors_position.append(anchor_position)
+			if anchor_position.distance_to(snapped_position) < 0.1:
+				has_current_anchor = true
+	if not has_current_anchor:
+		_anchors_position.insert(0, snapped_position)
+
 func _exit_tree() -> void:
 	var quantum_service: QuantumService = Game.Instance.try_get_service(Game.SERVICE_QUANTUM)
 	if quantum_service != null:
-		quantum_service.unregister_item(self)
+		quantum_service.unregister_item(self )
 
 func set_observed(observed: bool) -> void:
 	if is_observed == observed:
@@ -40,7 +58,7 @@ func set_observed(observed: bool) -> void:
 		_move_to_next_anchor()
 
 func _move_to_next_anchor() -> void:
-	if _anchors.is_empty():
+	if _anchors_position.is_empty():
 		return
 	var old_position := global_position
 	for move_particles in _moveParticles:
@@ -52,8 +70,8 @@ func _move_to_next_anchor() -> void:
 	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
 	if audio != null and _moveSfx != null:
 		audio.play_sfx(_moveSfx)
-	_anchor_index = (_anchor_index + 1) % _anchors.size()
-	global_position = GridUtil.snap_to_grid(_anchors[_anchor_index].global_position)
+	_anchor_index = (_anchor_index + 1) % _anchors_position.size()
+	global_position = _anchors_position[_anchor_index]
 
 func _attach_moveParticles_to_scene_deferred() -> void:
 	var scene := get_tree().current_scene

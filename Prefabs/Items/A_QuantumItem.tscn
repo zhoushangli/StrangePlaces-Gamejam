@@ -62,12 +62,11 @@ scale_max = 3.0
 scale_curve = SubResource("CurveTexture_x7o8o")
 alpha_curve = SubResource("CurveTexture_k7jvx")
 
-[node name="QuantumItem" type="StaticBody2D" unique_id=383001199 node_paths=PackedStringArray("_anchors", "_moveParticles")]
+[node name="QuantumItem" type="StaticBody2D" unique_id=383001199 node_paths=PackedStringArray("_moveParticles")]
 z_index = 10
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_fjpyp")
-_anchors = [null, null]
 _moveSfx = ExtResource("2_c6qkn")
 _moveParticles = [NodePath("Debris"), NodePath("Circle")]
 

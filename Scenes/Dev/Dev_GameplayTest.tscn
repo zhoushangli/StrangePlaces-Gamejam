@@ -34,12 +34,12 @@ tile_set = ExtResource("2_utuuf")
 
 [node name="Props" type="Node2D" parent="." unique_id=111838279]
 
-[node name="QuantumItem" type="StaticBody2D" parent="Props" unique_id=1480966644 node_paths=PackedStringArray("_anchors")]
+[node name="QuantumItem" type="StaticBody2D" parent="Props" unique_id=1480966644 node_paths=PackedStringArray("_anchor_root")]
 position = Vector2(328, 184)
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("2_se4nq")
-_anchors = [NodePath("../Anchors/1"), NodePath("../Anchors/2")]
+_anchor_root = NodePath("../Anchors")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Props/QuantumItem" unique_id=2003539928]
 shape = SubResource("RectangleShape2D_utuuf")

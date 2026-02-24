@@ -119,7 +119,6 @@ func _on_button_pressed_down_level(level_button: TextureRect) -> void:
 	
 	print("trying to load scene")
 	level.load_level.call_deferred(level_button.get_meta("LevelPath", "") as String)
-	ui.open_ui("HUDUI")
 
 func _on_button_pressed_down_plain() -> void:
 	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)

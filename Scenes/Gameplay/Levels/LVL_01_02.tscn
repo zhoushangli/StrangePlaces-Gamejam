@@ -36,33 +36,34 @@ texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("4_82har")
 
-[node name="QuantumItem" parent="Items" parent_id_path=PackedInt32Array(111838279) index="1" unique_id=383001199 node_paths=PackedStringArray("_anchors") instance=ExtResource("5_a1534")]
+[node name="QuantumItem" parent="Items" parent_id_path=PackedInt32Array(111838279) index="1" unique_id=383001199 node_paths=PackedStringArray("_anchor_root") instance=ExtResource("5_a1534")]
 position = Vector2(248, 280)
-_anchors = [NodePath("../Anchors1/Anchor1_1"), NodePath("../Anchors1/Anchor1_2")]
+_anchor_root = NodePath("Anchors1")
 
-[node name="QuantumItem2" parent="Items" parent_id_path=PackedInt32Array(111838279) index="2" unique_id=1283442723 node_paths=PackedStringArray("_anchors") instance=ExtResource("5_a1534")]
-position = Vector2(392, 168)
-_anchors = [NodePath("../Anchors2/Anchor2_2"), NodePath("../Anchors2/Anchor2_1")]
+[node name="Anchors1" type="Node2D" parent="Items/QuantumItem" index="4" unique_id=514726381]
+position = Vector2(-248, -280)
 
-[node name="Anchors1" type="Node2D" parent="Items" parent_id_path=PackedInt32Array(111838279) index="3" unique_id=514726381]
-
-[node name="Anchor1_1" type="Node2D" parent="Items/Anchors1" index="0" unique_id=1383230295]
+[node name="Anchor1_1" type="Node2D" parent="Items/QuantumItem/Anchors1" index="0" unique_id=1383230295]
 position = Vector2(248, 280)
 
-[node name="Anchor1_2" type="Node2D" parent="Items/Anchors1" index="1" unique_id=114748866]
+[node name="Anchor1_2" type="Node2D" parent="Items/QuantumItem/Anchors1" index="1" unique_id=114748866]
 position = Vector2(248, 168)
 
-[node name="Anchors2" type="Node2D" parent="Items" parent_id_path=PackedInt32Array(111838279) index="4" unique_id=661105155]
+[node name="QuantumItem2" parent="Items" parent_id_path=PackedInt32Array(111838279) index="2" unique_id=1283442723 node_paths=PackedStringArray("_anchor_root") instance=ExtResource("5_a1534")]
+position = Vector2(392, 168)
+_anchor_root = NodePath("Anchors2")
 
-[node name="Anchor2_1" type="Node2D" parent="Items/Anchors2" index="0" unique_id=694611048]
+[node name="Anchors2" type="Node2D" parent="Items/QuantumItem2" index="4" unique_id=661105155]
+position = Vector2(-392, -168)
+
+[node name="Anchor2_1" type="Node2D" parent="Items/QuantumItem2/Anchors2" index="0" unique_id=694611048]
 position = Vector2(392, 168)
 
-[node name="Anchor2_2" type="Node2D" parent="Items/Anchors2" index="1" unique_id=1116841249]
+[node name="Anchor2_2" type="Node2D" parent="Items/QuantumItem2/Anchors2" index="1" unique_id=1116841249]
 position = Vector2(392, 280)
 
-[node name="StartDecoration" parent="Items" parent_id_path=PackedInt32Array(111838279) index="5" unique_id=2016148031]
+[node name="StartDecoration" parent="Items" parent_id_path=PackedInt32Array(111838279) index="3" unique_id=2016148031]
 position = Vector2(112, 160)
 
-[node name="Portal" parent="Items" parent_id_path=PackedInt32Array(111838279) index="6" unique_id=1877675497]
+[node name="Portal" parent="Items" parent_id_path=PackedInt32Array(111838279) index="4" unique_id=1877675497]
 position = Vector2(480, 272)
-

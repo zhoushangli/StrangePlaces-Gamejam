@@ -1,7 +1,7 @@
 extends Area2D
 class_name ButtonController
 
-@export var _door: Node = null
+@export var _door: DoorController = null
 @export var _anim: AnimatedSprite2D
 
 var _occupants: Dictionary = {}
@@ -32,11 +32,13 @@ func _refresh_state() -> void:
 	_set_active(_occupants.size() > 0)
 
 func _set_active(active: bool) -> void:
+	if _door != null:
+		_door.set_active(active)
+			
 	if _has_state and _is_active == active:
 		return
+		
 	_has_state = true
 	_is_active = active
 	if _anim != null:
 		_anim.play("active" if active else "deactive")
-	if _door != null:
-		_door.set_active(active)
