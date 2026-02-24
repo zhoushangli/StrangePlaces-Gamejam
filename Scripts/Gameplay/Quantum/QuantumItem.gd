@@ -9,7 +9,7 @@ var is_observed := false
 var _anchor_index := 0
 
 func _ready() -> void:
-	var quantum_service: Variant = Game.Instance.try_get_service(Game.SERVICE_QUANTUM)
+	var quantum_service: QuantumService = Game.Instance.try_get_service(Game.SERVICE_QUANTUM)
 	if quantum_service != null:
 		quantum_service.register_item(self)
 	else:
@@ -27,7 +27,7 @@ func _ready() -> void:
 	call_deferred("_attach_moveParticles_to_scene_deferred")
 
 func _exit_tree() -> void:
-	var quantum_service: Variant = Game.Instance.try_get_service(Game.SERVICE_QUANTUM)
+	var quantum_service: QuantumService = Game.Instance.try_get_service(Game.SERVICE_QUANTUM)
 	if quantum_service != null:
 		quantum_service.unregister_item(self)
 
@@ -49,7 +49,7 @@ func _move_to_next_anchor() -> void:
 		move_particles.global_position = old_position
 		move_particles.emitting = true
 		move_particles.restart()
-	var audio: Variant = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
+	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
 	if audio != null and _moveSfx != null:
 		audio.play_sfx(_moveSfx)
 	_anchor_index = (_anchor_index + 1) % _anchors.size()

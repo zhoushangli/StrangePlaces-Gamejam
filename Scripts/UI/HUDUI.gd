@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 			_progressCircle.value = 0
 			var current_scene := get_tree().current_scene.scene_file_path
 			get_tree().unload_current_scene()
-			var level: Variant = Game.Instance.try_get_service(Game.SERVICE_LEVEL)
+			var level: LevelService = Game.Instance.try_get_service(Game.SERVICE_LEVEL)
 			if level != null:
 				level.load_level.call_deferred(current_scene)
 	else:

@@ -1,12 +1,12 @@
 extends RefCounted
 class_name EventSubscription
 
-var _event_service
+var _event_service: EventService
 var _event_name: String
 var _handler: Callable
 var _disposed := false
 
-func _init(event_service = null, event_name: String = "", handler: Callable = Callable()) -> void:
+func _init(event_service: EventService = null, event_name: String = "", handler: Callable = Callable()) -> void:
 	_event_service = event_service
 	_event_name = event_name
 	_handler = handler

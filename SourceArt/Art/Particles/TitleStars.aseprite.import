@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b0t3o7hd0kfsr"
+path="res://.godot/imported/TitleStars.aseprite-c0866d5dd31a8494e40598ec15be0263.res"
+
+[deps]
+
+source_file="res://SourceArt/Art/Particles/TitleStars.aseprite"
+dest_files=["res://.godot/imported/TitleStars.aseprite-c0866d5dd31a8494e40598ec15be0263.res"]
+
+[params]
+

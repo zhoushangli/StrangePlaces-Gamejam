@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://clawea8c87ef7"]
 
-[ext_resource type="Texture2D" uid="uid://bp71ib1pqqptm" path="res://Assets/Art/Altar.png" id="1_im1du"]
-[ext_resource type="Texture2D" uid="uid://ds0bn5fvnqbv4" path="res://Assets/Art/Particles/QuantomPairticle.png" id="2_2pob2"]
+[ext_resource type="Texture2D" uid="uid://bp71ib1pqqptm" path="res://SourceArt/Art/PlaceHolder/Altar.png" id="1_im1du"]
+[ext_resource type="Texture2D" uid="uid://ds0bn5fvnqbv4" path="res://SourceArt/Art/Particles/QuantomPairticle.png" id="2_2pob2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3bvi"]
 atlas = ExtResource("2_2pob2")

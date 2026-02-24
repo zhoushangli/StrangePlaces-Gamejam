@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://b3p4uipause01"]
 
+[ext_resource type="FontFile" uid="uid://d24w7mnlgf43s" path="res://GameAssets/Fonts/PixelOperator-Bold-1.ttf" id="1_lvcxc"]
 [ext_resource type="Script" uid="uid://bh8f8tuywtp3r" path="res://Scripts/UI/PauseUI.gd" id="1_pause"]
-[ext_resource type="Theme" uid="uid://bqg6dkxee12o7" path="res://ThemeAndStyleBox/ThemeTest1.tres" id="1_vmyw8"]
-[ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://SourceArt/Art/UIColumns.png" id="2_4vu4q"]
+[ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://SourceArt/Art/UI/UIColumns.png" id="2_4vu4q"]
 [ext_resource type="AudioStream" uid="uid://cdjxp38q3a8bf" path="res://GameAssets/Sounds/FocusOnUI.wav" id="3_khdlj"]
 [ext_resource type="AudioStream" uid="uid://dscs5qql0f4wh" path="res://GameAssets/Sounds/ConfirmUI.wav" id="4_btt0n"]
-[ext_resource type="FontFile" uid="uid://gbjcxp6a00xx" path="res://GameAssets/Fonts/PressStart2P.ttf" id="5_lvcxc"]
+
+[sub_resource type="Theme" id="Theme_khdlj"]
+Label/colors/font_color = Color(0.54509807, 0.72156864, 0.8509804, 1)
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_lvcxc")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gbd60"]
 atlas = ExtResource("2_4vu4q")
@@ -15,32 +19,17 @@ region = Rect2(0, 48, 48, 16)
 atlas = ExtResource("2_4vu4q")
 region = Rect2(0, 48, 48, 16)
 
-[sub_resource type="LabelSettings" id="LabelSettings_btt0n"]
-font = ExtResource("5_lvcxc")
-font_color = Color(0.003921569, 0.85490197, 0.99215686, 1)
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmyw8"]
 atlas = ExtResource("2_4vu4q")
 region = Rect2(0, 48, 48, 16)
-
-[sub_resource type="LabelSettings" id="LabelSettings_gbd60"]
-font = ExtResource("5_lvcxc")
-font_color = Color(0.003921569, 0.85490197, 0.99215686, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btt0n"]
 atlas = ExtResource("2_4vu4q")
 region = Rect2(0, 48, 48, 16)
 
-[sub_resource type="LabelSettings" id="LabelSettings_eox1g"]
-font = ExtResource("5_lvcxc")
-font_color = Color(0.003921569, 0.85490197, 0.99215686, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_wpm46"]
-font_size = 30
-font_color = Color(0.21960784, 0.7294118, 0.84705883, 1)
-outline_size = 7
-outline_color = Color(0.020777179, 0.17289788, 0.20921323, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_btt0n"]
+font_size = 40
+font_color = Color(0.54509807, 0.72156864, 0.8509804, 1)
 
 [node name="UI_Pause" type="Control" unique_id=1813240048 node_paths=PackedStringArray("_resumeButton", "_backButton", "_exitButton")]
 layout_mode = 3
@@ -49,7 +38,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_vmyw8")
+theme = SubResource("Theme_khdlj")
 script = ExtResource("1_pause")
 _resumeButton = NodePath("NinePatchRect/VBoxContainer/ResumeButton2")
 _backButton = NodePath("NinePatchRect/VBoxContainer/BackToMenuButton2")
@@ -68,7 +57,7 @@ offset_right = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.02745098, 0.078431375, 0.18039216, 0.7176471)
+color = Color(0.05490196, 0.07058824, 0.11372549, 0.78431374)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1647472317]
 visible = false
@@ -138,19 +127,12 @@ stretch_mode = 1
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/BackToMenuButton2" unique_id=235598273]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -3.5
-offset_right = 35.0
-offset_bottom = 3.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "BackToMenu"
-label_settings = SubResource("LabelSettings_btt0n")
+text = "MENU"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -163,19 +145,12 @@ stretch_mode = 1
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/ResumeButton2" unique_id=1315480410]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = -3.5
-offset_right = 21.0
-offset_bottom = 3.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Resume"
-label_settings = SubResource("LabelSettings_gbd60")
+text = "RESUME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -187,32 +162,16 @@ stretch_mode = 1
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/ExitButton" unique_id=1991493957]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -3.5
-offset_right = 20.0
-offset_bottom = 3.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Exit"
-label_settings = SubResource("LabelSettings_eox1g")
+text = "EXIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Paused" type="TextureButton" parent="." unique_id=276905004]
-texture_filter = 1
-layout_mode = 0
-offset_left = 271.0
-offset_top = 57.0
-offset_right = 369.0
-offset_bottom = 73.0
-stretch_mode = 1
-
-[node name="Label" type="Label" parent="Paused" unique_id=1476517938]
+[node name="Label" type="Label" parent="." unique_id=1476517938]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -220,13 +179,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -90.0
-offset_top = 38.0
+offset_top = -89.5
 offset_right = 90.0
-offset_bottom = 68.0
+offset_bottom = -58.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Pasued"
-label_settings = SubResource("LabelSettings_wpm46")
+text = "Pause"
+label_settings = SubResource("LabelSettings_btt0n")
 horizontal_alignment = 1
 vertical_alignment = 1
-

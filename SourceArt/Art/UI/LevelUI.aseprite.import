@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://difvejara8qsf"
+path="res://.godot/imported/LevelUI.aseprite-066b842e0e5b98da3d5870c9ac2073da.res"
+
+[deps]
+
+source_file="res://SourceArt/Art/UI/LevelUI.aseprite"
+dest_files=["res://.godot/imported/LevelUI.aseprite-066b842e0e5b98da3d5870c9ac2073da.res"]
+
+[params]
+

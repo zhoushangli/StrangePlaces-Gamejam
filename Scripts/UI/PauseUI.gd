@@ -1,6 +1,5 @@
 extends "res://Scripts/UI/UIBase.gd"
 class_name PauseUI
-const STATE_MAIN_MENU := 1
 
 @export var _resumeButton: TextureButton
 @export var _backButton: TextureButton
@@ -20,32 +19,36 @@ func on_open(_args: Variant = null) -> void:
 	_backButton.mouse_entered.connect(_on_hovered)
 	_exitButton.mouse_entered.connect(_on_hovered)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if not event.is_action_pressed("pause") and not event.is_echo():
+		return
+	var ui: UIService = Game.Instance.get_service(Game.SERVICE_UI)
+	ui.close_top()
+	get_viewport().set_input_as_handled()
+
 func _on_hovered() -> void:
-	var audio: Variant = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
+	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
 	if audio != null and _focusSound != null:
 		audio.play_sfx(_focusSound)
 
 func _on_resume_pressed() -> void:
-	var audio: Variant = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
-	var ui: Variant = Game.Instance.try_get_service(Game.SERVICE_UI)
+	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
+	var ui: UIService = Game.Instance.try_get_service(Game.SERVICE_UI)
 	if audio != null and _confirmSound != null:
 		audio.play_sfx(_confirmSound)
 	if ui != null:
 		ui.close_top()
 
 func _on_back_pressed() -> void:
-	var audio: Variant = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
-	var ui: Variant = Game.Instance.try_get_service(Game.SERVICE_UI)
-	var game_state: Variant = Game.Instance.try_get_service(Game.SERVICE_GAME_STATE)
+	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
+	var ui: UIService = Game.Instance.try_get_service(Game.SERVICE_UI)
+	var game_state: GameStateService = Game.Instance.try_get_service(Game.SERVICE_GAME_STATE)
 	if audio != null and _confirmSound != null:
 		audio.play_sfx(_confirmSound)
 	if ui != null:
 		ui.close_top()
 	if game_state != null:
-		game_state.change_game_state(STATE_MAIN_MENU)
+		game_state.change_game_state(GameStateService.GameState.MAIN_MENU)
 
 func _on_quit_pressed() -> void:
-	var audio: Variant = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
-	if audio != null and _confirmSound != null:
-		audio.play_sfx(_confirmSound)
-	get_tree().quit()
+	_on_back_pressed()

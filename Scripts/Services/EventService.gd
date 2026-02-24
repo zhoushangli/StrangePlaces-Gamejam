@@ -10,7 +10,7 @@ func init_service() -> void:
 func shutdown_service() -> void:
 	_handlers.clear()
 
-func subscribe(event_name: String, handler: Callable) -> Variant:
+func subscribe(event_name: String, handler: Callable) -> EventSubscription:
 	if event_name.is_empty() or not handler.is_valid():
 		return EventSubscriptionScript.new()
 	if not _handlers.has(event_name):

@@ -21,7 +21,7 @@ func change_scene(path: String) -> Node:
 		push_error("[SceneService] Failed to change scene to: %s" % path)
 		return null
 	await tree.scene_changed
-	var event_service: Variant = Game.Instance.try_get_service(Game.SERVICE_EVENT)
+	var event_service: EventService = Game.Instance.try_get_service(Game.SERVICE_EVENT)
 	if event_service != null:
 		event_service.publish(EVENT_SCENE_LOADED, {"path": path})
 	return tree.current_scene

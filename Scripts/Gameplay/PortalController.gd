@@ -5,7 +5,6 @@ class_name PortalController
 
 const LEVEL_PREFIX := "LVL_01_0"
 const MAX_LEVEL_IN_CHAPTER := 5
-const STATE_MAIN_MENU := 1
 
 var _triggered := false
 
@@ -22,7 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 	_triggered = true
 	_play_pass_and_transit(body)
 
-func _play_pass_and_transit(player) -> void:
+func _play_pass_and_transit(player: PlayerController) -> void:
 	player.enter_level_pass_state()
 	await player._anim.animation_finished
 
@@ -34,7 +33,7 @@ func _play_pass_and_transit(player) -> void:
 	if next_level_path.is_empty():
 		_return_to_main_menu()
 		return
-	var level_service: Variant = Game.Instance.get_service(Game.SERVICE_LEVEL)
+	var level_service: LevelService = Game.Instance.get_service(Game.SERVICE_LEVEL)
 	if level_service != null:
 		level_service.load_level.call_deferred(next_level_path)
 
@@ -57,9 +56,9 @@ func _build_next_level_path(current_path: String) -> String:
 	return "res://Scenes/Gameplay/Levels/%s%d.tscn" % [LEVEL_PREFIX, next_index]
 
 func _return_to_main_menu() -> void:
-	var ui_service: Variant = Game.Instance.try_get_service(Game.SERVICE_UI)
+	var ui_service: UIService = Game.Instance.try_get_service(Game.SERVICE_UI)
 	if ui_service != null:
 		ui_service.close_top()
-	var game_state: Variant = Game.Instance.get_service(Game.SERVICE_GAME_STATE)
+	var game_state: GameStateService = Game.Instance.get_service(Game.SERVICE_GAME_STATE)
 	if game_state != null:
-		game_state.change_game_state(STATE_MAIN_MENU)
+		game_state.change_game_state(GameStateService.GameState.MAIN_MENU)

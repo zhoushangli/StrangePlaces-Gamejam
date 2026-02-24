@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cryjartp217m2"]
 
 [ext_resource type="Script" uid="uid://c5mgxhwtrmo5v" path="res://Scripts/Gameplay/PushableBoxController.gd" id="1_gs4qp"]
-[ext_resource type="Texture2D" uid="uid://cyq8qy5fxvlck" path="res://SourceArt/Art/PushableBox.png" id="2_8jypm"]
+[ext_resource type="Texture2D" uid="uid://cyq8qy5fxvlck" path="res://SourceArt/Art/Environment/PushableBox.png" id="2_8jypm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmum6"]
 size = Vector2(14, 14)

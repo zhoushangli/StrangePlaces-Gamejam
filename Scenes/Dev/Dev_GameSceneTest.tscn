@@ -1,12 +1,12 @@
 [gd_scene format=4 uid="uid://bdqtgfv43e0c7"]
 
 [ext_resource type="TileSet" uid="uid://ddse6ycafnye1" path="res://GameAssets/Tiles/TS_Floor.tres" id="1_nxgrk"]
-[ext_resource type="Texture2D" uid="uid://6q883k8py2co" path="res://SourceArt/Art/Star.png" id="1_wtogs"]
+[ext_resource type="Texture2D" uid="uid://6q883k8py2co" path="res://GameAssets/Particles/Star.png" id="1_wtogs"]
 [ext_resource type="TileSet" uid="uid://dk0i24akk7u28" path="res://GameAssets/Tiles/TS_Decoration.tres" id="2_o2sg3"]
 [ext_resource type="TileSet" uid="uid://bm25owt6xtcf" path="res://GameAssets/Tiles/TS_Platform.tres" id="3_t2yta"]
 [ext_resource type="Texture2D" uid="uid://chhq3sxcpro4" path="res://SourceArt/Art/Particles/SnowParticle.png" id="6_5v381"]
 [ext_resource type="Script" uid="uid://cvvohfevixwlb" path="res://Scripts/UI/HUDUI.gd" id="6_likr5"]
-[ext_resource type="Texture2D" uid="uid://bqjxbv85st8j0" path="res://SourceArt/Art/RestartButton.png" id="6_wtogs"]
+[ext_resource type="Texture2D" uid="uid://bqjxbv85st8j0" path="res://SourceArt/Art/UI/RestartButton.png" id="6_wtogs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ws102"]
 atlas = ExtResource("1_wtogs")

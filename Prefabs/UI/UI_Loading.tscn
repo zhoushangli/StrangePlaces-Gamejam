@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cdk4v6qgl4jc4"]
 
 [ext_resource type="Script" uid="uid://dme86aht2i5w5" path="res://Scripts/UI/LoadingUI.gd" id="1_0vq00"]
-[ext_resource type="Texture2D" uid="uid://dh4okhhagt068" path="res://SourceArt/Art/LoadingBar.png" id="1_edgpl"]
-[ext_resource type="Texture2D" uid="uid://bsl2hb8yfpkgo" path="res://SourceArt/Art/TittleBG.png" id="2_qwbw8"]
-[ext_resource type="Texture2D" uid="uid://pbnjevnc3l72" path="res://SourceArt/Art/LoadingBar2.png" id="2_v6iav"]
-[ext_resource type="Texture2D" uid="uid://bp71ib1pqqptm" path="res://SourceArt/Art/Altar.png" id="5_qwbw8"]
+[ext_resource type="Texture2D" uid="uid://dh4okhhagt068" path="res://SourceArt/Art/UI/LoadingBar.png" id="1_edgpl"]
+[ext_resource type="Texture2D" path="res://SourceArt/Art/TittleBG.png" id="2_qwbw8"]
+[ext_resource type="Texture2D" uid="uid://pbnjevnc3l72" path="res://SourceArt/Art/UI/LoadingBar2.png" id="2_v6iav"]
+[ext_resource type="Texture2D" uid="uid://bp71ib1pqqptm" path="res://SourceArt/Art/PlaceHolder/Altar.png" id="5_qwbw8"]
 [ext_resource type="Texture2D" uid="uid://ds0bn5fvnqbv4" path="res://SourceArt/Art/Particles/QuantomPairticle.png" id="6_efuuv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jibds"]

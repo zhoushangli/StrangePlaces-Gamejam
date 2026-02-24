@@ -16,7 +16,7 @@ func init_service() -> void:
 func shutdown_service() -> void:
 	_stack.clear()
 
-func open_by_key(ui_key: String, args: Variant = null) -> Variant:
+func open_ui(ui_key: String, args: Variant = null) -> Variant:
 	var path := "%s%s.tscn" % [UI_PREFAB_BASE, _get_prefab_name(ui_key)]
 	var packed := load(path) as PackedScene
 	if packed == null:
@@ -65,9 +65,9 @@ func close_top() -> void:
 		ui.on_close()
 		ui.queue_free()
 
-func is_open_by_key(ui_key: String) -> bool:
+func is_ui_open(ui_key: String) -> bool:
 	for i in range(_stack.size() - 1, -1, -1):
-		var ui: Variant = _stack[i]
+		var ui: UIBase = _stack[i]
 		if not is_instance_valid(ui):
 			continue
 		if ui.get_ui_key() == ui_key:
@@ -77,7 +77,7 @@ func is_open_by_key(ui_key: String) -> bool:
 func _open_instance(inst, args: Variant) -> void:
 	var key: String = inst.get_ui_key()
 	for i in range(_stack.size() - 1, -1, -1):
-		var existing: Variant = _stack[i]
+		var existing: UIBase = _stack[i]
 		if existing == null or not is_instance_valid(existing):
 			_stack.remove_at(i)
 			continue

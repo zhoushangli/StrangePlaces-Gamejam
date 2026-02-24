@@ -1,6 +1,5 @@
 extends CharacterBody2D
 class_name PlayerController
-const GridUtil = preload("res://Scripts/Utils/GridUtil.gd")
 
 enum PlayerState {
 	IDLE,
@@ -74,7 +73,7 @@ func enter_level_pass_state() -> void:
 func _step_sound() -> void:
 	if _anim.animation != "walk":
 		return
-	var audio: Variant = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
+	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
 	if audio == null:
 		return
 	if _anim.frame == 3 and _stepSounds.size() > 0:

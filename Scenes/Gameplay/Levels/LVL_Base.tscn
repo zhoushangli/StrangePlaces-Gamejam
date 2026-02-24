@@ -2,12 +2,12 @@
 
 [ext_resource type="TileSet" uid="uid://ddse6ycafnye1" path="res://GameAssets/Tiles/TS_Floor.tres" id="1_604bx"]
 [ext_resource type="Script" uid="uid://bgus20ibhngne" path="res://Scripts/Gameplay/Level/LVL_Base.gd" id="1_fic6j"]
-[ext_resource type="Texture2D" uid="uid://6q883k8py2co" path="res://SourceArt/Art/Star.png" id="1_kk0gg"]
+[ext_resource type="Texture2D" uid="uid://6q883k8py2co" path="res://GameAssets/Particles/Star.png" id="1_kk0gg"]
 [ext_resource type="TileSet" uid="uid://bm25owt6xtcf" path="res://GameAssets/Tiles/TS_Platform.tres" id="2_fic6j"]
 [ext_resource type="TileSet" uid="uid://dk0i24akk7u28" path="res://GameAssets/Tiles/TS_Decoration.tres" id="2_gp204"]
 [ext_resource type="Texture2D" uid="uid://wigl2811x36s" path="res://GameAssets/UI/GameBackground.png" id="2_kk0gg"]
 [ext_resource type="Texture2D" uid="uid://du5dktucaony6" path="res://GameAssets/UI/Background.png" id="3_604bx"]
-[ext_resource type="Texture2D" uid="uid://ellowhoulelk" path="res://SourceArt/Art/BrokenSpaceShip.png" id="7_uipp4"]
+[ext_resource type="Texture2D" uid="uid://ellowhoulelk" path="res://SourceArt/Art/Environment/BrokenSpaceShip.png" id="7_uipp4"]
 [ext_resource type="PackedScene" uid="uid://beds88wxsu2pn" path="res://Prefabs/Items/A_Portal.tscn" id="9_fic6j"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kk0gg"]
@@ -116,7 +116,6 @@ collision_mask = 0
 [node name="StartDecoration" type="Sprite2D" parent="Items/StartDecoration" unique_id=1087534635]
 texture_filter = 1
 texture = ExtResource("7_uipp4")
-region_enabled = true
 region_rect = Rect2(0, 32, 64, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/StartDecoration" unique_id=822560904]
@@ -129,4 +128,3 @@ position = Vector2(40, 8)
 
 [node name="Portal" parent="Items" unique_id=1877675497 instance=ExtResource("9_fic6j")]
 z_index = 30
-

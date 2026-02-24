@@ -2,17 +2,17 @@ extends RefCounted
 class_name SimpleStateMachine
 
 var _states: Dictionary = {}
-var current_state: Variant = null
+var current_state: int = -1
 var _initialized := false
 
-func add_state(state: Variant, on_enter: Callable = Callable(), on_exit: Callable = Callable(), on_update: Callable = Callable()) -> void:
+func add_state(state: int, on_enter: Callable = Callable(), on_exit: Callable = Callable(), on_update: Callable = Callable()) -> void:
 	_states[state] = {
 		"on_enter": on_enter,
 		"on_exit": on_exit,
 		"on_update": on_update,
 	}
 
-func init(initial_state: Variant) -> void:
+func init(initial_state: int) -> void:
 	if not _states.has(initial_state):
 		push_error("[SimpleStateMachine] Initial state not configured: %s" % str(initial_state))
 		return
@@ -31,7 +31,7 @@ func update(delta: float) -> void:
 	if update_cb.is_valid():
 		update_cb.call(delta)
 
-func change_state(next_state: Variant) -> bool:
+func change_state(next_state: int) -> bool:
 	if not _states.has(next_state):
 		push_error("[SimpleStateMachine] State not configured: %s" % str(next_state))
 		return false

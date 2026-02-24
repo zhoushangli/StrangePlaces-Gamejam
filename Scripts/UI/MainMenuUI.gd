@@ -1,6 +1,5 @@
 extends "res://Scripts/UI/UIBase.gd"
 class_name MainMenuUI
-const STATE_GAME := 2
 
 @export var _startButton: TextureButton
 @export var _quitButton: TextureButton
@@ -11,7 +10,6 @@ const STATE_GAME := 2
 @export var _hoverSound: AudioStream
 @export var _confirmSound: AudioStream
 @export var _bgm: AudioStream
-@export var _gameBgm: AudioStream
 @export var _firstLevelPath: String
 
 var _start_pressed := false
@@ -23,7 +21,7 @@ func get_ui_key() -> String:
 func on_open(_args: Variant = null) -> void:
 	_start_pressed = false
 	_increasing = 1.0
-	var audio: Variant = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
+	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
 	if audio != null and _bgm != null:
 		audio.play_bgm(_bgm)
 
@@ -55,12 +53,12 @@ func _process(delta: float) -> void:
 	_spark(delta)
 
 func _on_hovered() -> void:
-	var audio: Variant = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
+	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
 	if audio != null and _hoverSound != null:
 		audio.play_sfx(_hoverSound)
 
 func _on_confirmed() -> void:
-	var audio: Variant = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
+	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
 	if audio != null and _confirmSound != null:
 		audio.play_sfx(_confirmSound)
 
@@ -79,31 +77,29 @@ func _on_start_pressed() -> void:
 	
 	_start_pressed = true
 	
-	var ui: Variant = Game.Instance.try_get_service(Game.SERVICE_UI)
-	var audio: Variant = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
-	var game_state: Variant = Game.Instance.try_get_service(Game.SERVICE_GAME_STATE)
+	var ui: UIService = Game.Instance.try_get_service(Game.SERVICE_UI)
+	var game_state: GameStateService = Game.Instance.try_get_service(Game.SERVICE_GAME_STATE)
 		
 	ui.close_top()
-	audio.play_bgm(_gameBgm)
-	game_state.change_game_state(STATE_GAME)
+	game_state.change_game_state(GameStateService.GameState.GAME)
 
 	var level: LevelService = Game.Instance.try_get_service(Game.SERVICE_LEVEL)
 	level.load_level.call_deferred(_firstLevelPath)
 	
-	ui.open_by_key("HUDUI")
+	ui.open_ui("HUDUI")
 
 func _on_quit_pressed() -> void:
-	get_tree().quit()
+	return
 
 func _on_levels_pressed() -> void:
-	var ui: Variant = Game.Instance.try_get_service(Game.SERVICE_UI)
+	var ui: UIService = Game.Instance.try_get_service(Game.SERVICE_UI)
 	if ui == null:
 		return
 	ui.close_top()
-	ui.open_by_key("LevelsUI")
+	ui.open_ui("LevelsUI")
 
 func _on_press_start_pressed() -> void:
-	var audio: Variant = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
+	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
 	if audio != null and _confirmSound != null:
 		audio.play_sfx(_confirmSound)
 	_pressStartButton.visible = false

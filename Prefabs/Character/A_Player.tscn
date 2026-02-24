@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bemx6fy7ugfuv" path="res://Scripts/Gameplay/PlayerController.gd" id="1_70xw6"]
 [ext_resource type="SpriteFrames" uid="uid://br8myp4xkg4su" path="res://GameAssets/Player.res" id="2_bwbkj"]
-[ext_resource type="Texture2D" uid="uid://djv34fd2h57ob" path="res://SourceArt/Art/PlayerShaddow.png" id="2_manhs"]
-[ext_resource type="AudioStream" uid="uid://r0g52b1fb00p" path="res://SourceArt/Sounds/WalkA.wav" id="2_tqtxg"]
-[ext_resource type="AudioStream" uid="uid://in4qdilu7ru2" path="res://SourceArt/Sounds/WalkB.wav" id="3_kksss"]
+[ext_resource type="Texture2D" uid="uid://djv34fd2h57ob" path="res://SourceArt/Art/Player/PlayerShaddow.png" id="2_manhs"]
+[ext_resource type="AudioStream" uid="uid://r0g52b1fb00p" path="res://GameAssets/Sounds/WalkA.wav" id="2_tqtxg"]
+[ext_resource type="AudioStream" uid="uid://in4qdilu7ru2" path="res://GameAssets/Sounds/WalkB.wav" id="3_kksss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq78b"]
 size = Vector2(16, 16)

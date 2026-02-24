@@ -1,89 +1,92 @@
 [gd_scene format=3 uid="uid://cctb7slglly4y"]
 
+[ext_resource type="FontFile" uid="uid://d24w7mnlgf43s" path="res://GameAssets/Fonts/PixelOperator-Bold-1.ttf" id="1_1747g"]
 [ext_resource type="Script" uid="uid://de8p44ai0gio2" path="res://Scripts/UI/MainMenuUI.gd" id="1_slj2r"]
 [ext_resource type="AudioStream" uid="uid://cdjxp38q3a8bf" path="res://GameAssets/Sounds/FocusOnUI.wav" id="2_qm34t"]
-[ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://SourceArt/Art/UIColumns.png" id="2_wiopq"]
+[ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://SourceArt/Art/UI/UIColumns.png" id="2_wiopq"]
 [ext_resource type="AudioStream" uid="uid://dscs5qql0f4wh" path="res://GameAssets/Sounds/ConfirmUI.wav" id="3_wv2y8"]
 [ext_resource type="AudioStream" uid="uid://b1k2yskpatoyk" path="res://GameAssets/Audio/MainMenu_BGM.mp3" id="4_0rni8"]
-[ext_resource type="Texture2D" uid="uid://6q883k8py2co" path="res://SourceArt/Art/Star.png" id="4_m4thw"]
-[ext_resource type="Texture2D" uid="uid://bqrohkpdvgx5o" path="res://SourceArt/Art/Tittle.png" id="4_qm34t"]
-[ext_resource type="Texture2D" uid="uid://i043qcyvbkd3" path="res://SourceArt/Art/TitleBackground.png" id="5_0rni8"]
 [ext_resource type="AudioStream" uid="uid://dvq5ml12m06a" path="res://GameAssets/Audio/Game_BGM.mp3" id="5_1747g"]
-[ext_resource type="Texture2D" uid="uid://yt6ymv42e2ur" path="res://SourceArt/Art/newTittle.png" id="10_i620k"]
+[ext_resource type="Texture2D" uid="uid://ba11olmnt3hlh" path="res://GameAssets/Particles/TitleStars.png" id="6_0rni8"]
+[ext_resource type="Texture2D" uid="uid://cm8nu8vkpp1ty" path="res://SourceArt/Art/UI/TiltileBackground.png" id="7_1747g"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1747g"]
-atlas = ExtResource("4_m4thw")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="Theme" id="Theme_1747g"]
+Label/colors/font_color = Color(0.54509807, 0.72156864, 0.8509804, 1)
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_1747g")
 
-[sub_resource type="Curve" id="Curve_i620k"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i620k"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = true
 
-[sub_resource type="CurveTexture" id="CurveTexture_w1npb"]
-curve = SubResource("Curve_i620k")
+[sub_resource type="Curve" id="Curve_w1npb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_apu38"]
+curve = SubResource("Curve_w1npb")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_apu38"]
-lifetime_randomness = 0.26
+lifetime_randomness = 0.1
 particle_flag_disable_z = true
-emission_shape_scale = Vector3(322.545, 100.65, 1)
 emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
+emission_box_extents = Vector3(320, 0, 1)
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.19999999
-scale_max = 1.5
-alpha_curve = SubResource("CurveTexture_w1npb")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+anim_speed_curve = SubResource("CurveTexture_apu38")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbp2l"]
 atlas = ExtResource("2_wiopq")
 region = Rect2(0, 48, 48, 16)
 
-[sub_resource type="LabelSettings" id="LabelSettings_qm34t"]
-font_color = Color(0.003921569, 0.85490197, 0.99215686, 1)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0rni8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wv2y8"]
-atlas = ExtResource("4_qm34t")
-
-[sub_resource type="LabelSettings" id="LabelSettings_m4thw"]
-font_color = Color(0.003921569, 0.85490197, 0.99215686, 1)
+atlas = SubResource("CompressedTexture2D_0rni8")
 
 [node name="UIMainMenu" type="Control" unique_id=42779288 node_paths=PackedStringArray("_startButton", "_quitButton", "_pressStartButton", "_levelButton", "_startPlate")]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 384.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_1747g")
 script = ExtResource("1_slj2r")
 _startButton = NodePath("NinePatchRect/VBoxContainer/Start")
 _quitButton = NodePath("NinePatchRect/VBoxContainer/Quit")
 _pressStartButton = NodePath("PressStart")
 _levelButton = NodePath("NinePatchRect/VBoxContainer/Levels")
 _startPlate = NodePath("NinePatchRect")
-sparkSpeed = 1.0
 _hoverSound = ExtResource("2_qm34t")
 _confirmSound = ExtResource("3_wv2y8")
 _bgm = ExtResource("4_0rni8")
 _gameBgm = ExtResource("5_1747g")
 _firstLevelPath = "res://Scenes/Gameplay/Levels/LVL_01_01.tscn"
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=412180163]
-layout_mode = 0
-offset_right = 641.0
-offset_bottom = 384.0
-color = Color(0.007196666, 0.061302178, 0.14352113, 1)
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1560950766]
+[node name="Environment" type="GPUParticles2D" parent="." unique_id=1560950766]
+z_index = 50
 texture_filter = 1
-position = Vector2(324, 87)
-amount = 90
-texture = SubResource("AtlasTexture_1747g")
-lifetime = 4.5
+material = SubResource("CanvasItemMaterial_i620k")
+position = Vector2(320, 0)
+amount = 80
+texture = ExtResource("6_0rni8")
+lifetime = 30.0
 preprocess = 10.0
+visibility_rect = Rect2(0, 0, 0, 0)
 process_material = SubResource("ParticleProcessMaterial_apu38")
 
 [node name="TittleBg" type="Sprite2D" parent="." unique_id=8684055]
 texture_filter = 1
-position = Vector2(319.7916, 191.87497)
-scale = Vector2(1.0006511, 1.0006511)
-texture = ExtResource("5_0rni8")
+position = Vector2(320, 192)
+scale = Vector2(2, 2)
+texture = ExtResource("7_1747g")
 
 [node name="StartBtn" type="Button" parent="." unique_id=873682141]
 visible = false
@@ -151,19 +154,12 @@ stretch_mode = 1
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/Start" unique_id=2026703330]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -8.0
-offset_right = 40.0
-offset_bottom = 8.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "START"
-label_settings = SubResource("LabelSettings_qm34t")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -176,19 +172,12 @@ stretch_mode = 1
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/Levels" unique_id=1232297194]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -8.0
-offset_right = 40.0
-offset_bottom = 8.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Levels"
-label_settings = SubResource("LabelSettings_qm34t")
+text = "LEVELS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -201,19 +190,12 @@ stretch_mode = 1
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/Quit" unique_id=1179201283]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -8.0
-offset_right = 40.0
-offset_bottom = 8.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "QUIT"
-label_settings = SubResource("LabelSettings_qm34t")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -232,31 +214,11 @@ grow_horizontal = 2
 texture_normal = SubResource("AtlasTexture_wv2y8")
 stretch_mode = 0
 
-[node name="Tittle2" type="TextureButton" parent="." unique_id=1408830280]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -289.75
-offset_top = 60.0
-offset_right = 269.75
-offset_bottom = 138.0
-grow_horizontal = 2
-texture_normal = ExtResource("10_i620k")
-stretch_mode = 0
-
 [node name="PressStart" type="TextureButton" parent="." unique_id=441652673]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -323.5
-offset_top = -195.0
-offset_right = 323.5
-offset_bottom = 195.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 button_mask = 7
@@ -274,8 +236,6 @@ offset_right = 88.0
 offset_bottom = 113.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Press Start"
-label_settings = SubResource("LabelSettings_m4thw")
+text = "PRESS START"
 horizontal_alignment = 1
 vertical_alignment = 1
-

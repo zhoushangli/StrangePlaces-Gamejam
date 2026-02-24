@@ -1,7 +1,5 @@
 extends Node
 class_name Boot
-const STATE_MAIN_MENU := 1
-const STATE_GAME := 2
 
 enum DevMode {
 	NONE,
@@ -13,7 +11,7 @@ enum DevMode {
 @export var _devScene: PackedScene
 
 func _ready() -> void:
-	var game: Variant = Game.Instance
+	var game: Game = Game.Instance
 	if game == null:
 		push_error("[Boot] Game autoload is not available.")
 		return
@@ -28,8 +26,8 @@ func _ready() -> void:
 	call_deferred("_deferred_startup_route")
 
 func _deferred_startup_route() -> void:
-	var game_state: Variant = Game.Instance.get_service(Game.SERVICE_GAME_STATE)
-	var ui_service: Variant = Game.Instance.get_service(Game.SERVICE_UI)
+	var game_state: GameStateService = Game.Instance.get_service(Game.SERVICE_GAME_STATE)
+	var ui_service: UIService = Game.Instance.get_service(Game.SERVICE_UI)
 	if game_state == null:
 		push_error("[Boot] GameStateService missing.")
 		return
@@ -38,15 +36,15 @@ func _deferred_startup_route() -> void:
 		DevMode.NONE:
 			pass
 		DevMode.UI:
-			game_state.change_game_state(STATE_MAIN_MENU)
+			game_state.change_game_state(GameStateService.GameState.MAIN_MENU)
 			if ui_service != null and _devScene != null:
 				ui_service.open_scene(_devScene)
 			return
 		DevMode.GAME:
-			game_state.change_game_state(STATE_GAME)
-			var level_service: Variant = Game.Instance.get_service(Game.SERVICE_LEVEL)
+			game_state.change_game_state(GameStateService.GameState.GAME)
+			var level_service: LevelService = Game.Instance.get_service(Game.SERVICE_LEVEL)
 			if level_service != null and _devScene != null:
 				level_service.load_level.call_deferred(_devScene)
 			return
 
-	game_state.change_game_state(STATE_MAIN_MENU)
+	game_state.change_game_state(GameStateService.GameState.MAIN_MENU)
