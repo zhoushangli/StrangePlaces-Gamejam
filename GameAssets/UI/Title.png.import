@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm8nu8vkpp1ty"
-path="res://.godot/imported/TiltileBackground.png-c0c4ec4d525e55b3c2864194c33c9ca7.ctex"
+uid="uid://dbclmi2qt2wst"
+path="res://.godot/imported/Title.png-a50e38f32d49abea20134bc3078e3a40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SourceArt/Art/UI/TiltileBackground.png"
-dest_files=["res://.godot/imported/TiltileBackground.png-c0c4ec4d525e55b3c2864194c33c9ca7.ctex"]
+source_file="res://GameAssets/UI/Title.png"
+dest_files=["res://.godot/imported/Title.png-a50e38f32d49abea20134bc3078e3a40.ctex"]
 
 [params]
 

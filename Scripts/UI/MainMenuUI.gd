@@ -1,4 +1,4 @@
-extends "res://Scripts/UI/UIBase.gd"
+extends UIBase
 class_name MainMenuUI
 
 @export var _startButton: TextureButton

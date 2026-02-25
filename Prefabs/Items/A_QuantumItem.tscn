@@ -62,7 +62,7 @@ scale_max = 3.0
 scale_curve = SubResource("CurveTexture_x7o8o")
 alpha_curve = SubResource("CurveTexture_k7jvx")
 
-[node name="QuantumItem" type="StaticBody2D" unique_id=383001199 node_paths=PackedStringArray("_moveParticles")]
+[node name="QuantumItem" type="AnimatableBody2D" unique_id=1695747596 node_paths=PackedStringArray("_moveParticles")]
 z_index = 10
 collision_layer = 8
 collision_mask = 0
@@ -101,4 +101,3 @@ texture = ExtResource("5_bjstu")
 lifetime = 0.6
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_ry6ox")
-

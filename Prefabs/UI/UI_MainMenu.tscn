@@ -6,9 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://SourceArt/Art/UI/UIColumns.png" id="2_wiopq"]
 [ext_resource type="AudioStream" uid="uid://dscs5qql0f4wh" path="res://GameAssets/Sounds/ConfirmUI.wav" id="3_wv2y8"]
 [ext_resource type="AudioStream" uid="uid://b1k2yskpatoyk" path="res://GameAssets/Audio/MainMenu_BGM.mp3" id="4_0rni8"]
-[ext_resource type="AudioStream" uid="uid://dvq5ml12m06a" path="res://GameAssets/Audio/Game_BGM.mp3" id="5_1747g"]
 [ext_resource type="Texture2D" uid="uid://ba11olmnt3hlh" path="res://GameAssets/Particles/TitleStars.png" id="6_0rni8"]
-[ext_resource type="Texture2D" uid="uid://cm8nu8vkpp1ty" path="res://SourceArt/Art/UI/TiltileBackground.png" id="7_1747g"]
+[ext_resource type="Texture2D" uid="uid://dbclmi2qt2wst" path="res://GameAssets/UI/Title.png" id="7_0rni8"]
 
 [sub_resource type="Theme" id="Theme_1747g"]
 Label/colors/font_color = Color(0.54509807, 0.72156864, 0.8509804, 1)
@@ -67,7 +66,6 @@ _startPlate = NodePath("NinePatchRect")
 _hoverSound = ExtResource("2_qm34t")
 _confirmSound = ExtResource("3_wv2y8")
 _bgm = ExtResource("4_0rni8")
-_gameBgm = ExtResource("5_1747g")
 _firstLevelPath = "res://Scenes/Gameplay/Levels/LVL_01_01.tscn"
 
 [node name="Environment" type="GPUParticles2D" parent="." unique_id=1560950766]
@@ -82,11 +80,22 @@ preprocess = 10.0
 visibility_rect = Rect2(0, 0, 0, 0)
 process_material = SubResource("ParticleProcessMaterial_apu38")
 
-[node name="TittleBg" type="Sprite2D" parent="." unique_id=8684055]
+[node name="Background" type="Sprite2D" parent="." unique_id=8684055]
 texture_filter = 1
 position = Vector2(320, 192)
 scale = Vector2(2, 2)
-texture = ExtResource("7_1747g")
+texture = ExtResource("7_0rni8")
+region_enabled = true
+region_rect = Rect2(0, 0, 320, 192)
+
+[node name="Title" type="Sprite2D" parent="." unique_id=2002214425]
+z_index = 50
+texture_filter = 1
+position = Vector2(320, 192)
+scale = Vector2(2, 2)
+texture = ExtResource("7_0rni8")
+region_enabled = true
+region_rect = Rect2(320, 0, 320, 192)
 
 [node name="StartBtn" type="Button" parent="." unique_id=873682141]
 visible = false

@@ -1,4 +1,4 @@
-extends "res://Scripts/Gameplay/Level/LVL_Base.gd"
+extends LVL_Base
 class_name LVL_01_01
 
 @export var _observer: Node = null

@@ -1,5 +1,5 @@
 extends LVL_Base
-class_name LVL_01_05
+class_name LVL_01_06
 
 @export var _observer: Node = null
 @export var _observerToggleInterval: float = 2.0

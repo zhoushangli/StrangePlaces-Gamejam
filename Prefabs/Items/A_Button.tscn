@@ -7,7 +7,7 @@
 size = Vector2(14, 14)
 
 [node name="Button" type="Area2D" unique_id=698795936 node_paths=PackedStringArray("_anim")]
-z_index = 20
+z_index = 10
 collision_layer = 0
 collision_mask = 68
 script = ExtResource("1_i872f")
@@ -20,4 +20,3 @@ animation = &"active"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2026112838]
 shape = SubResource("RectangleShape2D_i872f")
-

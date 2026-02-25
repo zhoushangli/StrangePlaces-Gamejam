@@ -29,7 +29,7 @@ func register_item(item) -> void:
 func unregister_item(item) -> void:
 	_items.erase(item)
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	for item in _items:
 		if not is_instance_valid(item):
 			continue

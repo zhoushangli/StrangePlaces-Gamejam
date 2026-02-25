@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends AnimatableBody2D
 class_name QuantumItem
 
 @export var _anchor_root: Node2D
