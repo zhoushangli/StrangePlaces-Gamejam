@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cjb7pybyviwbu" path="res://Scripts/Gameplay/Quantum/QuantumItem.gd" id="1_fjpyp"]
 [ext_resource type="AudioStream" uid="uid://difntplom4qfx" path="res://GameAssets/Sounds/QuantumMove.wav" id="2_c6qkn"]
 [ext_resource type="Texture2D" uid="uid://b101mains5bwr" path="res://GameAssets/PlaceHolder/QuantumItem.png" id="2_fjpyp"]
-[ext_resource type="Texture2D" uid="uid://bo7raqd4a35me" path="res://GameAssets/Debris.png" id="3_pctmn"]
+[ext_resource type="Texture2D" uid="uid://bo7raqd4a35me" path="res://GameAssets/Particles/Debris.png" id="3_pctmn"]
 [ext_resource type="Texture2D" uid="uid://5m0ryh2pmenu" path="res://GameAssets/PlaceHolder/Circle.png" id="5_bjstu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utuuf"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddogxtrufotwg"
-path="res://.godot/imported/Portal.png-cdba757cafdf8e9ffebafbd954cd342b.ctex"
+uid="uid://c0brfxmo1majg"
+path="res://.godot/imported/Button.png-f7a0e125e7f96e2e53a6941bf33a1456.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameAssets/Portal.png"
-dest_files=["res://.godot/imported/Portal.png-cdba757cafdf8e9ffebafbd954cd342b.ctex"]
+source_file="res://GameAssets/Environment/Button.png"
+dest_files=["res://.godot/imported/Button.png-f7a0e125e7f96e2e53a6941bf33a1456.ctex"]
 
 [params]
 

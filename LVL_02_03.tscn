@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dkvg1px253778"]
+
+[ext_resource type="PackedScene" uid="uid://gpddo5x8ekle" path="res://Scenes/Gameplay/Levels/LVL_Base.tscn" id="1_ri805"]
+
+[node name="LVL_02_03" unique_id=1507039194 instance=ExtResource("1_ri805")]

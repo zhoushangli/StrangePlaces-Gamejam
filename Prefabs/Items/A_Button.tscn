@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d0us65lqualn3"]
 
-[ext_resource type="SpriteFrames" uid="uid://cnj5t5jrfvfw4" path="res://GameAssets/Button.res" id="1_c61ft"]
+[ext_resource type="SpriteFrames" uid="uid://cnj5t5jrfvfw4" path="res://GameAssets/Environment/Button.res" id="1_c61ft"]
 [ext_resource type="Script" uid="uid://bs2jpxbbr44ir" path="res://Scripts/Gameplay/ButtonController.gd" id="1_i872f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i872f"]

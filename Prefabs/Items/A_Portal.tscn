@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://beds88wxsu2pn"]
 
 [ext_resource type="Script" uid="uid://cwnm6womblbk" path="res://Scripts/Gameplay/PortalController.gd" id="1_rvt2w"]
-[ext_resource type="SpriteFrames" uid="uid://c338g6lwpmpfm" path="res://GameAssets/Portal.res" id="1_xsr2p"]
+[ext_resource type="SpriteFrames" uid="uid://c338g6lwpmpfm" path="res://GameAssets/Environment/Portal.res" id="1_xsr2p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvt2w"]
 size = Vector2(16, 16)

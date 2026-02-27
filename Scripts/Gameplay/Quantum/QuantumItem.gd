@@ -63,7 +63,7 @@ func set_observed(observed: bool) -> void:
 func _move_to_next_anchor() -> void:
 	if _anchors_position.is_empty():
 		return
-	var target_anchor_index := (_anchor_index + 1) % _anchors_position.size()
+	var target_anchor_index := _find_next_available_anchor_index()
 	var target_cell := GridUtil.snap_to_grid(_anchors_position[target_anchor_index], GRID_SIZE)
 	var carried_box := _find_single_overlapping_box()
 
@@ -82,6 +82,42 @@ func _move_to_next_anchor() -> void:
 	if carried_box != null and is_instance_valid(carried_box):
 		# Quantum jump wins over push movement in the same frame.
 		carried_box.force_snap_to_cell(target_cell, GRID_SIZE)
+
+func _find_next_available_anchor_index() -> int:
+	var count := _anchors_position.size()
+	if count <= 0:
+		return _anchor_index
+	for offset in range(1, count + 1):
+		var probe_index := (_anchor_index + offset) % count
+		var probe_cell := GridUtil.snap_to_grid(_anchors_position[probe_index], GRID_SIZE)
+		if not _is_player_or_box_occupying_cell(probe_cell):
+			return probe_index
+	return _anchor_index
+
+func _is_player_or_box_occupying_cell(cell: Vector2) -> bool:
+	var space := get_world_2d().direct_space_state
+	var circle := CircleShape2D.new()
+	circle.radius = 4.0
+	var query := PhysicsShapeQueryParameters2D.new()
+	query.shape = circle
+	query.transform = Transform2D(0.0, cell)
+	query.collision_mask = 0xFFFFFFFF
+	query.collide_with_bodies = true
+	query.collide_with_areas = false
+	query.exclude = [get_rid()]
+	var hits := space.intersect_shape(query, 16)
+	for hit in hits:
+		if not hit.has("collider"):
+			continue
+		var collider : Node2D = hit["collider"]
+		if collider == null or not is_instance_valid(collider):
+			continue
+		if not (collider is PlayerController or collider is PushableBoxController):
+			continue
+		var collider_cell := GridUtil.snap_to_grid(collider.global_position, GRID_SIZE)
+		if collider_cell.distance_to(cell) < 0.1:
+			return true
+	return false
 
 func _find_single_overlapping_box() -> PushableBoxController:
 	var boxes: Array[PushableBoxController] = []

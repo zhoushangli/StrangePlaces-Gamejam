@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cjb7pybyviwbu" path="res://Scripts/Gameplay/Quantum/QuantumItem.gd" id="2_se4nq"]
 [ext_resource type="TileSet" uid="uid://bm25owt6xtcf" path="res://GameAssets/Tiles/TS_Platform.tres" id="2_utuuf"]
 [ext_resource type="Script" uid="uid://c03t5le0gens4" path="res://Scripts/Gameplay/Quantum/QuantumObserver.gd" id="4_afe3q"]
-[ext_resource type="Texture2D" uid="uid://bwgot8i3j51r3" path="res://GameAssets/Items.tres" id="4_utuuf"]
+[ext_resource type="Texture2D" uid="uid://bwgot8i3j51r3" path="res://GameAssets/Environment/Items.tres" id="4_utuuf"]
 [ext_resource type="Texture2D" uid="uid://dxl0khv2n27x0" path="res://GameAssets/PlaceHolder/EnvironmentLight.png" id="5_utuuf"]
 [ext_resource type="PackedScene" uid="uid://3v5jgj2ngpqg" path="res://Prefabs/Character/A_Player.tscn" id="6_se4nq"]
 
