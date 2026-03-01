@@ -110,12 +110,15 @@ func _on_button_not_hovered_level(level_button: TextureRect) -> void:
 func _on_button_pressed_down_level(level_button: TextureRect) -> void:
 	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
 	var ui: UIService = Game.Instance.try_get_service(Game.SERVICE_UI)
+
 	var game_state: GameStateService = Game.Instance.try_get_service(Game.SERVICE_GAME_STATE)
 	game_state.change_game_state(GameStateService.GameState.GAME)
+	
 	var level: LevelService = Game.Instance.try_get_service(Game.SERVICE_LEVEL)
+
 	audio.play_sfx(_pressSound)
 	audio.play_bgm(_gameBgm)
-	ui.close_top()
+	ui.enqueue_close_top()
 	
 	print("trying to load scene")
 	level.load_level.call_deferred(level_button.get_meta("LevelPath", "") as String)

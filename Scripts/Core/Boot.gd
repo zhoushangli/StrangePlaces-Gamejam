@@ -19,9 +19,9 @@ func _ready() -> void:
 	game.register_new(Game.SERVICE_EVENT, preload("res://Scripts/Services/EventService.gd"))
 	game.register_new(Game.SERVICE_GAME_STATE, preload("res://Scripts/Services/GameStateService.gd"))
 	game.register_from_scene(Game.SERVICE_SCENE, "res://Prefabs/Services/SVC_SceneService.tscn")
-	game.register_from_scene(Game.SERVICE_AUDIO, "res://Prefabs/Services/Svc_AudioService.tscn")
-	game.register_from_scene(Game.SERVICE_UI, "res://Prefabs/Services/Svc_UIService.tscn")
-	game.register_from_scene(Game.SERVICE_POST_PROCESS, "res://Prefabs/Services/Svc_PostProcessService.tscn")
+	game.register_from_scene(Game.SERVICE_AUDIO, "res://Prefabs/Services/SVC_AudioService.tscn")
+	game.register_from_scene(Game.SERVICE_UI, "res://Prefabs/Services/SVC_UIService.tscn")
+	game.register_from_scene(Game.SERVICE_POST_PROCESS, "res://Prefabs/Services/SVC_PostProcessService.tscn")
 
 	call_deferred("_deferred_startup_route")
 

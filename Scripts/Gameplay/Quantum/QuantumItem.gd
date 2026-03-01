@@ -3,7 +3,7 @@ class_name QuantumItem
 
 @export var _anchor_root: Node2D
 @export var _moveSfx: AudioStream
-@export var _moveParticles: Array[GPUParticles2D] = []
+@export var _particles: Array[GPUParticles2D] = []
 
 const GRID_SIZE := 16
 const PUSHABLE_BOX_LAYER_MASK := 64
@@ -26,11 +26,13 @@ func _ready() -> void:
 	else:
 		global_position = GridUtil.snap_to_grid(global_position)
 
-	for move_particles in _moveParticles:
-		if move_particles == null:
+	for particle in _particles:
+		if particle == null:
 			continue
-		move_particles.global_position = global_position
-	call_deferred("_attach_moveParticles_to_scene_deferred")
+		particle.top_level = true
+		particle.z_as_relative = false
+		particle.z_index = 100
+		particle.global_position = global_position
 
 func _refresh_anchors_position() -> void:
 	_anchors_position.clear()
@@ -63,17 +65,23 @@ func set_observed(observed: bool) -> void:
 func _move_to_next_anchor() -> void:
 	if _anchors_position.is_empty():
 		return
-	var target_anchor_index := _find_next_available_anchor_index()
+	var target_anchor_index := (_anchor_index + 1) % _anchors_position.size()
 	var target_cell := GridUtil.snap_to_grid(_anchors_position[target_anchor_index], GRID_SIZE)
 	var carried_box := _find_single_overlapping_box()
+	var carried_player := _find_single_overlapping_player()
 
 	var old_position := global_position
-	for move_particles in _moveParticles:
-		if move_particles == null:
+	var jump_direction_2d := (target_cell - old_position).normalized()
+	for particle in _particles:
+		if particle == null:
 			continue
-		move_particles.global_position = old_position
-		move_particles.emitting = true
-		move_particles.restart()
+		particle.global_position = old_position
+		if particle.name == "Debris":
+			var process_material := particle.process_material as ParticleProcessMaterial
+			if process_material != null:
+				process_material.direction = Vector3(jump_direction_2d.x, jump_direction_2d.y, 0.0)
+		particle.emitting = true
+		particle.restart()
 	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
 	if audio != null and _moveSfx != null:
 		audio.play_sfx(_moveSfx)
@@ -82,46 +90,12 @@ func _move_to_next_anchor() -> void:
 	if carried_box != null and is_instance_valid(carried_box):
 		# Quantum jump wins over push movement in the same frame.
 		carried_box.force_snap_to_cell(target_cell, GRID_SIZE)
-
-func _find_next_available_anchor_index() -> int:
-	var count := _anchors_position.size()
-	if count <= 0:
-		return _anchor_index
-	for offset in range(1, count + 1):
-		var probe_index := (_anchor_index + offset) % count
-		var probe_cell := GridUtil.snap_to_grid(_anchors_position[probe_index], GRID_SIZE)
-		if not _is_player_or_box_occupying_cell(probe_cell):
-			return probe_index
-	return _anchor_index
-
-func _is_player_or_box_occupying_cell(cell: Vector2) -> bool:
-	var space := get_world_2d().direct_space_state
-	var circle := CircleShape2D.new()
-	circle.radius = 4.0
-	var query := PhysicsShapeQueryParameters2D.new()
-	query.shape = circle
-	query.transform = Transform2D(0.0, cell)
-	query.collision_mask = 0xFFFFFFFF
-	query.collide_with_bodies = true
-	query.collide_with_areas = false
-	query.exclude = [get_rid()]
-	var hits := space.intersect_shape(query, 16)
-	for hit in hits:
-		if not hit.has("collider"):
-			continue
-		var collider : Node2D = hit["collider"]
-		if collider == null or not is_instance_valid(collider):
-			continue
-		if not (collider is PlayerController or collider is PushableBoxController):
-			continue
-		var collider_cell := GridUtil.snap_to_grid(collider.global_position, GRID_SIZE)
-		if collider_cell.distance_to(cell) < 0.1:
-			return true
-	return false
+	if carried_player != null and is_instance_valid(carried_player):
+		carried_player.force_snap_to_cell(target_cell, GRID_SIZE)
 
 func _find_single_overlapping_box() -> PushableBoxController:
 	var boxes: Array[PushableBoxController] = []
-	var hits := _query_overlapping_boxes(16)
+	var hits := _query_overlapping_colliders(16, PUSHABLE_BOX_LAYER_MASK)
 	for hit in hits:
 		if not hit.has("collider"):
 			continue
@@ -136,29 +110,30 @@ func _find_single_overlapping_box() -> PushableBoxController:
 		return null
 	return boxes[0]
 
-func _query_overlapping_boxes(max_results: int) -> Array:
+func _find_single_overlapping_player() -> PlayerController:
+	var hits := _query_overlapping_colliders(16, 0xFFFFFFFF)
+	var players: Array[PlayerController] = []
+	for hit in hits:
+		if not hit.has("collider"):
+			continue
+		var player := hit["collider"] as PlayerController
+		if player == null or not is_instance_valid(player):
+			continue
+		if not players.has(player):
+			players.append(player)
+	if players.is_empty():
+		return null
+	return players[0]
+
+func _query_overlapping_colliders(max_results: int, mask: int) -> Array:
 	var space := get_world_2d().direct_space_state
 	var circle := CircleShape2D.new()
 	circle.radius = 4.0
 	var query := PhysicsShapeQueryParameters2D.new()
 	query.shape = circle
 	query.transform = Transform2D(0.0, global_position)
-	query.collision_mask = PUSHABLE_BOX_LAYER_MASK
+	query.collision_mask = mask
 	query.collide_with_bodies = true
 	query.collide_with_areas = false
 	query.exclude = [get_rid()]
 	return space.intersect_shape(query, max_results)
-
-func _attach_moveParticles_to_scene_deferred() -> void:
-	var scene := get_tree().current_scene
-	if scene == null:
-		return
-	for move_particles in _moveParticles:
-		if move_particles == null or move_particles.get_parent() == scene:
-			continue
-		var particles_parent: Node = move_particles.get_parent()
-		if particles_parent != null:
-			particles_parent.remove_child(move_particles)
-		scene.add_child(move_particles)
-		move_particles.global_position = global_position
-		move_particles.z_index = 100

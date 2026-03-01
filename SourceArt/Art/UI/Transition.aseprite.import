@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dh7frl6rulqa8"
+path="res://.godot/imported/Transition.aseprite-3ca721b868f28f0a634feb0b0e6b60fe.res"
+
+[deps]
+
+source_file="res://SourceArt/Art/UI/Transition.aseprite"
+dest_files=["res://.godot/imported/Transition.aseprite-3ca721b868f28f0a634feb0b0e6b60fe.res"]
+
+[params]
+

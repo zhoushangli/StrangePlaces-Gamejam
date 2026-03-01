@@ -28,27 +28,23 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_hovered() -> void:
 	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
-	if audio != null and _focusSound != null:
-		audio.play_sfx(_focusSound)
+	audio.play_sfx(_focusSound)
 
 func _on_resume_pressed() -> void:
 	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
 	var ui: UIService = Game.Instance.try_get_service(Game.SERVICE_UI)
-	if audio != null and _confirmSound != null:
-		audio.play_sfx(_confirmSound)
-	if ui != null:
-		ui.close_top()
+	
+	audio.play_sfx(_confirmSound)
+	ui.close_top()
 
 func _on_back_pressed() -> void:
 	var audio: AudioService = Game.Instance.try_get_service(Game.SERVICE_AUDIO)
 	var ui: UIService = Game.Instance.try_get_service(Game.SERVICE_UI)
 	var game_state: GameStateService = Game.Instance.try_get_service(Game.SERVICE_GAME_STATE)
-	if audio != null and _confirmSound != null:
-		audio.play_sfx(_confirmSound)
-	if ui != null:
-		ui.close_top()
-	if game_state != null:
-		game_state.change_game_state(GameStateService.GameState.MAIN_MENU)
+	
+	audio.play_sfx(_confirmSound)
+	ui.enqueue_close_top()
+	game_state.change_game_state(GameStateService.GameState.MAIN_MENU)
 
 func _on_quit_pressed() -> void:
 	_on_back_pressed()

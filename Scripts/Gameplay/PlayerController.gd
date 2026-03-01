@@ -14,16 +14,20 @@ enum PlayerState {
 
 @export_group("References")
 @export var _anim: AnimatedSprite2D
+@export var _flashlight: QuantumObserver
 @export var _stepSounds: Array[AudioStream] = []
 
-var _fsm := preload("res://Scripts/Utils/SimpleStateMachine.gd").new()
+var _fsm := SimpleStateMachine.new()
 var _target_position: Vector2
 var _is_passing_level := false
+var _current_level: LVL_Base
 
 func _ready() -> void:
 	_anim.frame_changed.connect(_step_sound)
 	global_position = GridUtil.snap_to_grid(global_position, GridSize)
 	_target_position = global_position
+	_current_level = _resolve_current_level()
+	_sync_flashlight_with_level_rule()
 
 	_fsm.add_state(
 		PlayerState.IDLE,
@@ -63,9 +67,16 @@ func _ready() -> void:
 	_fsm.init(PlayerState.IDLE)
 
 func _physics_process(delta: float) -> void:
+	_update_flashlight_logic()
 	if _is_passing_level:
 		return
 	_fsm.update(delta)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not event.is_action_pressed("toggle_flash_light") or event.is_echo():
+		return
+	_handle_flashlight_toggle_input()
+	get_viewport().set_input_as_handled()
 
 func enter_level_pass_state() -> void:
 	if _is_passing_level:
@@ -75,6 +86,12 @@ func enter_level_pass_state() -> void:
 	_target_position = global_position
 	if _anim != null:
 		_anim.play("pass_level")
+
+func force_snap_to_cell(cell: Vector2, grid_size: int) -> void:
+	var snapped_cell := GridUtil.snap_to_grid(cell, grid_size)
+	velocity = Vector2.ZERO
+	_target_position = snapped_cell
+	global_position = snapped_cell
 
 func _step_sound() -> void:
 	if _anim.animation != "walk":
@@ -179,3 +196,38 @@ func _try_find_pushable_box_at(target_position: Vector2) -> PushableBoxControlle
 		return null
 	var collider : PushableBoxController = hits[0].get("collider")
 	return collider
+
+func _handle_flashlight_toggle_input() -> void:
+	if not _is_flashlight_allowed():
+		_flashlight.set_observing(false)
+		return
+	_flashlight.toggle_observing()
+
+func _update_flashlight_logic() -> void:
+	if not _is_flashlight_allowed():
+		_flashlight.set_observing(false)
+		return
+	if _flashlight.is_observing:
+		_flashlight.look_at(get_global_mouse_position())
+
+func _sync_flashlight_with_level_rule() -> void:
+	if not _is_flashlight_allowed():
+		_flashlight.set_observing(false)
+
+func _is_flashlight_allowed() -> bool:
+	if _current_level == null or not is_instance_valid(_current_level):
+		_current_level = _resolve_current_level()
+	if _current_level == null:
+		return false
+	return _current_level.isFlashLightOpen
+
+func _resolve_current_level() -> LVL_Base:
+	var parent_node := get_parent()
+	if parent_node is LVL_Base:
+		return parent_node as LVL_Base
+	var node := parent_node
+	while node != null:
+		if node is LVL_Base:
+			return node as LVL_Base
+		node = node.get_parent()
+	return null

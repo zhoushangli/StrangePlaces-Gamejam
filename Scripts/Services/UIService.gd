@@ -5,16 +5,22 @@ const UI_PREFAB_BASE := "res://Prefabs/UI/"
 
 var _popup_layer: Control
 var _stack: Array = []
+var _pending_close_top_count := 0
+var _pending_open_requests: Array = []
 
 func init_service() -> void:
 	name = "UIRoot"
 	_popup_layer = get_node("PopupLayer") as Control
 	tree_exiting.connect(func() -> void:
 		_stack.clear()
+		_pending_close_top_count = 0
+		_pending_open_requests.clear()
 	)
 
 func shutdown_service() -> void:
 	_stack.clear()
+	_pending_close_top_count = 0
+	_pending_open_requests.clear()
 
 func open_ui(ui_key: String, args: Variant = null) -> Variant:
 	var path := "%s%s.tscn" % [UI_PREFAB_BASE, _get_prefab_name(ui_key)]
@@ -64,6 +70,33 @@ func close_top() -> void:
 	if is_instance_valid(ui):
 		ui.on_close()
 		ui.queue_free()
+		print("[UIService] Closed top UI: %s" % ui.get_ui_key())
+
+func enqueue_close_top(count: int = 1) -> void:
+	if count <= 0:
+		return
+	_pending_close_top_count += count
+
+func enqueue_open_ui(ui_key: String, args: Variant = null) -> void:
+	if ui_key.is_empty():
+		return
+	_pending_open_requests.append({"ui_key": ui_key, "args": args})
+
+func flush_pending() -> void:
+	if _pending_close_top_count > 0:
+		for _i in range(_pending_close_top_count):
+			close_top()
+	_pending_close_top_count = 0
+
+	if not _pending_open_requests.is_empty():
+		var snapshot := _pending_open_requests.duplicate()
+		_pending_open_requests.clear()
+		for request in snapshot:
+			var request_dict := request as Dictionary
+			var ui_key: String = request_dict.get("ui_key", "")
+			if ui_key.is_empty():
+				continue
+			open_ui(ui_key, request_dict.get("args", null))
 
 func is_ui_open(ui_key: String) -> bool:
 	for i in range(_stack.size() - 1, -1, -1):

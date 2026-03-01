@@ -1,0 +1,59 @@
+[gd_scene format=4 uid="uid://bimbgrgvb3y22"]
+
+[ext_resource type="PackedScene" uid="uid://gpddo5x8ekle" path="res://Scenes/Gameplay/Levels/LVL_Base.tscn" id="1_3q4nx"]
+[ext_resource type="Script" uid="uid://2g41urmyq34q" path="res://Scripts/Gameplay/Level/LVL_02_07.gd" id="2_t1j5n"]
+[ext_resource type="PackedScene" uid="uid://dblk24g13wf6t" path="res://Prefabs/Items/A_QuantumItem.tscn" id="2_yebpp"]
+[ext_resource type="PackedScene" uid="uid://cryjartp217m2" path="res://Prefabs/Items/A_PushableBox.tscn" id="3_t1j5n"]
+[ext_resource type="PackedScene" uid="uid://d0us65lqualn3" path="res://Prefabs/Items/A_Button.tscn" id="4_vn0ck"]
+[ext_resource type="PackedScene" uid="uid://dke4jehd6ih2n" path="res://Prefabs/Items/A_Door.tscn" id="5_4xkgo"]
+
+[node name="LVL_02_07" unique_id=1507039194 instance=ExtResource("1_3q4nx")]
+script = ExtResource("2_t1j5n")
+isFlashLightOpen = true
+
+[node name="TM_Platform" parent="Ground" parent_id_path=PackedInt32Array(49399324) index="2" unique_id=1429914510]
+tile_map_data = PackedByteArray("AAAWABMAAgADAAMAAAAWABIAAgADAAIAAAAWABEAAgADAAIAAAAWABAAAgADAAAAAAAVABMAAgACAAMAAAAVABIAAgABAAIAAAAVABEAAgACAAIAAAAVABAAAgACAAAAAAAUABMAAgACAAMAAAAUABIAAgABAAIAAAAUABEAAgACAAEAAAAUABAAAgACAAAAAAATABMAAgABAAMAAAATABIAAgABAAEAAAATABEAAgABAAIAAAATABAAAgABAAAAAAASABMAAgAAAAMAAAASABIAAgAAAAIAAAASABEAAgAAAAIAAAASABAAAgAAAAAAAAARABMAAgADAAMAAAARABIAAgADAAEAAAARABEAAgADAAEAAAARABAAAgADAAAAAAALAA4AAgAAAAAAAAALAA8AAgAAAAIAAAALABAAAgAAAAEAAAALABEAAgAAAAIAAAALABIAAgAAAAMAAAAMAA4AAgADAAAAAAAMAA8AAgADAAEAAAAMABAAAgADAAEAAAAMABEAAgADAAIAAAAMABIAAgADAAMAAAANABAAAgAAAAAAAAANABEAAgAAAAEAAAANABIAAgAAAAMAAAAOABAAAgADAAAAAAAOABEAAgADAAEAAAAOABIAAgADAAMAAAASAAsAAgADAAAAAAASAAwAAgADAAIAAAASAA0AAgADAAMAAAATAAsAAgAAAAAAAAATAAwAAgAAAAMAAAAUAAsAAgAAAAAAAAAUAAwAAgAAAAIAAAAVAAsAAgADAAAAAAAVAAwAAgADAAIAAAAVAA0AAgADAAMAAAARAAsAAgADAAAAAAARAAwAAgADAAEAAAARAA0AAgADAAMAAAAUAA0AAgAAAAMAAAAeABAAAgAAAAEAAAAdABAAAgADAAIAAAAcABAAAgADAAIAAAAbABAAAgABAAAAAAAaABAAAgAAAAAAAAAeABEAAgAAAAIAAAAdABEAAgADAAIAAAAcABEAAgADAAEAAAAbABEAAgABAAMAAAAaABEAAgAAAAMAAAAfABIAAgADAAMAAAAfABEAAgADAAIAAAAfABAAAgADAAIAAAAfAA8AAgADAAAAAAAeABIAAgAAAAMAAAAeAA8AAgAAAAAAAAAZABEAAgADAAMAAAAZABAAAgADAAAAAAAdABIAAgADAAMAAAAdAA8AAgADAAAAAAAcABIAAgADAAMAAAAcAA8AAgADAAAAAAA=")
+
+[node name="StartDecoration" parent="Items" parent_id_path=PackedInt32Array(111838279) index="0" unique_id=2016148031]
+position = Vector2(304, 272)
+
+[node name="Portal" parent="Items" parent_id_path=PackedInt32Array(111838279) index="1" unique_id=1877675497]
+position = Vector2(480, 256)
+
+[node name="QuantumItem" parent="Items" parent_id_path=PackedInt32Array(111838279) index="2" unique_id=1695747596 node_paths=PackedStringArray("_anchor_root") instance=ExtResource("2_yebpp")]
+position = Vector2(312, 312)
+_anchor_root = NodePath("Anchors")
+
+[node name="Anchors" type="Node2D" parent="Items/QuantumItem" index="4" unique_id=1002014152]
+
+[node name="Anchor1" type="Node2D" parent="Items/QuantumItem/Anchors" index="0" unique_id=1248435456]
+
+[node name="Anchor2" type="Node2D" parent="Items/QuantumItem/Anchors" index="1" unique_id=1333102463]
+position = Vector2(-64, -48)
+
+[node name="Anchor3" type="Node2D" parent="Items/QuantumItem/Anchors" index="2" unique_id=1097772857]
+position = Vector2(0, -112)
+
+[node name="QuantumItem2" parent="Items" parent_id_path=PackedInt32Array(111838279) index="3" unique_id=1333486918 node_paths=PackedStringArray("_anchor_root") instance=ExtResource("2_yebpp")]
+position = Vector2(200, 216)
+_anchor_root = NodePath("Anchors2")
+
+[node name="Anchors2" type="Node2D" parent="Items/QuantumItem2" index="4" unique_id=2030894085]
+
+[node name="Anchor1" type="Node2D" parent="Items/QuantumItem2/Anchors2" index="0" unique_id=148564679]
+
+[node name="Anchor2" type="Node2D" parent="Items/QuantumItem2/Anchors2" index="1" unique_id=6352525]
+position = Vector2(112, -48)
+
+[node name="Anchor3" type="Node2D" parent="Items/QuantumItem2/Anchors2" index="2" unique_id=50209255]
+position = Vector2(192, 48)
+
+[node name="PushableBox" parent="Items" parent_id_path=PackedInt32Array(111838279) index="4" unique_id=1119444340 instance=ExtResource("3_t1j5n")]
+position = Vector2(200, 264)
+
+[node name="Button" parent="Items" parent_id_path=PackedInt32Array(111838279) index="5" unique_id=698795936 node_paths=PackedStringArray("_door") instance=ExtResource("4_vn0ck")]
+position = Vector2(344, 200)
+_door = NodePath("Door")
+
+[node name="Door" parent="Items/Button" index="2" unique_id=1683156598 instance=ExtResource("5_4xkgo")]
+position = Vector2(96, 64)

@@ -3,7 +3,7 @@ class_name QuantumObserver
 
 @export var _light: PointLight2D
 
-var is_observing := false
+@export var is_observing := false
 
 func _ready() -> void:
 	is_observing = false

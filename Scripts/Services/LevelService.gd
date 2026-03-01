@@ -35,21 +35,20 @@ func load_level(level_ref: Variant) -> void:
 		push_error("[LevelService] SceneService not available.")
 		return
 
-	_current_level_root = await scene_service.change_scene(path)
+	var before_transition_in := func(current_scene: Node) -> void:
+		_spawn_player_to_level(current_scene)
+	_current_level_root = await scene_service.change_scene(path, before_transition_in, true)
 	if _current_level_root == null:
 		return
-
-	var spawn_point := get_tree().get_first_node_in_group("PlayerSpawnPoint") as Node2D
-	if spawn_point != null:
-		var packed_player_scene := load("res://Prefabs/Character/A_Player.tscn") as PackedScene
-		if packed_player_scene != null:
-			var player_instance := packed_player_scene.instantiate() as Node2D
-			if player_instance != null:
-				player_instance.global_position = spawn_point.global_position
-				_current_level_root.add_child(player_instance)
-	else:
-		push_error("[LevelService] No PlayerSpawnPoint found in scene %s" % path)
 
 	var event_service : EventService = Game.Instance.try_get_service(Game.SERVICE_EVENT)
 	if event_service != null:
 		event_service.publish(EVENT_LEVEL_READY, {"path": path, "root_node": _current_level_root})
+
+func _spawn_player_to_level(level_root: Node) -> void:
+	var spawn_point := get_tree().get_first_node_in_group("PlayerSpawnPoint") as Node2D
+	var packed_player_scene := load("res://Prefabs/Character/A_Player.tscn") as PackedScene
+	var player_instance := packed_player_scene.instantiate() as Node2D
+
+	player_instance.global_position = spawn_point.global_position
+	level_root.add_child(player_instance)

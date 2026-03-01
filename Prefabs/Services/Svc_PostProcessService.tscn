@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c544x654arh5g" path="res://Scripts/Services/PostProcessService.gd" id="1_7e0r2"]
 [ext_resource type="Shader" uid="uid://bldfth3rs5u2w" path="res://GameAssets/Shaders/S_CRT.gdshader" id="2_dp64u"]
+[ext_resource type="Shader" uid="uid://tvlvy4rk048b" path="res://GameAssets/Shaders/S_LevelTransition.gdshader" id="3_q1r2x"]
+[ext_resource type="Texture2D" uid="uid://fta16ft8i7t3" path="res://GameAssets/UI/Transition.png" id="4_n9w3p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ym5h5"]
 shader = ExtResource("2_dp64u")
@@ -15,10 +17,20 @@ shader_parameter/vignette_strength = 0.2610000123975
 shader_parameter/chroma_offset_px = 1.0000000475
 shader_parameter/noise_strength = 0.010000000475
 
-[node name="PostProcessService" type="CanvasLayer" unique_id=1642101394 node_paths=PackedStringArray("_colorRect")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_transition"]
+shader = ExtResource("3_q1r2x")
+shader_parameter/transition_texture = ExtResource("4_n9w3p")
+shader_parameter/transition = 0.0
+shader_parameter/grid_x_y = Vector2(18, 8)
+shader_parameter/edge_softness = 0.02000000095
+
+[node name="PostProcessService" type="CanvasLayer" unique_id=1642101394 node_paths=PackedStringArray("_crtEffect", "_transitionEffect")]
 layer = 10
 script = ExtResource("1_7e0r2")
-_colorRect = NodePath("ColorRect")
+_crtEffect = NodePath("ColorRect")
+_transitionEffect = NodePath("TransitionRect")
+transition_out_duration = 0.8
+transition_in_duration = 0.8
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=493156983]
 material = SubResource("ShaderMaterial_ym5h5")
@@ -29,3 +41,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="TransitionRect" type="ColorRect" parent="." unique_id=117292330]
+texture_filter = 1
+material = SubResource("ShaderMaterial_transition")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

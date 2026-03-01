@@ -77,14 +77,15 @@ func _on_start_pressed() -> void:
 	
 	_start_pressed = true
 	
-	var ui: UIService = Game.Instance.try_get_service(Game.SERVICE_UI)
 	var game_state: GameStateService = Game.Instance.try_get_service(Game.SERVICE_GAME_STATE)
-		
-	ui.close_top()
 	game_state.change_game_state(GameStateService.GameState.GAME)
 
+	var ui: UIService = Game.Instance.try_get_service(Game.SERVICE_UI)
+	ui.enqueue_close_top()
+	
 	var level: LevelService = Game.Instance.try_get_service(Game.SERVICE_LEVEL)
 	level.load_level.call_deferred(_firstLevelPath)
+
 
 func _on_quit_pressed() -> void:
 	return
