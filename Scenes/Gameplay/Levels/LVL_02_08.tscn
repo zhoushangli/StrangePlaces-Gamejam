@@ -1,0 +1,73 @@
+[gd_scene format=4 uid="uid://d64dkgiolv40"]
+
+[ext_resource type="PackedScene" uid="uid://gpddo5x8ekle" path="res://Scenes/Gameplay/Levels/LVL_Base.tscn" id="1_6pp8b"]
+[ext_resource type="Script" uid="uid://egv5143b5tpw" path="res://Scripts/Gameplay/Level/LVL_02_08.gd" id="2_eavc6"]
+[ext_resource type="PackedScene" uid="uid://cryjartp217m2" path="res://Prefabs/Items/A_PushableBox.tscn" id="2_q26pp"]
+[ext_resource type="PackedScene" uid="uid://dblk24g13wf6t" path="res://Prefabs/Items/A_QuantumItem.tscn" id="3_eavc6"]
+[ext_resource type="PackedScene" uid="uid://d0us65lqualn3" path="res://Prefabs/Items/A_Button.tscn" id="4_big04"]
+[ext_resource type="PackedScene" uid="uid://dke4jehd6ih2n" path="res://Prefabs/Items/A_Door.tscn" id="5_knsru"]
+[ext_resource type="PackedScene" uid="uid://7bwlrrrdkm0y" path="res://Prefabs/Items/A_QuantumObserver.tscn" id="7_big04"]
+
+[node name="LVL_02_08" unique_id=1507039194 node_paths=PackedStringArray("_observer") instance=ExtResource("1_6pp8b")]
+script = ExtResource("2_eavc6")
+_observer = NodePath("Items/QuantumObserver")
+_observerToggleInterval = 4.0
+isFlashLightOpen = true
+
+[node name="TM_Platform" parent="Ground" parent_id_path=PackedInt32Array(49399324) index="2" unique_id=1429914510]
+tile_map_data = PackedByteArray("AAAIAA0AAgAAAAIAAAAIAA4AAgAAAAIAAAAIAA8AAgAAAAMAAAAJAA0AAgABAAEAAAAJAA4AAgABAAIAAAAJAA8AAgABAAMAAAAKAA0AAgABAAIAAAAKAA4AAgABAAIAAAAKAA8AAgACAAMAAAALAA0AAgACAAIAAAALAA4AAgACAAIAAAALAA8AAgABAAMAAAAMAA0AAgADAAEAAAAMAA4AAgADAAEAAAAMAA8AAgADAAMAAAANAA0AAgAAAAMAAAAOAA0AAgABAAMAAAAPAA0AAgABAAMAAAAQAAwAAgACAAAAAAAQAA0AAgABAAMAAAAQABAAAgAAAAIAAAAQABEAAgAAAAMAAAARAAwAAgACAAAAAAARAA0AAgACAAMAAAARABAAAgACAAEAAAARABEAAgABAAMAAAASAAwAAgACAAAAAAASAA0AAgACAAMAAAASABAAAgADAAIAAAASABEAAgADAAEAAAASABIAAgADAAIAAAASABMAAgADAAMAAAATAAwAAgACAAAAAAATAA0AAgABAAMAAAATABEAAgAAAAMAAAAUAAwAAgADAAEAAAAUAA0AAgADAAEAAAAUAA4AAgADAAIAAAAUAA8AAgADAAIAAAAUABAAAgADAAEAAAAUABEAAgADAAEAAAAUABIAAgADAAIAAAAUABMAAgADAAEAAAAUABQAAgADAAMAAAAVABEAAgAAAAMAAAAWABEAAgACAAMAAAAXABEAAgACAAMAAAAYABEAAgADAAMAAAAZABEAAgAAAAMAAAAaABEAAgADAAMAAAAbABAAAgAAAAEAAAAbABEAAgAAAAEAAAAbABIAAgAAAAMAAAAcABAAAgABAAEAAAAcABEAAgABAAIAAAAcABIAAgABAAMAAAAdABAAAgADAAIAAAAdABEAAgADAAIAAAAdABIAAgADAAMAAAAIAAwAAgAAAAAAAAAJAAwAAgABAAAAAAAKAAwAAgABAAAAAAALAAwAAgACAAAAAAAMAAwAAgADAAAAAAANAAwAAgAAAAAAAAAOAAwAAgACAAAAAAAPAAwAAgACAAAAAAAQAA8AAgAAAAAAAAARAA8AAgACAAAAAAASAA8AAgADAAAAAAATABAAAgAAAAAAAAAVABAAAgAAAAAAAAAWABAAAgABAAAAAAAXABAAAgABAAAAAAAYABAAAgADAAAAAAAZABAAAgAAAAAAAAAaABAAAgADAAAAAAAbAA8AAgAAAAAAAAAcAA8AAgABAAAAAAAdAA8AAgADAAAAAAAQAAoAAgAAAAMAAAARAAoAAgADAAMAAAASAAoAAgAAAAMAAAATAAoAAgABAAMAAAAUAAoAAgADAAEAAAAVAAoAAgAAAAMAAAAWAAoAAgACAAMAAAAXAAoAAgABAAMAAAAYAAoAAgABAAMAAAAZAAoAAgADAAMAAAAaAAkAAgAAAAEAAAAaAAoAAgAAAAIAAAAbAAkAAgACAAEAAAAbAAoAAgABAAEAAAAcAAkAAgABAAEAAAAcAAoAAgABAAEAAAAdAAkAAgADAAIAAAAdAAoAAgADAAIAAAAQAAkAAgAAAAAAAAARAAkAAgADAAAAAAASAAkAAgAAAAAAAAATAAkAAgACAAAAAAAUAAkAAgADAAAAAAAVAAkAAgAAAAAAAAAWAAkAAgACAAAAAAAXAAkAAgABAAAAAAAYAAkAAgABAAAAAAAZAAkAAgADAAAAAAAaAAgAAgAAAAAAAAAbAAgAAgACAAAAAAAcAAgAAgABAAAAAAAdAAgAAgADAAAAAAAaAAsAAgAAAAMAAAAbAAsAAgABAAMAAAAcAAsAAgABAAMAAAAdAAsAAgADAAMAAAAUAAsAAgADAAIAAAA=")
+
+[node name="StartDecoration" parent="Items" parent_id_path=PackedInt32Array(111838279) index="0" unique_id=2016148031]
+position = Vector2(160, 208)
+
+[node name="Portal" parent="Items" parent_id_path=PackedInt32Array(111838279) index="1" unique_id=1877675497]
+position = Vector2(448, 144)
+
+[node name="PushableBox" parent="Items" parent_id_path=PackedInt32Array(111838279) index="2" unique_id=1119444340 instance=ExtResource("2_q26pp")]
+position = Vector2(296, 152)
+
+[node name="QuantumItem" parent="Items" parent_id_path=PackedInt32Array(111838279) index="3" unique_id=1695747596 node_paths=PackedStringArray("_anchor_root") instance=ExtResource("3_eavc6")]
+position = Vector2(248, 152)
+_anchor_root = NodePath("Anchors")
+
+[node name="Anchors" type="Node2D" parent="Items/QuantumItem" index="4" unique_id=1591558920]
+
+[node name="Anchor1" type="Node2D" parent="Items/QuantumItem/Anchors" index="0" unique_id=157787568]
+
+[node name="Anchor2" type="Node2D" parent="Items/QuantumItem/Anchors" index="1" unique_id=1720424672]
+position = Vector2(160, 16)
+
+[node name="Anchor3" type="Node2D" parent="Items/QuantumItem/Anchors" index="2" unique_id=1991006401]
+position = Vector2(48, 112)
+
+[node name="Button" parent="Items" parent_id_path=PackedInt32Array(111838279) index="4" unique_id=698795936 node_paths=PackedStringArray("_door") instance=ExtResource("4_big04")]
+position = Vector2(296, 296)
+_door = NodePath("Door")
+
+[node name="Door" parent="Items/Button" index="2" unique_id=1683156598 instance=ExtResource("5_knsru")]
+position = Vector2(128, -32)
+
+[node name="Button2" parent="Items" parent_id_path=PackedInt32Array(111838279) index="5" unique_id=844288976 node_paths=PackedStringArray("_door") instance=ExtResource("4_big04")]
+position = Vector2(328, 312)
+_door = NodePath("Door2")
+
+[node name="Door2" parent="Items/Button2" index="2" unique_id=1387130847 instance=ExtResource("5_knsru")]
+position = Vector2(48, -160)
+
+[node name="PushableBox2" parent="Items" parent_id_path=PackedInt32Array(111838279) index="6" unique_id=1649564549 instance=ExtResource("2_q26pp")]
+position = Vector2(456, 232)
+
+[node name="QuantumItem2" parent="Items" parent_id_path=PackedInt32Array(111838279) index="7" unique_id=1107382896 node_paths=PackedStringArray("_anchor_root") instance=ExtResource("3_eavc6")]
+position = Vector2(456, 232)
+_anchor_root = NodePath("Anchors2")
+
+[node name="Anchors2" type="Node2D" parent="Items/QuantumItem2" index="4" unique_id=895417975]
+
+[node name="Anchor1" type="Node2D" parent="Items/QuantumItem2/Anchors2" index="0" unique_id=1090173179]
+
+[node name="Anchor2" type="Node2D" parent="Items/QuantumItem2/Anchors2" index="1" unique_id=66434134]
+position = Vector2(-64, 32)
+
+[node name="QuantumObserver" parent="Items" parent_id_path=PackedInt32Array(111838279) index="8" unique_id=1997136385 instance=ExtResource("7_big04")]
+position = Vector2(424, 88)
+scale = Vector2(2, 2)
