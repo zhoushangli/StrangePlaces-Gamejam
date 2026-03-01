@@ -3,8 +3,11 @@ class_name PortalController
 
 @export var _anim: AnimatedSprite2D
 
-const LEVEL_PREFIX := "LVL_01_0"
-const MAX_LEVEL_IN_CHAPTER := 5
+const LEVEL_PATTERN := "^LVL_(\\d{2})_(\\d{2})$"
+const CHAPTER_MAX := {
+	1: 6,
+	2: 9,
+}
 
 var _triggered := false
 
@@ -42,18 +45,35 @@ func _build_next_level_path(current_path: String) -> String:
 		push_error("[PortalController] Current scene path is empty.")
 		return ""
 	var file_name := current_path.get_file().get_basename()
-	if not file_name.begins_with(LEVEL_PREFIX):
-		push_error("[PortalController] Scene name is not in LVL_01_0X format: %s" % file_name)
+	var regex := RegEx.new()
+	if regex.compile(LEVEL_PATTERN) != OK:
+		push_error("[PortalController] Failed to compile level regex.")
 		return ""
-	var idx_str := file_name.trim_prefix(LEVEL_PREFIX)
-	if not idx_str.is_valid_int():
-		push_error("[PortalController] Failed to parse level index from scene name: %s" % file_name)
+	var match := regex.search(file_name)
+	if match == null:
+		push_error("[PortalController] Scene name is not in LVL_XX_XX format: %s" % file_name)
 		return ""
-	var current_index := idx_str.to_int()
-	if current_index >= MAX_LEVEL_IN_CHAPTER:
+
+	var chapter_str := match.get_string(1)
+	var level_str := match.get_string(2)
+	if not chapter_str.is_valid_int() or not level_str.is_valid_int():
+		push_error("[PortalController] Failed to parse chapter/index from scene name: %s" % file_name)
 		return ""
-	var next_index := current_index + 1
-	return "res://Scenes/Gameplay/Levels/%s%d.tscn" % [LEVEL_PREFIX, next_index]
+
+	var current_chapter := chapter_str.to_int()
+	var current_index := level_str.to_int()
+	if not CHAPTER_MAX.has(current_chapter):
+		push_error("[PortalController] Unsupported chapter: %d" % current_chapter)
+		return ""
+
+	var max_index: int = CHAPTER_MAX[current_chapter]
+	if current_index < max_index:
+		return "res://Scenes/Gameplay/Levels/LVL_%02d_%02d.tscn" % [current_chapter, current_index + 1]
+
+	var next_chapter := current_chapter + 1
+	if CHAPTER_MAX.has(next_chapter):
+		return "res://Scenes/Gameplay/Levels/LVL_%02d_%02d.tscn" % [next_chapter, 1]
+	return ""
 
 func _return_to_main_menu() -> void:
 	var ui_service: UIService = Game.Instance.try_get_service(Game.SERVICE_UI)

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://blf5u0vt37pjl"
+path="res://.godot/imported/VictoryBlast.ase-af39177917f01ff37d7a95b8d26507ac.res"
+
+[deps]
+
+source_file="res://SourceArt/Art/Particles/VictoryBlast.ase"
+dest_files=["res://.godot/imported/VictoryBlast.ase-af39177917f01ff37d7a95b8d26507ac.res"]
+
+[params]
+

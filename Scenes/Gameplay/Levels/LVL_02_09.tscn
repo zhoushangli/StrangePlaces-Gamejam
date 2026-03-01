@@ -1,0 +1,260 @@
+[gd_scene format=4 uid="uid://b8rv5dgk5sshk"]
+
+[ext_resource type="PackedScene" uid="uid://gpddo5x8ekle" path="res://Scenes/Gameplay/Levels/LVL_Base.tscn" id="1_fcqb5"]
+[ext_resource type="Script" uid="uid://b0gkyeqwoiahp" path="res://Scripts/Gameplay/Level/LVL_02_09.gd" id="2_syqsb"]
+[ext_resource type="PackedScene" uid="uid://dblk24g13wf6t" path="res://Prefabs/Items/A_QuantumItem.tscn" id="3_51aed"]
+[ext_resource type="AudioStream" uid="uid://c5h3xop87lwpb" path="res://GameAssets/Sounds/Victory.wav" id="3_lj6id"]
+[ext_resource type="PackedScene" uid="uid://cryjartp217m2" path="res://Prefabs/Items/A_PushableBox.tscn" id="4_lj6id"]
+[ext_resource type="PackedScene" uid="uid://d0us65lqualn3" path="res://Prefabs/Items/A_Button.tscn" id="5_luac4"]
+[ext_resource type="PackedScene" uid="uid://dke4jehd6ih2n" path="res://Prefabs/Items/A_Door.tscn" id="6_mjmq2"]
+[ext_resource type="PackedScene" uid="uid://7bwlrrrdkm0y" path="res://Prefabs/Items/A_QuantumObserver.tscn" id="7_mguw4"]
+[ext_resource type="Texture2D" uid="uid://dqug35e7dnk2k" path="res://GameAssets/Particles/VictoryBlast.png" id="8_51aed"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj6id"]
+atlas = ExtResource("8_51aed")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="Curve" id="Curve_luac4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_mjmq2"]
+curve = SubResource("Curve_luac4")
+
+[sub_resource type="Gradient" id="Gradient_mguw4"]
+offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1)
+colors = PackedColorArray(0.30980393, 0.43529412, 0.6392157, 1, 0.49411765, 0.654902, 0.8392157, 1, 0.90588236, 0.43529412, 0.31764707, 1, 0.95686275, 0.63529414, 0.38039216, 1, 1, 0.81960785, 0.4, 1, 0.9019608, 0.9490196, 1, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kin4i"]
+gradient = SubResource("Gradient_mguw4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_72rew"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+angle_min = 120.000015
+angle_max = 150.00002
+spread = 15.0
+initial_velocity_min = 100.0
+initial_velocity_max = 180.0
+angular_velocity_min = -30.000015
+angular_velocity_max = 89.999985
+gravity = Vector3(0, 80, 0)
+scale_min = 0.7
+scale_max = 1.3
+color_initial_ramp = SubResource("GradientTexture1D_kin4i")
+alpha_curve = SubResource("CurveTexture_mjmq2")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snoeh"]
+atlas = ExtResource("8_51aed")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Gradient" id="Gradient_i05h0"]
+offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1)
+colors = PackedColorArray(0.18431373, 0.24313726, 0.3882353, 1, 0.30980393, 0.43529412, 0.6392157, 1, 0.49411765, 0.654902, 0.8392157, 1, 0.90588236, 0.43529412, 0.31764707, 1, 0.95686275, 0.63529414, 0.38039216, 1, 1, 0.81960785, 0.4, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_es40p"]
+gradient = SubResource("Gradient_i05h0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aoowp"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+angle_min = 120.000015
+angle_max = 150.00002
+spread = 15.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+angular_velocity_min = -30.000015
+angular_velocity_max = 89.999985
+gravity = Vector3(0, 98, 0)
+scale_min = 0.7
+scale_max = 1.3
+color_initial_ramp = SubResource("GradientTexture1D_es40p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lv4lg"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+angle_min = 120.000015
+angle_max = 150.00002
+spread = 15.0
+initial_velocity_min = 100.0
+initial_velocity_max = 180.0
+angular_velocity_min = -30.000015
+angular_velocity_max = 89.999985
+gravity = Vector3(0, 80, 0)
+scale_min = 0.7
+scale_max = 1.3
+color_initial_ramp = SubResource("GradientTexture1D_kin4i")
+alpha_curve = SubResource("CurveTexture_mjmq2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tsnjq"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+angle_min = -29.99999
+angle_max = 60.00001
+spread = 15.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+angular_velocity_min = -30.000015
+angular_velocity_max = 89.999985
+gravity = Vector3(0, 98, 0)
+scale_min = 0.7
+scale_max = 1.3
+color_initial_ramp = SubResource("GradientTexture1D_es40p")
+
+[node name="LVL_02_09" unique_id=1507039194 node_paths=PackedStringArray("_observer", "_portal", "_victoryVfxs") instance=ExtResource("1_fcqb5")]
+script = ExtResource("2_syqsb")
+_observer = NodePath("Items/QuantumObserver")
+_observerToggleInterval = 4.0
+_portal = NodePath("Items/Portal")
+_victoryVfxs = [NodePath("Items/SubBlast"), NodePath("Items/MainBlast"), NodePath("Items/SubBlast2"), NodePath("Items/MainBlast2")]
+_victorySfx = ExtResource("3_lj6id")
+isFlashLightOpen = true
+
+[node name="TM_Platform" parent="Ground" parent_id_path=PackedInt32Array(49399324) index="2" unique_id=1429914510]
+tile_map_data = PackedByteArray("AAAGAAwAAgADAAEAAAAGABEAAgADAAIAAAAHAAsAAgAAAAAAAAAHAAwAAgAAAAMAAAAHABEAAgAAAAAAAAAHABIAAgAAAAMAAAAIAAsAAgABAAAAAAAIAAwAAgABAAMAAAAIABEAAgACAAAAAAAIABIAAgABAAMAAAAJAAwAAgADAAMAAAAJABEAAgADAAAAAAAKABEAAgAAAAMAAAANABEAAgADAAEAAAAOABEAAgAAAAAAAAAOABIAAgAAAAMAAAAPABEAAgABAAAAAAAPABIAAgABAAMAAAAQABEAAgACAAAAAAATAAwAAgADAAEAAAATAA8AAgADAAIAAAATABAAAgADAAIAAAAUAAsAAgAAAAAAAAAUAAwAAgAAAAMAAAAUAA8AAgAAAAAAAAAUABAAAgAAAAMAAAAVAAsAAgABAAAAAAAVAAwAAgABAAMAAAAVAA8AAgACAAAAAAAVABAAAgACAAMAAAAWAAwAAgACAAMAAAAWAA8AAgACAAAAAAAWABAAAgABAAMAAAAZAAwAAgACAAIAAAAZAA0AAgACAAEAAAAfAAsAAgAAAAAAAAAfAAwAAgAAAAMAAAAgAAsAAgABAAAAAAAgAAwAAgACAAMAAAAhAAsAAgABAAAAAAAhAAwAAgADAAIAAAAiAAsAAgABAAAAAAAiAAwAAgAAAAMAAAAGAA0AAgADAAIAAAAGAA4AAgADAAIAAAAGAA8AAgADAAIAAAAGABAAAgADAAIAAAAJAAsAAgADAAAAAAAJABIAAgADAAMAAAAKAAwAAgAAAAEAAAAKAA0AAgAAAAIAAAAKAA4AAgAAAAIAAAAKAA8AAgAAAAEAAAAKABAAAgAAAAIAAAALABEAAgADAAEAAAALABIAAgADAAMAAAANAAsAAgADAAAAAAANAAwAAgADAAIAAAANAA0AAgADAAEAAAANAA4AAgADAAIAAAANAA8AAgADAAIAAAANABAAAgADAAEAAAAQABIAAgABAAMAAAARAAsAAgADAAAAAAARAAwAAgADAAIAAAARAA0AAgADAAIAAAARAA4AAgADAAEAAAARAA8AAgADAAIAAAARABAAAgADAAIAAAARABEAAgADAAEAAAATAA0AAgADAAEAAAATAA4AAgADAAIAAAATABEAAgADAAIAAAATABIAAgADAAMAAAAWAAsAAgABAAAAAAAXAAwAAgADAAEAAAAXAA0AAgADAAIAAAAXAA4AAgADAAIAAAAXAA8AAgADAAIAAAAXABAAAgADAAIAAAAXABEAAgADAAEAAAAXABIAAgADAAMAAAAZAAsAAgADAAAAAAAZAA4AAgACAAEAAAAZAA8AAgADAAEAAAAZABAAAgADAAEAAAAZABEAAgADAAIAAAAZABIAAgADAAMAAAAaAAwAAgADAAAAAAAaAA0AAgADAAEAAAAdAA0AAgADAAIAAAAdAA4AAgADAAIAAAAdAA8AAgADAAIAAAAdABAAAgADAAIAAAAhAA0AAgADAAIAAAAhAA4AAgADAAEAAAAhAA8AAgADAAEAAAAhABAAAgADAAEAAAAhABEAAgADAAIAAAAhABIAAgADAAMAAAAjAAsAAgADAAAAAAAjAAwAAgADAAMAAAAjAA4AAgAAAAAAAAAjAA8AAgAAAAEAAAAkAA4AAgABAAAAAAAkAA8AAgACAAEAAAAlAA4AAgACAAAAAAAlAA8AAgABAAIAAAAmAA4AAgABAAAAAAAmAA8AAgABAAIAAAAnAA4AAgADAAAAAAAnAA8AAgADAAEAAAAjABAAAgAAAAMAAAAkABAAAgACAAMAAAAlABAAAgABAAMAAAAmABAAAgACAAMAAAAnABAAAgADAAMAAAAAAA4AAgAAAAAAAAAAAA8AAgAAAAEAAAABAA4AAgACAAAAAAABAA8AAgABAAEAAAACAA4AAgABAAAAAAACAA8AAgABAAIAAAADAA4AAgACAAAAAAADAA8AAgACAAEAAAAEAA4AAgADAAAAAAAEAA8AAgADAAEAAAAAABAAAgAAAAMAAAABABAAAgACAAMAAAACABAAAgABAAMAAAADABAAAgABAAMAAAAEABAAAgADAAMAAAANABIAAgADAAMAAAARABIAAgADAAMAAAATAAsAAgADAAAAAAAXAAsAAgADAAAAAAAcAA8AAgAAAAAAAAAdABIAAgADAAMAAAAdABEAAgADAAIAAAAdAAwAAgADAAEAAAAdAAsAAgADAAAAAAAaAA4AAgADAAMAAAAbAA8AAgADAAMAAAAcABAAAgAAAAEAAAALABAAAgADAAAAAAAGABIAAgADAAMAAAAGAAsAAgADAAAAAAAKAAsAAgAAAAAAAAAcABEAAgAAAAMAAAAbAA4AAgADAAAAAAA=")
+
+[node name="StartDecoration" parent="Items" parent_id_path=PackedInt32Array(111838279) index="0" unique_id=2016148031]
+position = Vector2(32, 240)
+
+[node name="Portal" parent="Items" parent_id_path=PackedInt32Array(111838279) index="1" unique_id=1877675497]
+position = Vector2(600, 232)
+
+[node name="QuantumItem" parent="Items" parent_id_path=PackedInt32Array(111838279) index="2" unique_id=1695747596 node_paths=PackedStringArray("_anchor_root") instance=ExtResource("3_51aed")]
+position = Vector2(88, 248)
+_anchor_root = NodePath("Anchors")
+
+[node name="Anchors" type="Node2D" parent="Items/QuantumItem" index="4" unique_id=310812275]
+
+[node name="Anchor1" type="Node2D" parent="Items/QuantumItem/Anchors" index="0" unique_id=615200404]
+
+[node name="Anchor2" type="Node2D" parent="Items/QuantumItem/Anchors" index="1" unique_id=1489276245]
+position = Vector2(80, -64)
+
+[node name="Anchor3" type="Node2D" parent="Items/QuantumItem/Anchors" index="2" unique_id=261455507]
+position = Vector2(80, 32)
+
+[node name="QuantumItem2" parent="Items" parent_id_path=PackedInt32Array(111838279) index="3" unique_id=1557376140 node_paths=PackedStringArray("_anchor_root") instance=ExtResource("3_51aed")]
+position = Vector2(200, 280)
+_anchor_root = NodePath("Anchors")
+
+[node name="Anchors" type="Node2D" parent="Items/QuantumItem2" index="4" unique_id=1793611704]
+
+[node name="Anchor1" type="Node2D" parent="Items/QuantumItem2/Anchors" index="0" unique_id=1987558454]
+
+[node name="Anchor2" type="Node2D" parent="Items/QuantumItem2/Anchors" index="1" unique_id=1313391640]
+position = Vector2(96, 0)
+
+[node name="QuantumItem3" parent="Items" parent_id_path=PackedInt32Array(111838279) index="4" unique_id=1079701186 node_paths=PackedStringArray("_anchor_root") instance=ExtResource("3_51aed")]
+position = Vector2(392, 184)
+_anchor_root = NodePath("Anchors")
+
+[node name="Anchors" type="Node2D" parent="Items/QuantumItem3" index="4" unique_id=1399048539]
+
+[node name="Anchor1" type="Node2D" parent="Items/QuantumItem3/Anchors" index="0" unique_id=1411927541]
+
+[node name="Anchor2" type="Node2D" parent="Items/QuantumItem3/Anchors" index="1" unique_id=2026274116]
+position = Vector2(32, 48)
+
+[node name="QuantumItem4" parent="Items" parent_id_path=PackedInt32Array(111838279) index="5" unique_id=1479248590 node_paths=PackedStringArray("_anchor_root") instance=ExtResource("3_51aed")]
+position = Vector2(424, 184)
+_anchor_root = NodePath("Anchors")
+
+[node name="Anchors" type="Node2D" parent="Items/QuantumItem4" index="4" unique_id=2135456686]
+
+[node name="Anchor1" type="Node2D" parent="Items/QuantumItem4/Anchors" index="0" unique_id=558014355]
+
+[node name="Anchor2" type="Node2D" parent="Items/QuantumItem4/Anchors" index="1" unique_id=1239339001]
+position = Vector2(16, 48)
+
+[node name="Anchor3" type="Node2D" parent="Items/QuantumItem4/Anchors" index="2" unique_id=434960330]
+position = Vector2(64, 0)
+
+[node name="QuantumItem5" parent="Items" parent_id_path=PackedInt32Array(111838279) index="6" unique_id=1692962334 node_paths=PackedStringArray("_anchor_root") instance=ExtResource("3_51aed")]
+position = Vector2(552, 136)
+_anchor_root = NodePath("Anchors")
+
+[node name="Anchors" type="Node2D" parent="Items/QuantumItem5" index="4" unique_id=940172982]
+
+[node name="Anchor1" type="Node2D" parent="Items/QuantumItem5/Anchors" index="0" unique_id=952694582]
+
+[node name="Anchor2" type="Node2D" parent="Items/QuantumItem5/Anchors" index="1" unique_id=206732707]
+position = Vector2(0, 96)
+
+[node name="PushableBox" parent="Items" parent_id_path=PackedInt32Array(111838279) index="7" unique_id=1119444340 instance=ExtResource("4_lj6id")]
+position = Vector2(136, 184)
+
+[node name="Button" parent="Items" parent_id_path=PackedInt32Array(111838279) index="8" unique_id=698795936 node_paths=PackedStringArray("_door") instance=ExtResource("5_luac4")]
+position = Vector2(248, 280)
+_door = NodePath("Door")
+
+[node name="Door" parent="Items/Button" index="2" unique_id=1683156598 instance=ExtResource("6_mjmq2")]
+position = Vector2(64, -32)
+
+[node name="PushableBox2" parent="Items" parent_id_path=PackedInt32Array(111838279) index="9" unique_id=1421029325 instance=ExtResource("4_lj6id")]
+position = Vector2(424, 216)
+
+[node name="Button2" parent="Items" parent_id_path=PackedInt32Array(111838279) index="10" unique_id=1249372907 node_paths=PackedStringArray("_door") instance=ExtResource("5_luac4")]
+position = Vector2(408, 232)
+_door = NodePath("Door")
+
+[node name="Door" parent="Items/Button2" index="2" unique_id=1260890049 instance=ExtResource("6_mjmq2")]
+position = Vector2(128, -48)
+
+[node name="QuantumObserver" parent="Items" parent_id_path=PackedInt32Array(111838279) index="11" unique_id=1997136385 instance=ExtResource("7_mguw4")]
+position = Vector2(232, 16)
+scale = Vector2(4, 4)
+
+[node name="SubBlast" type="GPUParticles2D" parent="Items" parent_id_path=PackedInt32Array(111838279) index="12" unique_id=1271610285]
+z_index = 100
+texture_filter = 1
+position = Vector2(0, 256)
+rotation = -1.0471976
+emitting = false
+amount = 200
+texture = SubResource("AtlasTexture_lj6id")
+lifetime = 6.0
+one_shot = true
+explosiveness = 0.99
+process_material = SubResource("ParticleProcessMaterial_72rew")
+
+[node name="MainBlast" type="GPUParticles2D" parent="Items" parent_id_path=PackedInt32Array(111838279) index="13" unique_id=686435413]
+z_index = 100
+texture_filter = 1
+position = Vector2(0, 256)
+rotation = -1.0471976
+emitting = false
+amount = 200
+texture = SubResource("AtlasTexture_snoeh")
+lifetime = 6.0
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_aoowp")
+
+[node name="SubBlast2" type="GPUParticles2D" parent="Items" parent_id_path=PackedInt32Array(111838279) index="14" unique_id=1537228500]
+z_index = 100
+texture_filter = 1
+position = Vector2(640, 256)
+rotation = -2.0943952
+emitting = false
+amount = 200
+texture = SubResource("AtlasTexture_lj6id")
+lifetime = 6.0
+one_shot = true
+explosiveness = 0.99
+process_material = SubResource("ParticleProcessMaterial_lv4lg")
+
+[node name="MainBlast2" type="GPUParticles2D" parent="Items" parent_id_path=PackedInt32Array(111838279) index="15" unique_id=779981936]
+z_index = 100
+texture_filter = 1
+position = Vector2(640, 256)
+rotation = -2.0943952
+emitting = false
+amount = 200
+texture = SubResource("AtlasTexture_snoeh")
+lifetime = 6.0
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_tsnjq")

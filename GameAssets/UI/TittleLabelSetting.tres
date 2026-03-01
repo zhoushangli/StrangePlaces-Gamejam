@@ -1,7 +1,9 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://db5j82mvesxyf"]
 
+[ext_resource type="FontFile" uid="uid://d24w7mnlgf43s" path="res://GameAssets/Fonts/PixelOperator-Bold-1.ttf" id="1_o5jha"]
+
 [resource]
-font_size = 20
+font = ExtResource("1_o5jha")
+font_size = 40
 font_color = Color(0.21960784, 0.7294118, 0.84705883, 1)
-outline_size = 7
 outline_color = Color(0.020777179, 0.17289788, 0.20921323, 1)

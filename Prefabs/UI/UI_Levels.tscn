@@ -1,111 +1,26 @@
-[gd_scene format=4 uid="uid://bonf6smhcu8ua"]
+[gd_scene format=3 uid="uid://bonf6smhcu8ua"]
 
 [ext_resource type="Script" uid="uid://3yo5sg81murf" path="res://Scripts/UI/LevelsUI.gd" id="1_hpvkl"]
 [ext_resource type="Texture2D" uid="uid://cembpbvagw8u0" path="res://SourceArt/Art/UI/LevelButton.png" id="2_2cd8h"]
 [ext_resource type="AudioStream" uid="uid://cdjxp38q3a8bf" path="res://GameAssets/Sounds/FocusOnUI.wav" id="3_m6eo5"]
 [ext_resource type="AudioStream" uid="uid://dscs5qql0f4wh" path="res://GameAssets/Sounds/ConfirmUI.wav" id="4_v4pbg"]
 [ext_resource type="AudioStream" uid="uid://dvq5ml12m06a" path="res://GameAssets/Audio/Game_BGM.mp3" id="5_7cum8"]
-[ext_resource type="Script" uid="uid://cxjqsegf56f4v" path="res://Scripts/Utils/SnakeContainer.gd" id="5_v4pbg"]
+[ext_resource type="FontFile" uid="uid://d24w7mnlgf43s" path="res://GameAssets/Fonts/PixelOperator-Bold-1.ttf" id="6_7cum8"]
 [ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://SourceArt/Art/UI/UIColumns.png" id="6_ebodd"]
-[ext_resource type="Texture2D" uid="uid://pbnjevnc3l72" path="res://SourceArt/Art/UI/LoadingBar2.png" id="7_7ihf6"]
 [ext_resource type="Texture2D" uid="uid://dm528srquwr31" path="res://SourceArt/Art/UI/whiteTittleLine.png" id="8_7ihf6"]
-[ext_resource type="LabelSettings" uid="uid://db5j82mvesxyf" path="res://GameAssets/UI/TittleLabelSetting.tres" id="8_7uusg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m6eo5"]
-atlas = ExtResource("2_2cd8h")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="Theme" id="Theme_7uusg"]
+Label/colors/font_color = Color(0.54509807, 0.72156864, 0.8509804, 1)
+Label/fonts/font = ExtResource("6_7cum8")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v4pbg"]
-atlas = ExtResource("2_2cd8h")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2yhw2"]
-atlas = ExtResource("2_2cd8h")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ebodd"]
-atlas = ExtResource("2_2cd8h")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ihf6"]
-atlas = ExtResource("2_2cd8h")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7cum8"]
-atlas = ExtResource("2_2cd8h")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7uusg"]
-atlas = ExtResource("2_2cd8h")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r8jwr"]
-atlas = ExtResource("2_2cd8h")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="LabelSettings" id="LabelSettings_7ihf6"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_xc77m"]
-font_size = 12
-font_color = Color(0.21960784, 0.7294118, 0.84705883, 1)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7cum8"]
-texture = ExtResource("6_ebodd")
-0:0/0 = 0
-0:0/0/terrain_set = 0
-0:0/0/terrain = 0
-0:0/0/terrains_peering_bit/bottom_side = 0
-1:0/0 = 0
-1:0/0/terrain_set = 0
-1:0/0/terrain = 1
-1:0/0/terrains_peering_bit/right_side = 1
-1:0/0/terrains_peering_bit/left_side = 1
-2:0/0 = 0
-2:0/0/terrain_set = 0
-2:0/0/terrain = 1
-2:0/0/terrains_peering_bit/bottom_side = 1
-2:0/0/terrains_peering_bit/left_side = 1
-0:1/0 = 0
-0:1/0/terrain_set = 0
-0:1/0/terrain = 0
-0:1/0/terrains_peering_bit/bottom_side = 0
-0:1/0/terrains_peering_bit/top_side = 0
-2:1/0 = 0
-2:1/0/terrain_set = 0
-2:1/0/terrain = 1
-2:1/0/terrains_peering_bit/bottom_side = 1
-2:1/0/terrains_peering_bit/top_side = 1
-0:2/0 = 0
-0:2/0/terrain_set = 0
-0:2/0/terrain = 0
-0:2/0/terrains_peering_bit/right_side = 0
-0:2/0/terrains_peering_bit/top_side = 0
-1:2/0 = 0
-1:2/0/terrain_set = 0
-1:2/0/terrain = 0
-1:2/0/terrains_peering_bit/right_side = 0
-1:2/0/terrains_peering_bit/left_side = 0
-2:2/0 = 0
-2:2/0/terrain_set = 0
-2:2/0/terrain = 1
-2:2/0/terrains_peering_bit/top_side = 1
-0:3/0 = 0
-1:3/0 = 0
-1:3/0/terrain_set = 0
-2:3/0 = 0
-2:3/0/terrain_set = 0
-
-[sub_resource type="TileSet" id="TileSet_r8jwr"]
-terrain_set_0/mode = 0
-terrain_set_0/terrain_0/name = "leftDown"
-terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-terrain_set_0/terrain_1/name = "rightUp"
-terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_7cum8")
+[sub_resource type="Theme" id="Theme_r8jwr"]
+Label/colors/font_color = Color(0.54509807, 0.72156864, 0.8509804, 1)
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("6_7cum8")
 
 [sub_resource type="LabelSettings" id="LabelSettings_7uusg"]
-font_size = 13
-font_color = Color(1, 1, 1, 0.5372549)
+font_size = 40
+font_color = Color(0.54509807, 0.72156864, 0.8509804, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xc77m"]
 atlas = ExtResource("8_7ihf6")
@@ -115,33 +30,42 @@ region = Rect2(80, 16, 16, 8)
 atlas = ExtResource("8_7ihf6")
 region = Rect2(32, 16, 16, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bsvox"]
-atlas = ExtResource("6_ebodd")
-region = Rect2(0, 48, 48, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wsihc"]
 atlas = ExtResource("6_ebodd")
 region = Rect2(0, 48, 48, 16)
 
-[node name="UiLevels" type="Control" unique_id=852166542 node_paths=PackedStringArray("_levelButtons", "_sceneView", "_start", "_back")]
+[sub_resource type="LabelSettings" id="LabelSettings_7ihf6"]
+font_size = 20
+font_color = Color(0.54509807, 0.72156864, 0.8509804, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uusg"]
+atlas = ExtResource("2_2cd8h")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ihf6"]
+atlas = ExtResource("2_2cd8h")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cum8"]
+atlas = ExtResource("2_2cd8h")
+region = Rect2(16, 0, 16, 16)
+
+[node name="UiLevels" type="Control" unique_id=852166542 node_paths=PackedStringArray("_levelLabel", "_levelBtnTemplate", "_levelButtons", "_back")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_7uusg")
 script = ExtResource("1_hpvkl")
+_levelLabel = NodePath("LevelLabel")
+_levelBtnTemplate = NodePath("ScrollContainer/GridContainer/TextureButton")
 _levelButtons = NodePath("ScrollContainer/GridContainer")
-_sceneView = NodePath("SceneView")
-_lockedTexture = SubResource("AtlasTexture_m6eo5")
-_unLockedTexture = SubResource("AtlasTexture_v4pbg")
-_hoverTexture = SubResource("AtlasTexture_2yhw2")
-_start = NodePath("Start")
 _back = NodePath("Back")
 _hoverSound = ExtResource("3_m6eo5")
 _pressSound = ExtResource("4_v4pbg")
 _gameBgm = ExtResource("5_7cum8")
-finishedCnt = 5
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=854664691]
 layout_mode = 1
@@ -150,583 +74,41 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.08774606, 0.21185121, 0.35085806, 1)
+theme = SubResource("Theme_r8jwr")
+color = Color(0.07058824, 0.101960786, 0.18431373, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=839372043]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -295.0
-offset_top = -176.0
-offset_right = -3.0
-offset_bottom = 136.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1573425863]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -278.0
-offset_top = -96.0
-offset_right = 75.0
-offset_bottom = 96.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=28386568]
-layout_mode = 2
-theme_override_constants/h_separation = 32
-theme_override_constants/v_separation = 32
-columns = 5
-
-[node name="LevelButton" type="TextureRect" parent="ScrollContainer/GridContainer" unique_id=244052367]
-z_index = 1
-texture_filter = 1
-custom_minimum_size = Vector2(45, 45)
-layout_mode = 2
-texture = SubResource("AtlasTexture_ebodd")
-metadata/LevelPath = "res://Scenes/Gameplay/Levels/LVL_01_01.tscn"
-
-[node name="WireRight" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton" unique_id=1465065807]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 48.5
-offset_top = -18.5
-offset_right = 88.5
-offset_bottom = 21.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5707964
-texture = SubResource("AtlasTexture_7ihf6")
-
-[node name="WireLeft" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton" unique_id=1621057683]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -22.5
-offset_top = -18.5
-offset_right = 17.5
-offset_bottom = 21.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5707964
-texture = SubResource("AtlasTexture_7cum8")
-
-[node name="WireDown" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton" unique_id=542758289]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 19.5
-offset_top = 62.5
-offset_right = 59.5
-offset_bottom = 102.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-texture = SubResource("AtlasTexture_7uusg")
-
-[node name="WireUp" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton" unique_id=1130921570]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 19.5
-offset_top = -22.5
-offset_right = 59.5
-offset_bottom = 17.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-texture = SubResource("AtlasTexture_r8jwr")
-
-[node name="LevelButton2" type="TextureRect" parent="ScrollContainer/GridContainer" unique_id=872488016]
-z_index = 1
-texture_filter = 1
-custom_minimum_size = Vector2(45, 45)
-layout_mode = 2
-texture = SubResource("AtlasTexture_ebodd")
-metadata/LevelPath = "res://Scenes/Gameplay/Levels/LVL_01_02.tscn"
-
-[node name="WireRight" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton2" unique_id=294327538]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 48.5
-offset_top = -18.5
-offset_right = 88.5
-offset_bottom = 21.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5707964
-texture = SubResource("AtlasTexture_7ihf6")
-
-[node name="WireLeft" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton2" unique_id=1817297385]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -22.5
-offset_top = -18.5
-offset_right = 17.5
-offset_bottom = 21.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5707964
-texture = SubResource("AtlasTexture_7cum8")
-
-[node name="WireDown" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton2" unique_id=485931206]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 19.5
-offset_top = 62.5
-offset_right = 59.5
-offset_bottom = 102.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-texture = SubResource("AtlasTexture_7uusg")
-
-[node name="WireUp" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton2" unique_id=577118898]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 19.5
-offset_top = -22.5
-offset_right = 59.5
-offset_bottom = 17.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-texture = SubResource("AtlasTexture_r8jwr")
-
-[node name="LevelButton3" type="TextureRect" parent="ScrollContainer/GridContainer" unique_id=1240653794]
-z_index = 1
-texture_filter = 1
-custom_minimum_size = Vector2(45, 45)
-layout_mode = 2
-texture = SubResource("AtlasTexture_ebodd")
-metadata/LevelPath = "res://Scenes/Gameplay/Levels/LVL_01_03.tscn"
-
-[node name="WireRight" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton3" unique_id=699190512]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 48.5
-offset_top = -18.5
-offset_right = 88.5
-offset_bottom = 21.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5707964
-texture = SubResource("AtlasTexture_7ihf6")
-
-[node name="WireLeft" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton3" unique_id=295476052]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -22.5
-offset_top = -18.5
-offset_right = 17.5
-offset_bottom = 21.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5707964
-texture = SubResource("AtlasTexture_7cum8")
-
-[node name="WireDown" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton3" unique_id=59462393]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 19.5
-offset_top = 62.5
-offset_right = 59.5
-offset_bottom = 102.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-texture = SubResource("AtlasTexture_7uusg")
-
-[node name="WireUp" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton3" unique_id=2046987295]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 19.5
-offset_top = -22.5
-offset_right = 59.5
-offset_bottom = 17.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-texture = SubResource("AtlasTexture_r8jwr")
-
-[node name="LevelButton4" type="TextureRect" parent="ScrollContainer/GridContainer" unique_id=133754203]
-z_index = 1
-texture_filter = 1
-custom_minimum_size = Vector2(45, 45)
-layout_mode = 2
-texture = SubResource("AtlasTexture_ebodd")
-metadata/LevelPath = "res://Scenes/Gameplay/Levels/LVL_01_04.tscn"
-
-[node name="WireRight" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton4" unique_id=1332867702]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 48.5
-offset_top = -18.5
-offset_right = 88.5
-offset_bottom = 21.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5707964
-texture = SubResource("AtlasTexture_7ihf6")
-
-[node name="WireLeft" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton4" unique_id=1649169304]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -22.5
-offset_top = -18.5
-offset_right = 17.5
-offset_bottom = 21.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5707964
-texture = SubResource("AtlasTexture_7cum8")
-
-[node name="WireDown" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton4" unique_id=59471587]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 19.5
-offset_top = 62.5
-offset_right = 59.5
-offset_bottom = 102.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-texture = SubResource("AtlasTexture_7uusg")
-
-[node name="WireUp" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton4" unique_id=775372734]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 19.5
-offset_top = -22.5
-offset_right = 59.5
-offset_bottom = 17.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-texture = SubResource("AtlasTexture_r8jwr")
-
-[node name="LevelButton5" type="TextureRect" parent="ScrollContainer/GridContainer" unique_id=1298687830]
-z_index = 1
-texture_filter = 1
-custom_minimum_size = Vector2(45, 45)
-layout_mode = 2
-texture = SubResource("AtlasTexture_ebodd")
-metadata/LevelPath = "res://Scenes/Gameplay/Levels/LVL_01_05.tscn"
-
-[node name="WireRight" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton5" unique_id=756832352]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 48.5
-offset_top = -18.5
-offset_right = 88.5
-offset_bottom = 21.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5707964
-texture = SubResource("AtlasTexture_7ihf6")
-
-[node name="WireLeft" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton5" unique_id=1904830679]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -22.5
-offset_top = -18.5
-offset_right = 17.5
-offset_bottom = 21.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5707964
-texture = SubResource("AtlasTexture_7cum8")
-
-[node name="WireDown" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton5" unique_id=140531872]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 19.5
-offset_top = 62.5
-offset_right = 59.5
-offset_bottom = 102.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-texture = SubResource("AtlasTexture_7uusg")
-
-[node name="WireUp" type="TextureRect" parent="ScrollContainer/GridContainer/LevelButton5" unique_id=1289961996]
-z_index = -1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 19.5
-offset_top = -22.5
-offset_right = 59.5
-offset_bottom = 17.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-texture = SubResource("AtlasTexture_r8jwr")
-
-[node name="Container" type="Container" parent="." unique_id=840008833]
-visible = false
-layout_mode = 0
-offset_left = 27.0
-offset_top = 26.0
-offset_right = 324.0
-offset_bottom = 255.0
-script = ExtResource("5_v4pbg")
-
-[node name="Button" type="Button" parent="Container" unique_id=1171617016]
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="Container" unique_id=1597998863]
-layout_mode = 2
-
-[node name="Button3" type="Button" parent="Container" unique_id=283520310]
-layout_mode = 2
-
-[node name="Button4" type="Button" parent="Container" unique_id=499073578]
-layout_mode = 2
-
-[node name="Button5" type="Button" parent="Container" unique_id=1320791633]
-layout_mode = 2
-
-[node name="SceneView" type="NinePatchRect" parent="." unique_id=338857710]
-z_index = 1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -112.0
-offset_right = -16.0
-offset_bottom = 14.0
-grow_horizontal = 0
-grow_vertical = 2
-region_rect = Rect2(0, 0, 48, 48)
-patch_margin_left = 7
-patch_margin_top = 16
-patch_margin_right = 7
-patch_margin_bottom = 7
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="SceneView" unique_id=91896672]
-z_index = -1
-layout_mode = 0
-offset_left = 2.0
-offset_top = 3.0
-offset_right = 190.0
-offset_bottom = 125.0
-color = Color(0.01183499, 0.13124216, 0.26081428, 1)
-
-[node name="LevelIdx" type="Label" parent="SceneView" unique_id=2079726188]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -40.0
-offset_top = 11.0
-offset_right = 40.0
-offset_bottom = 27.0
-grow_horizontal = 2
-text = "Level"
-label_settings = SubResource("LabelSettings_7ihf6")
-
-[node name="TextureRect" type="TextureRect" parent="SceneView" unique_id=1540500393]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -64.0
-offset_top = 13.355
-offset_right = 64.0
-offset_bottom = 53.355
-grow_horizontal = 2
-scale = Vector2(1.51, 0.16)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("7_7ihf6")
-
-[node name="LevelName" type="Label" parent="SceneView" unique_id=255825832]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -70.25
-offset_top = -17.5
-offset_right = 70.25
-offset_bottom = 43.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-text = "name"
-label_settings = SubResource("LabelSettings_xc77m")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 1
-
-[node name="Window" type="TileMapLayer" parent="SceneView" unique_id=1974745020]
-texture_filter = 1
-tile_map_data = PackedByteArray("AAAAAAcAAAAAAAIAAAAAAAYAAAAAAAEAAAAAAAUAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAAAAAAKAAcAAAABAAIAAAAJAAcAAAABAAIAAAAIAAcAAAABAAIAAAAHAAcAAAABAAIAAAAGAAcAAAABAAIAAAAFAAcAAAABAAIAAAAEAAcAAAABAAIAAAADAAcAAAABAAIAAAACAAcAAAABAAIAAAABAAcAAAABAAIAAAALAAAAAAACAAAAAAAKAAAAAAABAAAAAAAJAAAAAAABAAAAAAAIAAAAAAABAAAAAAAHAAAAAAABAAAAAAAGAAAAAAABAAAAAAAFAAAAAAABAAAAAAAEAAAAAAABAAAAAAADAAAAAAABAAAAAAACAAAAAAABAAAAAAABAAAAAAABAAAAAAALAAcAAAACAAIAAAALAAYAAAACAAEAAAALAAUAAAACAAEAAAALAAQAAAACAAEAAAALAAMAAAACAAEAAAALAAIAAAACAAEAAAALAAEAAAACAAEAAAA=")
-tile_set = SubResource("TileSet_r8jwr")
-
-[node name="SelectMission" type="Label" parent="." unique_id=1491392854]
+[node name="TitleLabel" type="Label" parent="." unique_id=1491392854]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -140.0
-offset_top = 26.0
+offset_top = 31.0
 offset_right = 140.0
-offset_bottom = 46.0
+offset_bottom = 72.0
 grow_horizontal = 2
 text = "Select Mission"
-label_settings = ExtResource("8_7uusg")
+label_settings = SubResource("LabelSettings_7uusg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Choose your level" type="Label" parent="SelectMission" unique_id=1258818940]
+[node name="LevelLabel" type="Label" parent="." unique_id=1258818940]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -136.0
-offset_top = 32.0
+offset_top = 72.0
 offset_right = 136.0
-offset_bottom = 48.0
+offset_bottom = 88.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 text = "Choose your level"
-label_settings = SubResource("LabelSettings_7uusg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RightLine" type="TextureRect" parent="." unique_id=1187713520]
+self_modulate = Color(0.54509807, 0.72156864, 0.8509804, 1)
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 5
@@ -741,6 +123,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_xc77m")
 
 [node name="LeftLine" type="TextureRect" parent="." unique_id=571224587]
+self_modulate = Color(0.54509807, 0.72156864, 0.8509804, 1)
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 5
@@ -753,39 +136,6 @@ offset_bottom = 59.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_df80e")
-
-[node name="Start" type="TextureButton" parent="." unique_id=1567086411]
-visible = false
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -118.0
-offset_top = -36.0
-grow_horizontal = 0
-grow_vertical = 0
-texture_hover = SubResource("AtlasTexture_bsvox")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="Start" unique_id=1033117249]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -8.0
-offset_right = 40.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Start"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Back" type="TextureButton" parent="." unique_id=1145759738]
 texture_filter = 1
@@ -801,35 +151,45 @@ stretch_mode = 0
 
 [node name="Label" type="Label" parent="Back" unique_id=1336960783]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -8.0
-offset_right = 40.0
-offset_bottom = 8.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Back"
+label_settings = SubResource("LabelSettings_7ihf6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WireRight" type="TextureRect" parent="." unique_id=172231308]
-visible = false
-texture_filter = 1
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1040680883]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 62.5
-offset_top = -18.5
-offset_right = 102.5
-offset_bottom = 21.5
+offset_left = -240.0
+offset_top = -88.0
+offset_right = 240.0
+offset_bottom = 162.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 1.5707964
-texture = SubResource("AtlasTexture_7ihf6")
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=28386568]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 32
+columns = 6
+
+[node name="TextureButton" type="TextureButton" parent="ScrollContainer/GridContainer" unique_id=1718050670]
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_7uusg")
+texture_pressed = SubResource("AtlasTexture_7ihf6")
+texture_hover = SubResource("AtlasTexture_7cum8")
+stretch_mode = 0
