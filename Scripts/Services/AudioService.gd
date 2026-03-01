@@ -53,6 +53,14 @@ func play_bgm(source: Variant, loop: bool = true) -> void:
 			inst.loop_mode = AudioStreamWAV.LOOP_FORWARD
 		else:
 			inst.loop_mode = AudioStreamWAV.LOOP_DISABLED
+
+	elif stream is AudioStreamMP3:
+		var inst := (stream as AudioStreamMP3).duplicate(true) as AudioStreamMP3
+		_bgmPlayer.stream = inst
+		inst.loop = loop
+		# MP3 只有 loop_offset（秒），没有 loop_end
+		inst.loop_offset = 0.0
+
 	else:
 		_bgmPlayer.stream = stream
 

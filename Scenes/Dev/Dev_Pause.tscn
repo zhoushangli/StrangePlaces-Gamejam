@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bh8f8tuywtp3r" path="res://Scripts/UI/PauseUI.gd" id="1_f4bxa"]
 [ext_resource type="AudioStream" uid="uid://cdjxp38q3a8bf" path="res://GameAssets/Sounds/FocusOnUI.wav" id="2_b15dj"]
 [ext_resource type="AudioStream" uid="uid://dscs5qql0f4wh" path="res://GameAssets/Sounds/ConfirmUI.wav" id="3_b15dj"]
-[ext_resource type="Texture2D" path="res://SourceArt/Art/TittleBG.png" id="3_bcuor"]
 [ext_resource type="Texture2D" uid="uid://bug7qlgr7haw5" path="res://SourceArt/Art/UI/UIColumns.png" id="4_01380"]
 [ext_resource type="FontFile" uid="uid://gbjcxp6a00xx" path="res://GameAssets/Fonts/PressStart2P.ttf" id="5_s33fk"]
 
@@ -74,7 +73,7 @@ color = Color(0.31118858, 0.48810583, 0.8167122, 0.50200003)
 texture_filter = 1
 position = Vector2(320.8333, 193.5)
 scale = Vector2(4.0104165, 4.0104165)
-texture = ExtResource("3_bcuor")
+texture = null
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=998502866]
 visible = false

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dme86aht2i5w5" path="res://Scripts/UI/LoadingUI.gd" id="1_0vq00"]
 [ext_resource type="Texture2D" uid="uid://dh4okhhagt068" path="res://SourceArt/Art/UI/LoadingBar.png" id="1_edgpl"]
-[ext_resource type="Texture2D" path="res://SourceArt/Art/TittleBG.png" id="2_qwbw8"]
 [ext_resource type="Texture2D" uid="uid://pbnjevnc3l72" path="res://SourceArt/Art/UI/LoadingBar2.png" id="2_v6iav"]
 [ext_resource type="Texture2D" uid="uid://bp71ib1pqqptm" path="res://SourceArt/Art/PlaceHolder/Altar.png" id="5_qwbw8"]
 [ext_resource type="Texture2D" uid="uid://ds0bn5fvnqbv4" path="res://SourceArt/Art/Particles/QuantomPairticle.png" id="6_efuuv"]
@@ -54,7 +53,7 @@ _fillingSpeed = 100.0
 texture_filter = 1
 position = Vector2(310, 202)
 scale = Vector2(4.1979165, 4.1979165)
-texture = ExtResource("2_qwbw8")
+texture = null
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1343613669]
 layout_mode = 0

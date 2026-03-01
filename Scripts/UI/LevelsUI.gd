@@ -10,9 +10,25 @@ class_name LevelsUI
 @export var _gameBgm: AudioStream
 
 const LEVELS_DIR := "res://Scenes/Gameplay/Levels"
-const LEVEL_FILE_PATTERN := "^LVL_(\\d{2})_(\\d{2})\\.tscn$"
 const DEFAULT_LEVEL_LABEL := "Choose your level"
 const EMPTY_LEVEL_LABEL := "No Levels Found"
+const LEVEL_LIST := [
+	{"chapter": 1, "puzzle": 1},
+	{"chapter": 1, "puzzle": 2},
+	{"chapter": 1, "puzzle": 3},
+	{"chapter": 1, "puzzle": 4},
+	{"chapter": 1, "puzzle": 5},
+	{"chapter": 1, "puzzle": 6},
+	{"chapter": 2, "puzzle": 1},
+	{"chapter": 2, "puzzle": 2},
+	{"chapter": 2, "puzzle": 3},
+	{"chapter": 2, "puzzle": 4},
+	{"chapter": 2, "puzzle": 5},
+	{"chapter": 2, "puzzle": 6},
+	{"chapter": 2, "puzzle": 7},
+	{"chapter": 2, "puzzle": 8},
+	{"chapter": 2, "puzzle": 9},
+]
 
 static var _cache_built := false
 static var _cached_levels: Array[Dictionary] = []
@@ -120,25 +136,10 @@ func _ensure_level_cache() -> void:
 		return
 	_cached_levels.clear()
 
-	var level_dir := DirAccess.open(LEVELS_DIR)
-	if level_dir == null:
-		push_error("[LevelsUI] Failed to open level directory: %s" % LEVELS_DIR)
-		_cache_built = true
-		return
-
-	var file_regex := RegEx.new()
-	var compile_status := file_regex.compile(LEVEL_FILE_PATTERN)
-	if compile_status != OK:
-		push_error("[LevelsUI] Failed to compile level pattern: %s" % LEVEL_FILE_PATTERN)
-		_cache_built = true
-		return
-
-	for file_name in level_dir.get_files():
-		var match := file_regex.search(file_name)
-		if match == null:
-			continue
-		var chapter := int(match.get_string(1))
-		var puzzle := int(match.get_string(2))
+	for entry in LEVEL_LIST:
+		var chapter := int(entry["chapter"])
+		var puzzle := int(entry["puzzle"])
+		var file_name := "LVL_%02d_%02d.tscn" % [chapter, puzzle]
 		_cached_levels.append(
 			{
 				"level_path": "%s/%s" % [LEVELS_DIR, file_name],
@@ -147,13 +148,5 @@ func _ensure_level_cache() -> void:
 				"file_name": file_name,
 			}
 		)
-
-	_cached_levels.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
-		var chapter_a := int(a["chapter"])
-		var chapter_b := int(b["chapter"])
-		if chapter_a == chapter_b:
-			return int(a["puzzle"]) < int(b["puzzle"])
-		return chapter_a < chapter_b
-	)
 
 	_cache_built = true

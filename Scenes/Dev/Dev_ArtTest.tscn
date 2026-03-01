@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://6q883k8py2co" path="res://GameAssets/Particles/Star.png" id="1_3n0fm"]
 [ext_resource type="TileSet" uid="uid://ddse6ycafnye1" path="res://GameAssets/Tiles/TS_Floor.tres" id="1_e4wki"]
-[ext_resource type="Texture2D" path="res://SourceArt/Art/GameBackground.png" id="2_3n0fm"]
 [ext_resource type="TileSet" uid="uid://bm25owt6xtcf" path="res://GameAssets/Tiles/TS_Platform.tres" id="2_5i2ne"]
 [ext_resource type="Texture2D" uid="uid://f5gwyi7sjyiq" path="res://SourceArt/Art/PlaceHolder/PlacableItems.png" id="4_nqnc6"]
 [ext_resource type="PackedScene" uid="uid://bkqcnsp5j5lg0" path="res://Prefabs/Items/A_ItemsRockA.tscn" id="6_2ru73"]
@@ -274,7 +273,7 @@ process_material = SubResource("ParticleProcessMaterial_ye3ip")
 [node name="Sprite2D" type="Sprite2D" parent="World/Background" unique_id=926193961]
 texture_filter = 1
 position = Vector2(319, 194)
-texture = ExtResource("2_3n0fm")
+texture = null
 
 [node name="Ground" type="Node2D" parent="World" unique_id=114289484]
 
