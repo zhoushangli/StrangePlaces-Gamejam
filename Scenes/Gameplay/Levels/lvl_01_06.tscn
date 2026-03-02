@@ -29,20 +29,19 @@ position = Vector2(104, 192)
 position = Vector2(496, 192)
 
 [node name="QuantumItem" parent="Items" parent_id_path=PackedInt32Array(111838279) index="2" unique_id=1695747596 node_paths=PackedStringArray("_anchor_root") instance=ExtResource("2_8y43d")]
-position = Vector2(280, 232)
+position = Vector2(168, 264)
 _anchor_root = NodePath("Anchors")
 
 [node name="Anchors" type="Node2D" parent="Items/QuantumItem" index="4" unique_id=820480522]
+position = Vector2(112, -32)
 
-[node name="Anchor1" type="Node2D" parent="Items/QuantumItem/Anchors" index="0" unique_id=518035032]
-
-[node name="Anchor2" type="Node2D" parent="Items/QuantumItem/Anchors" index="1" unique_id=53657797]
+[node name="Anchor2" type="Node2D" parent="Items/QuantumItem/Anchors" index="0" unique_id=53657797]
 position = Vector2(-112, 32)
 
-[node name="Anchor3" type="Node2D" parent="Items/QuantumItem/Anchors" index="2" unique_id=1787711031]
+[node name="Anchor3" type="Node2D" parent="Items/QuantumItem/Anchors" index="1" unique_id=1787711031]
 position = Vector2(-48, 64)
 
-[node name="Anchor4" type="Node2D" parent="Items/QuantumItem/Anchors" index="3" unique_id=780173945]
+[node name="Anchor4" type="Node2D" parent="Items/QuantumItem/Anchors" index="2" unique_id=780173945]
 position = Vector2(96, 32)
 
 [node name="PushableBox" parent="Items" parent_id_path=PackedInt32Array(111838279) index="3" unique_id=1119444340 instance=ExtResource("2_257dy")]

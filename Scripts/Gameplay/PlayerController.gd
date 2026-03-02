@@ -66,8 +66,10 @@ func _ready() -> void:
 
 	_fsm.init(PlayerState.IDLE)
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	_update_flashlight_logic()
+
+func _physics_process(delta: float) -> void:
 	if _is_passing_level:
 		return
 	_fsm.update(delta)
@@ -125,7 +127,7 @@ func _try_start_move(dir: Vector2) -> bool:
 	var current_cell := GridUtil.snap_to_grid(global_position, GridSize)
 	var target_position := GridUtil.snap_to_grid(current_cell + dir * GridSize, GridSize)
 
-	var pushable_box : PushableBoxController = _try_find_pushable_box_at(target_position)
+	var pushable_box: PushableBoxController = _try_find_pushable_box_at(target_position)
 	if pushable_box != null:
 		var box_chain := _collect_pushable_box_chain(target_position, dir)
 		if box_chain.is_empty():
@@ -133,7 +135,7 @@ func _try_start_move(dir: Vector2) -> bool:
 		if not _can_push_chain(box_chain, dir):
 			return false
 		_begin_push_chain(box_chain, dir)
-	elif not GridUtil.has_only_platform_at(self, target_position, platformLayers):
+	elif not GridUtil.has_only_platform_at(self , target_position, platformLayers):
 		return false
 
 	_target_position = target_position
@@ -159,7 +161,7 @@ func _can_push_chain(chain: Array[PushableBoxController], dir: Vector2) -> bool:
 	var last_box := chain[chain.size() - 1]
 	var last_cell := last_box.get_cell(GridSize)
 	var next_cell := GridUtil.snap_to_grid(last_cell + dir * GridSize, GridSize)
-	return GridUtil.has_only_platform_at(self, next_cell, platformLayers)
+	return GridUtil.has_only_platform_at(self , next_cell, platformLayers)
 
 func _begin_push_chain(chain: Array[PushableBoxController], dir: Vector2) -> void:
 	for i in range(chain.size() - 1, -1, -1):
@@ -194,7 +196,7 @@ func _try_find_pushable_box_at(target_position: Vector2) -> PushableBoxControlle
 	var hits := space.intersect_shape(query, 1)
 	if hits.is_empty():
 		return null
-	var collider : PushableBoxController = hits[0].get("collider")
+	var collider: PushableBoxController = hits[0].get("collider")
 	return collider
 
 func _handle_flashlight_toggle_input() -> void:
@@ -207,8 +209,7 @@ func _update_flashlight_logic() -> void:
 	if not _is_flashlight_allowed():
 		_flashlight.set_observing(false)
 		return
-	if _flashlight.is_observing:
-		_flashlight.look_at(get_global_mouse_position())
+	_flashlight.look_at(get_global_mouse_position())
 
 func _sync_flashlight_with_level_rule() -> void:
 	if not _is_flashlight_allowed():

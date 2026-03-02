@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://gpddo5x8ekle" path="res://Scenes/Gameplay/Levels/LVL_Base.tscn" id="1_6pw1o"]
 [ext_resource type="Script" uid="uid://d387kv5dxq7bo" path="res://Scripts/Gameplay/Level/LVL_02_05.gd" id="2_0kbv3"]
 [ext_resource type="PackedScene" uid="uid://dblk24g13wf6t" path="res://Prefabs/Items/A_QuantumItem.tscn" id="3_a6q4p"]
+[ext_resource type="Texture2D" uid="uid://b6qshxu0lip3h" path="res://GameAssets/Environment/FlashLightOn.png" id="4_fdby1"]
 
 [node name="LVL_02_05" unique_id=1507039194 instance=ExtResource("1_6pw1o")]
 script = ExtResource("2_0kbv3")
@@ -36,3 +37,8 @@ position = Vector2(112, 0)
 
 [node name="Anchor3" type="Node2D" parent="Items/QuantumItem/Anchors" index="2" unique_id=2005314458]
 position = Vector2(224, 0)
+
+[node name="FlashLightOn" type="Sprite2D" parent="Items" parent_id_path=PackedInt32Array(111838279) index="3" unique_id=451521338]
+texture_filter = 1
+position = Vector2(328, 336)
+texture = ExtResource("4_fdby1")
