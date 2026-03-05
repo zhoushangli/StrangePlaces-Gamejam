@@ -10,6 +10,7 @@ script = ExtResource("1_xn1tq")
 _light = NodePath("PointLight2D")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1910709507]
+visible = false
 polygon = PackedVector2Array(16, -80, 120, -80, 72, 80, -40, 80)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1165975124]
